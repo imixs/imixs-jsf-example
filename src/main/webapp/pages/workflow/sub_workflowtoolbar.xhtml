@@ -1,0 +1,58 @@
+<f:subview xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:i="http://java.sun.com/jsf/composite/imixs"
+	id="detail_form_workflowhistory">
+
+
+
+	<div class="imixs-panel">
+		<h1>#{global.workflow}</h1>
+
+		<i:imixsWorkflowActions workflowController="#{workflowController}"
+			disabletooltip="false" />
+
+		<h:commandButton value="#{global.close}" action="worklist" />
+
+		<h:panelGrid columns="3">
+			<h:outputLabel value="#{global.created}: " />
+			<h:outputText
+				value="#{workflowController.workitem.item['$created']} ">
+				<f:convertDateTime timeZone="CET" type="both" dateStyle="medium" />
+			</h:outputText>
+			<h:outputText
+				value=" #{global.by} #{workflowController.workitem.item['namcreator']} " />
+			<h:outputLabel value="#{global.modified}: " />
+			<h:outputText
+				value="#{workflowController.workitem.item['$modified']} ">
+				<f:convertDateTime timeZone="CET" type="both" dateStyle="medium" />
+			</h:outputText>
+			<h:outputText
+				value=" #{global.by} #{workflowController.workitem.item['namcurrenteditor']}" />
+		</h:panelGrid>
+
+		<div class="imixs-toggle-panel">
+			<h1>History:</h1>
+			<div>
+				<h:dataTable
+					value="#{workflowController.workitem.itemList['txtworkflowhistorylog']}"
+					var="log">
+					<h:column>
+						<h:outputText value="#{log}" />
+					</h:column>
+				</h:dataTable>
+			</div>
+		</div>
+
+
+
+
+
+	</div>
+
+
+
+</f:subview>
+

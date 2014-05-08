@@ -1,0 +1,80 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/layout/template.xhtml">
+
+	<ui:define name="content">
+		<f:view>
+
+
+			<h:form id="teamlistForm">
+
+				<h2>
+					<h:outputText value="#{global.team_form_title}" />
+				</h2>
+
+
+
+
+				<h:dataTable id="datatable_id" columns="7" class="imixsdatatable"
+					value="#{teamlistController.workitems}" var="record">
+
+
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Name" />
+						</f:facet>
+						<h:outputText value="#{record.item['txtName']} " />
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="#{global.modified}" />
+						</f:facet>
+						<h:outputText value="#{record.item['$modified']}">
+							<f:convertDateTime type="both" dateStyle="short"
+								pattern="dd.MM.yy HH:mm:ss" />
+						</h:outputText>
+					</h:column>
+
+
+
+					<!-- edit -->
+					<h:column>
+						<h:commandLink
+							action="#{teamController.load(record.item['$uniqueid'],'team')}">
+							<h:outputText value="#{global.edit}" />
+						</h:commandLink>
+					</h:column>
+
+					<!-- delete -->
+					<h:column>
+						<h:commandLink value="#{global.delete}"
+							action="#{teamController.delete(record.item['$uniqueid'],'teamlist')}" />
+					</h:column>
+
+
+
+
+				</h:dataTable>
+
+				<h:commandButton actionListener="#{teamlistController.doLoadPrev}"
+					disabled="#{teamlistController.row==0}" value="#{global.prev}">
+				</h:commandButton>
+
+				<h:commandButton actionListener="#{teamlistController.doLoadNext}"
+					disabled="#{teamlistController.endOfList}" value="#{global.next}">
+				</h:commandButton>
+				<h:commandButton actionListener="#{teamController.create}"
+					action="team" value="#{global.add}">
+
+				</h:commandButton>
+
+
+			</h:form>
+		</f:view>
+	</ui:define>
+
+</ui:composition>

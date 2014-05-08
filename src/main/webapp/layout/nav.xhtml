@@ -1,0 +1,37 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+	<h:form>
+		<ul>
+
+			<li><h:commandLink action="/pages/welcome">Home</h:commandLink></li>
+			<c:if test="#{!loginController.authenticated}">
+				<li><h:commandLink action="home">#{global.login}</h:commandLink></li>
+			</c:if>
+
+			<c:if test="#{loginController.authenticated}">
+				<li><h:commandLink action="/pages/config/teamlist">Teamlist</h:commandLink></li>
+
+				<li><h:commandLink
+						actionListener="#{workflowController.create}"
+						action="/pages/workflow/workitem">create Ticket
+					 <f:setPropertyActionListener
+							target="#{workflowController.workitem.item['$ModelVersion']}"
+							value="1.0.0" />
+						<f:setPropertyActionListener
+							target="#{workflowController.workitem.item['$ProcessID']}"
+							value="10" />
+					</h:commandLink></li>
+
+
+				<li><h:commandLink action="/pages/workflow/worklist">Tasklist</h:commandLink></li>
+
+			</c:if>
+		</ul>
+	</h:form>
+</ui:composition>
+
+

@@ -1,0 +1,55 @@
+<f:subview xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:i="http://java.sun.com/jsf/composite/imixs">
+
+
+
+
+	<!-- **** General info ***** -->
+	<dl>
+		<dt>
+			<h:outputLabel for="subject_id" value="#{global.subject}">
+				<h:message style="color: red" for="subject_id" showSummary="true"
+					showDetail="false" />
+			</h:outputLabel>
+		</dt>
+		<dd>
+			<h:inputText style="width: 20em;" required="true"
+				value="#{workflowController.workitem.item['txtSubject']}"
+				id="subject_id">
+			</h:inputText>
+		</dd>
+
+		<dt style="clear: left;">
+			<h:outputLabel for="team_id" value="Team:">
+				<h:message style="color: red" for="team_id" showSummary="true"
+					showDetail="false" />
+			</h:outputLabel>
+		</dt>
+		<dd>
+			<h:selectOneMenu id="team_id"
+				value="#{workflowController.workitem.item['team']}" required="true">
+				<f:selectItem required="true" itemLabel="#{global.please_select}"
+					itemValue="" />
+				<f:selectItems value="#{teamController.teamSelection}" />
+			</h:selectOneMenu>
+		</dd>
+
+
+		<dt style="clear: left;">#{global.details}</dt>
+		<dd>
+			<h:inputTextarea id="abstract_id" class="imixs-editor"
+				value="#{workflowController.workitem.item['htmlabstract']}" />
+
+		</dd>
+	</dl>
+
+	<div style="clear: left;" />
+
+
+
+</f:subview>
+

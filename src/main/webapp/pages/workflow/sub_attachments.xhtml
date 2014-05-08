@@ -1,0 +1,26 @@
+<f:subview xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:i="http://java.sun.com/jsf/composite/imixs">
+
+
+
+
+	<!-- **** General info ***** -->
+	<dl>
+		<dt style="clear: left;">
+			<h:outputText value="#{global.attachments}" />
+		</dt>
+		<dd>
+			<i:imixsFileUpload id="file_upload_id" hideattachments="false" hideuploads="false"/>
+		</dd>
+	</dl>
+
+	<div style="clear: left;" />
+
+
+
+</f:subview>
+

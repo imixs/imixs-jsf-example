@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://java.sun.com/jsf/composite"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <!-- INTERFACE -->
+    <cc:interface>
+        <cc:attribute name="value"/>
+    </cc:interface>
+
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>
+        <div id="#{cc.clientId}">
+            <h:form prependId="false">
+                <h:inputText id="input1" value="#{cc.attrs.value}">
+                <f:ajax event="keyup" render="output1"/> 
+                </h:inputText>
+                <h:outputText id="output1" value=" #{cc.attrs.value}"/><br/>
+                <h:commandLink value="push">
+               	 
+                   
+                </h:commandLink>
+            </h:form>
+        </div>
+    </cc:implementation>
+</html>

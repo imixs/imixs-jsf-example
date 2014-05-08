@@ -1,0 +1,51 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:i="http://java.sun.com/jsf/composite/imixs"
+	template="/layout/template.xhtml">
+
+
+	<ui:define name="content">
+		<f:view>
+			
+
+
+			<h:form id="workitem_form_id">
+
+				<h1>#{workflowController.workitem.item['txtWorkflowGroup']}</h1>
+				<h2>#{workflowController.workitem.item['txtWorkflowStatus']}</h2>
+
+				<!-- Error  -->
+				<ui:include src="error.xhtml" />
+
+
+				<div class="imixs-tabs">
+					<ul>
+						<li><a href="#tab-1">General</a></li>
+						<li><a href="#tab-2">Files</a></li>
+						
+					</ul>
+					<div id="tab-1">
+						<ui:include src="/pages/workflow/sub_main.xhtml" />
+					</div>
+					<div id="tab-2">
+						<ui:include src="/pages/workflow/sub_attachments.xhtml" />
+					</div>
+					
+				</div>
+
+
+
+
+
+
+				<!-- **** Workflow Actions & History ***** -->
+				<ui:include src="/pages/workflow/sub_workflowtoolbar.xhtml" />
+
+			</h:form>
+		</f:view>
+	</ui:define>
+
+</ui:composition>

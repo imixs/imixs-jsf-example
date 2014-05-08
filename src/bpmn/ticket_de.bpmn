@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:BpmnDiagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:bpmn="http://stp.eclipse.org/bpmn" xmi:id="_vbvFwtBZEd6uK8giqhsjoA" iD="_vbvFwdBZEd6uK8giqhsjoA">
+  <pools xmi:type="bpmn:Pool" xmi:id="_vfdIIdBZEd6uK8giqhsjoA" iD="_vfdIINBZEd6uK8giqhsjoA" name="Problem Management">
+    <vertices xmi:type="bpmn:Activity" xmi:id="_vhsj0dBZEd6uK8giqhsjoA" iD="_vhsj0NBZEd6uK8giqhsjoA" outgoingEdges="_sxAIYdBaEd6uK8giqhsjoA" incomingEdges="_mNYqYdBaEd6uK8giqhsjoA _XW3sodBbEd6uK8giqhsjoA" name="erfasst neues Ticket" lanes="_Q_l28dBaEd6uK8giqhsjoA" activityType="Task"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_fjgMUdBaEd6uK8giqhsjoA" iD="_fjgMUNBaEd6uK8giqhsjoA" outgoingEdges="_mNYqYdBaEd6uK8giqhsjoA" name="Kunde meldet Problem" lanes="_Q_l28dBaEd6uK8giqhsjoA" activityType="EventStartEmpty"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_sG1KAdBaEd6uK8giqhsjoA" iD="_sG1KANBaEd6uK8giqhsjoA" outgoingEdges="_7RMbYdBaEd6uK8giqhsjoA" incomingEdges="_sxAIYdBaEd6uK8giqhsjoA" name="prüft Ticket" lanes="_RsIz4dBaEd6uK8giqhsjoA"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_7RCqYdBaEd6uK8giqhsjoA" iD="_7RCqYNBaEd6uK8giqhsjoA" outgoingEdges="_VfzdUdBbEd6uK8giqhsjoA _XW3sodBbEd6uK8giqhsjoA" incomingEdges="_7RMbYdBaEd6uK8giqhsjoA" name="" lanes="_RsIz4dBaEd6uK8giqhsjoA" activityType="GatewayDataBasedExclusive"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_VfqTYdBbEd6uK8giqhsjoA" iD="_VfqTYNBbEd6uK8giqhsjoA" outgoingEdges="_DiEP8dBcEd6uK8giqhsjoA" incomingEdges="_VfzdUdBbEd6uK8giqhsjoA" name="bearbeitet Ticket" lanes="_RsIz4dBaEd6uK8giqhsjoA" activityType="Task" looping="true"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_Dh6e8dBcEd6uK8giqhsjoA" iD="_Dh6e8NBcEd6uK8giqhsjoA" incomingEdges="_DiEP8dBcEd6uK8giqhsjoA" name="Ticket gelöst" lanes="_Q_l28dBaEd6uK8giqhsjoA" activityType="EventEndMessage"/>
+    <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_mNYqYdBaEd6uK8giqhsjoA" iD="_mNYqYNBaEd6uK8giqhsjoA"/>
+    <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_sxAIYdBaEd6uK8giqhsjoA" iD="_sxAIYNBaEd6uK8giqhsjoA" name="weiterleiten"/>
+    <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_7RMbYdBaEd6uK8giqhsjoA" iD="_7RMbYNBaEd6uK8giqhsjoA"/>
+    <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_VfzdUdBbEd6uK8giqhsjoA" iD="_VfzdUNBbEd6uK8giqhsjoA" name="annehmen"/>
+    <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_XW3sodBbEd6uK8giqhsjoA" iD="_XW3soNBbEd6uK8giqhsjoA" name="ablehnen"/>
+    <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_DiEP8dBcEd6uK8giqhsjoA" iD="_DiEP8NBcEd6uK8giqhsjoA"/>
+    <lanes xmi:type="bpmn:Lane" xmi:id="_Q_l28dBaEd6uK8giqhsjoA" iD="_Q_l28NBaEd6uK8giqhsjoA" name="Service Mitarbeiter" activities="_vhsj0dBZEd6uK8giqhsjoA _fjgMUdBaEd6uK8giqhsjoA _Dh6e8dBcEd6uK8giqhsjoA"/>
+    <lanes xmi:type="bpmn:Lane" xmi:id="_RsIz4dBaEd6uK8giqhsjoA" iD="_RsIz4NBaEd6uK8giqhsjoA" name="Techniker" activities="_sG1KAdBaEd6uK8giqhsjoA _7RCqYdBaEd6uK8giqhsjoA _VfqTYdBbEd6uK8giqhsjoA"/>
+  </pools>
+</bpmn:BpmnDiagram>
