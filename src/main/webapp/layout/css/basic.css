@@ -294,3 +294,12 @@ a:hover {
 	display: inline;
 	margin: 0em 0em 0em 1.5em;
 }
+
+
+
+.imixs-date {
+	width: 100px !important;
+	background: url(../icons/Calendar_16.png) no-repeat scroll left center
+		white;
+	padding-left: 20px !important;;
+}

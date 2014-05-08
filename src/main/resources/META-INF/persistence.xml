@@ -10,7 +10,7 @@
 	<persistence-unit name="org.imixs.workflow.jee.jpa" transaction-type="JTA">	
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>	
 		<jta-data-source>jdbc/workflow-db</jta-data-source>
-		<jar-file>lib/imixs-workflow-engine-3.1.5.jar</jar-file>
+		<jar-file>lib/imixs-workflow-engine-${org.imixs.workflow.version}.jar</jar-file>
 		<properties>
 			<property name="eclipselink.ddl-generation"
 				value="create-tables" />

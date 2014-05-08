@@ -8,11 +8,22 @@
 	<version>3.1.8</version>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<org.imixs.workflow.version>3.1.8-SNAPSHOT</org.imixs.workflow.version>
 	</properties>
 
+	
+	
 
 	<description>Imixs Workflow JSF Sample Application </description>
 	<build>
+	
+		<resources>
+			<!-- enable resource filtering for multi language version -->
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -47,19 +58,19 @@
 		<dependency>
 			<groupId>org.imixs.workflow</groupId>
 			<artifactId>imixs-workflow-engine</artifactId>
-			<version>3.1.5</version>
+			<version>${org.imixs.workflow.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.imixs.workflow</groupId>
 			<artifactId>imixs-workflow-jax-rs</artifactId>
-			<version>3.1.5</version>
+			<version>${org.imixs.workflow.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.imixs.workflow</groupId>
 			<artifactId>imixs-workflow-faces</artifactId>
-			<version>3.1.5</version>
+			<version>${org.imixs.workflow.version}</version>
 		</dependency>
 
 
