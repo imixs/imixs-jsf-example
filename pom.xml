@@ -5,7 +5,7 @@
 	<artifactId>imixs-jsf-example</artifactId>
 	<packaging>war</packaging>
 	<name>Imixs Workflow JSF Sample Application</name>
-	<version>3.1.5</version>
+	<version>3.1.8</version>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
