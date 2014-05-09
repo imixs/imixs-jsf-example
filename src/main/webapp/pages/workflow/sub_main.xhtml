@@ -6,8 +6,17 @@
 	xmlns:i="http://java.sun.com/jsf/composite/imixs">
 
 
+	<script type="text/javascript">
+		/*<![CDATA[*/
+
+		$(document).ready(function() {
+		
+		});
 
 
+		/*]]>*/
+	</script>
+	
 	<!-- **** General info ***** -->
 	<dl>
 		<dt>
@@ -27,49 +36,11 @@
 			<h:outputLabel value="#{global.date}"></h:outputLabel>
 		</dt>
 		<dd style="width: 250px;">
-			<h:inputText style="width: 80px;" class="imixs-date" 
-				value="#{workflowController.workitem.item['datDate']}">
 
-				<f:convertDateTime pattern="#{global.datePatternShort}"
-					timeZone="#{global.timeZone}" />
 
-			</h:inputText>
 
-			<!-- Time selection -->
-			<select>
-				<option value="00">00</option>
-				<option value="01">01</option>
-				<option value="02">02</option>
-				<option value="03">03</option>
-				<option value="04">04</option>
-				<option value="05">05</option>
-				<option value="06">06</option>
-				<option value="07">07</option>
-				<option value="08">08</option>
-				<option value="09">09</option>
-				<option value="10">10</option>
-				<option value="11">11</option>
-				<option value="12">12</option>
-				<option value="13">13</option>
-				<option value="14">14</option>
-				<option value="15">15</option>
-				<option value="16">16</option>
-				<option value="17">17</option>
-				<option value="18">18</option>
-				<option value="19">19</option>
-				<option value="20">20</option>
-				<option value="21">21</option>
-				<option value="22">22</option>
-				<option value="23">23</option>
-			</select> : <select>
-				<option value="00">00</option>
-				<option value="15">15</option>
-				<option value="30">30</option>
-				<option value="45">45</option>
-			</select>
 			
-			<input type="text" id="date_time_input" />
-
+			<i:imixsDateInput value="#{workflowController.workitem.item['datDate']}"  showtime="true" minuteinterval="5"/>
 		</dd>
 
 		<dt style="clear: left;">
