@@ -11,12 +11,61 @@
 		<org.imixs.workflow.version>3.1.8</org.imixs.workflow.version>
 	</properties>
 
-	
-	
 
 	<description>Imixs Workflow JSF Sample Application </description>
+
+
+
+	<url>https://github.com/imixs/imixs-workflow</url>
+	<organization>
+		<name>Imixs Software Solutions GmbH</name>
+		<url>http://www.imixs.com</url>
+	</organization>
+	<inceptionYear>2006</inceptionYear>
+
+	<developers>
+		<developer>
+			<id>rsoika</id>
+			<name>Ralph Soika</name>
+			<email>ralph.soika@imixs.com</email>
+			<url>http://blog.imixs.org/</url>
+			<organization>Imixs Software Solutions GmbH</organization>
+			<organizationUrl>http://www.imixs.com</organizationUrl>
+			<roles>
+				<role>developer</role>
+				<role>testing</role>
+			</roles>
+			<timezone>2</timezone>
+		</developer>
+
+		<developer>
+			<id>gaheinle</id>
+			<name>Gaby Heinle</name>
+			<email />
+			<url />
+			<organization>Imixs Software Solutions GmbH</organization>
+			<organizationUrl>http://www.imixs.com</organizationUrl>
+			<roles>
+				<role>developer</role>
+				<role>testing</role>
+			</roles>
+			<timezone>2</timezone>
+		</developer>
+	</developers>
+
+	<scm>
+		<connection>scm:git:https://github.com/imixs/imixs/imixs-jsf-example.git</connection>
+		<developerConnection>scm:git:https://github.com/imixs/imixs/imixs-jsf-example.git</developerConnection>
+		<url>https://github.com/imixs/imixs/imixs-jsf-example/</url>
+	</scm>
+
+	<issueManagement>
+		<system>GitHub</system>
+		<url>https://github.com/imixs/imixs-jsf-example/issues</url>
+	</issueManagement>
+
 	<build>
-	
+
 		<resources>
 			<!-- enable resource filtering for multi language version -->
 			<resource>
@@ -32,6 +81,11 @@
 					<source>1.6</source>
 					<target>1.6</target>
 				</configuration>
+			</plugin>
+			<!-- relase management -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
 			</plugin>
 
 		</plugins>
