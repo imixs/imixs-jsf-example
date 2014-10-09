@@ -1,4 +1,4 @@
-# ignore all bin directories
+﻿# ignore all bin directories
 # matches "bin" in any subfolder
 bin/
 
@@ -12,3 +12,4 @@ target/
 .settings/
 .project
 .classpath
+
