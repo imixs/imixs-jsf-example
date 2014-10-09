@@ -57,8 +57,7 @@
 		<developerConnection>scm:git:https://github.com/imixs/imixs-jsf-example.git</developerConnection>
 		<url>https://github.com/imixs/imixs-jsf-example/</url>
 	</scm>
-	
-	
+
 	<issueManagement>
 		<system>GitHub</system>
 		<url>https://github.com/imixs/imixs-jsf-example/issues</url>
