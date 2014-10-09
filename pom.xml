@@ -15,7 +15,7 @@
 
 
 
-	<url>https://github.com/imixs/imixs-workflow</url>
+	<url>https://github.com/imixs/imixs-jsf-example</url>
 	<organization>
 		<name>Imixs Software Solutions GmbH</name>
 		<url>http://www.imixs.com</url>
@@ -53,11 +53,12 @@
 	</developers>
 
 	<scm>
-		<connection>scm:git:https://github.com/imixs/imixs/imixs-jsf-example.git</connection>
-		<developerConnection>scm:git:https://github.com/imixs/imixs/imixs-jsf-example.git</developerConnection>
-		<url>https://github.com/imixs/imixs/imixs-jsf-example/</url>
+		<connection>scm:git:https://github.com/imixs/imixs-jsf-example.git</connection>
+		<developerConnection>scm:git:https://github.com/imixs/imixs-jsf-example.git</developerConnection>
+		<url>https://github.com/imixs/imixs-jsf-example/</url>
 	</scm>
-
+	
+	
 	<issueManagement>
 		<system>GitHub</system>
 		<url>https://github.com/imixs/imixs-jsf-example/issues</url>
