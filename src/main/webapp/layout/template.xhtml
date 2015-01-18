@@ -27,6 +27,10 @@
 		href="#{facesContext.externalContext.requestContextPath}/layout/css/basic.css"
 		charset="UTF-8" type="text/css" rel="stylesheet" />
 		
+	<!-- draganddrop file updload -->
+	<script src="#{facesContext.externalContext.requestContextPath}/layout/js/jquery.iframe-transport.js"></script>
+	<script src="#{facesContext.externalContext.requestContextPath}/layout/js/jquery.fileupload.js"></script>	
+		
 		
 	
 	<script type="text/javascript">
@@ -35,7 +39,7 @@
 		// special layout für wolfwurst tiny mce 
 		$(document).ready(function() {
 			//$('textarea.custom-editor').layoutImixsEditor('#{facesContext.externalContext.requestContextPath}',900,200);
-			//layoutCustomEditor();
+			//layoutCustomEditor();				
 		});
 		
 		function layoutCustomEditor() {

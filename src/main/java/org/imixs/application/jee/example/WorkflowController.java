@@ -27,6 +27,7 @@ import java.io.Serializable;
 
 import javax.inject.Inject;
 
+import org.imixs.test.fileupload.MultiFileController;
 import org.imixs.workflow.ItemCollection;
 import org.imixs.workflow.exceptions.AccessDeniedException;
 import org.imixs.workflow.exceptions.PluginException;
@@ -52,6 +53,8 @@ public class WorkflowController extends
 
 	@Inject
 	private FileUploadController fileUploadController;
+	
+	@Inject MultiFileController multiFileController;
 
 	public void setFileUploadController(FileUploadController fleUploadController) {
 		this.fileUploadController = fleUploadController;
@@ -71,6 +74,8 @@ public class WorkflowController extends
 				this.getWorkitem().replaceItemValue("namTeam", team.getItemValue("Members"));
 		}
 		
+		// update the file info for the current workitem
+		multiFileController.updateWorkitem(this.getWorkitem());
 		
 
 		if (fileUploadController.isDirty()) {

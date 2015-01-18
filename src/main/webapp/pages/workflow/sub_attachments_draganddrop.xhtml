@@ -1,0 +1,52 @@
+<f:subview xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:i="http://java.sun.com/jsf/composite/imixs">
+
+	<script type="text/javascript">
+		/*<![CDATA[*/
+
+		// special layout für wolfwurst tiny mce 
+		$(document).ready(function() {
+			
+			// draganddrop fileupload
+			 $('#imixsFileUpload').fileupload({
+			        dataType: 'json',
+			        done: function (e, data) {
+			            $.each(data.result.files, function (index, file) {
+			                $('<p/>').text(file.name).appendTo(document.body);
+			            });
+			        }
+			    });
+			
+			
+		});
+		
+		
+
+	
+
+		/*]]>*/
+	</script>
+		
+
+
+	<!-- **** General info ***** -->
+	<dl>
+		<dt style="clear: left;">
+			<h:outputText value="#{global.attachments}" />
+		</dt>
+		<dd> 			
+			<input id="imixsFileUpload" type="file" name="files[]" data-url="#{facesContext.externalContext.requestContextPath}/fileupload/" multiple="multiple" />
+			
+		</dd>
+	</dl>
+
+	<div style="clear: left;" />
+
+
+
+</f:subview>
+
