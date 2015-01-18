@@ -1,6 +1,7 @@
 package org.imixs.test.fileupload;
 
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.logging.Logger;
 
 import javax.servlet.Filter;
@@ -51,6 +52,20 @@ public class MultipartRequestFilter implements Filter {
 			logger.fine("Is multipart request.... wrapping it.");
 			
 			request = new MultipartRequestWrapper(httpRequest);
+			
+			
+			OutputStream out = response.getOutputStream();
+			//chain.doFilter(request, response);
+			 
+            out.write(new String("{ \"name\": \"HelloWorld\"}").getBytes());
+ 
+            response.setContentType("application/json;charset=UTF-8");
+ 
+            out.close();
+            logger.fine("Filter - ok - return");
+            return;
+			
+			
 		}
 		chain.doFilter(request, response);
 	}

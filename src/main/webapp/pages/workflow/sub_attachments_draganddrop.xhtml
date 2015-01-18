@@ -15,9 +15,24 @@
 			 $('#imixsFileUpload').fileupload({
 			        dataType: 'json',
 			        done: function (e, data) {
+			        	alert('upload finished');
 			            $.each(data.result.files, function (index, file) {
 			                $('<p/>').text(file.name).appendTo(document.body);
 			            });
+			        },		
+			        fail: function (e, data) {
+			            // data.errorThrown
+			            alert( data.textStatus);
+			            // data.jqXHR;
+			        },
+			        progressall: function (e, data) {
+			        	//alert(data.loaded);
+			        	
+			            var progress = parseInt(data.loaded / data.total * 100, 10);
+			            $('#progress .bar').css(
+			                'width',
+			                progress + '%'
+			            );
 			        }
 			    });
 			
@@ -30,7 +45,7 @@
 
 		/*]]>*/
 	</script>
-		
+
 
 
 	<!-- **** General info ***** -->
@@ -38,14 +53,17 @@
 		<dt style="clear: left;">
 			<h:outputText value="#{global.attachments}" />
 		</dt>
-		<dd> 			
-			<input id="imixsFileUpload" type="file" name="files[]" data-url="#{facesContext.externalContext.requestContextPath}/fileupload/" multiple="multiple" />
-			
+		<dd>
+			<input id="imixsFileUpload" type="file" name="files[]"
+				data-url="#{facesContext.externalContext.requestContextPath}/fileupload/"
+				multiple="multiple" />
+
 		</dd>
 	</dl>
-
-	<div style="clear: left;" />
-
+	<div id="progress" style="clear:left;">
+	<h1>Progress</h1>
+		<div class="bar" style="width: 0%; background:blue; height:10px;"></div>
+	</div>
 
 
 </f:subview>
