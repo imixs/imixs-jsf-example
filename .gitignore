@@ -8,7 +8,7 @@ target/
 # ignore all files ending with ~
 *~ 
 
-# ignore eclipse directories and project files
+# ignore eclipse directories and project files 
 .settings/
 .project
 .classpath
