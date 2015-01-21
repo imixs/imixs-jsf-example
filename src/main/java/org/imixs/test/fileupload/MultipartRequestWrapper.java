@@ -34,12 +34,16 @@ public class MultipartRequestWrapper extends HttpServletRequestWrapper {
 
 	private List<MultiFileData> fileDataList = new ArrayList<MultiFileData>();
 
-	// @Inject
-	// MultiFileController multiFileController;
-
 	/**
 	 * The constructor wrap the http servlet request and puts all params
-	 * contained by the request into a hashmap (params)
+	 * contained by the request into a hashmap (params).
+	 * 
+	 * Uploaded files are stored in the fileDataList.
+	 * 
+	 * 
+	 * The method getJson returns the json structure for the uploaded files.
+	 * 
+	 * 
 	 * 
 	 * @param request
 	 */
@@ -69,17 +73,15 @@ public class MultipartRequestWrapper extends HttpServletRequestWrapper {
 						// MultiFileController multiFileController =
 						// (MultiFileController) request
 						// .getSession().getAttribute("multiFileController");
-						
-						
 
 					}
 
 				}
 			}
-			
-			request.getSession().setAttribute("imixsFileDataList", fileDataList);
-			
-			
+
+			request.getSession()
+					.setAttribute("imixsFileDataList", fileDataList);
+
 		} catch (IOException ex) {
 			Logger.getLogger(MultipartRequestWrapper.class.getName()).log(
 					Level.SEVERE, null, ex);
@@ -135,6 +137,48 @@ public class MultipartRequestWrapper extends HttpServletRequestWrapper {
 	@Override
 	public String[] getParameterValues(String name) {
 		return params.get(name);
+	}
+
+	/**
+	 * returns a json structure for uploaded files.
+	 * 
+	 * @see https://github.com/blueimp/jQuery-File-Upload/wiki/JSON-Response
+	 * 
+	 *  <code>
+			{
+			    "files": [
+			        {
+			            "url": "0:0:0:0:0:0:0:1",
+			            "thumbnail_url": "",
+			            "name": "start.gif",
+			            "type": "image/gif",
+			            "size": 128,
+			            "delete_url": "",
+			            "delete_type": "DELETE"
+			        }
+			    ]
+			}
+	 *  </code>
+	 * @return
+	 */
+	public String getJson() {
+
+		String result = "{ \"files\":[";
+		for (MultiFileData fileData : fileDataList) {
+			result += "{ \"url\": \"" + this.getRequest().getRemoteAddr() + "\",";
+			result += "\"thumbnail_url\": \"\",";
+			result += "\"name\": \"" + fileData.getName() + "\",";
+			result += "\"type\": \"" + fileData.getContentType() + "\",";
+			result += "\"size\": " + fileData.getSize() + ",";
+			result += "\"delete_url\": \"\",";
+			result += "\"delete_type\": \"DELETE\"";
+
+			result += "}";
+		}
+
+		result += "]}";
+
+		return result;
 	}
 
 }

@@ -1,7 +1,7 @@
 package org.imixs.test.fileupload;
 
 import java.io.IOException;
-import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.util.logging.Logger;
 
 import javax.servlet.Filter;
@@ -15,57 +15,75 @@ import javax.servlet.http.HttpServletRequest;
 
 /**
  * This is a simple request filter which wrapps the http request with the
- * MultipartRequestWrapper
+ * MultipartRequestWrapper. The filter can be used to store uploaded files from
+ * the jQuery FileUpload Plugin
  * 
- * The class was developed initially by theironicprogrammer@gmail.com
+ *
+ * The servlet returns a json object containing the uploaded file information.
+ * The returned json structure is described here:
+ * https://github.com/blueimp/jQuery-File-Upload/wiki/JSON-Response
+ *
+ * JSON Response object
  * 
- * @author theironicprogrammer@gmail.com
- * @see http://ironicprogrammer.blogspot.de/2010/03/file-upload-in-jsf2.html
+ * <code>
+ *  
+	 {
+	    "files": [
+	        {
+	            "url": "0:0:0:0:0:0:0:1",
+	            "thumbnail_url": "",
+	            "name": "start.gif",
+	            "type": "image/gif",
+	            "size": 128,
+	            "delete_url": "",
+	            "delete_type": "DELETE"
+	        }
+	    ]
+	}
+ *  </code>
+ * 
+ * @author ralph.soika@imixs.com
+ * @see https://blueimp.github.io/jQuery-File-Upload/
+ * 
  */
 @WebFilter(urlPatterns = "/fileupload/*")
 public class MultipartRequestFilter implements Filter {
 	private static final String REQUEST_METHOD_POST = "POST";
 	private static final String CONTENT_TYPE_MULTIPART = "multipart/";
 
-	private static Logger logger = Logger.getLogger("org.imixs.workflow");
+	private static Logger logger = Logger
+			.getLogger(MultipartRequestFilter.class.getName());
 
 	public void init(FilterConfig filterConfig) throws ServletException {
-
 	}
 
 	/**
-	 * test if the request is a post request and if the content type is
-	 * mulitpart. Then wrap the request...
+	 * test if content type is mulitpart and the request is a post request with
+	 * a file content. Then wrap the request...
 	 * 
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
 
-		String sContentType=request.getContentType();
-		logger.fine("MulitpartRequestFilter : contentType=" + sContentType);
-		
+		String sContentType = request.getContentType();
+		logger.fine("[MulitpartRequestFilter]  contentType=" + sContentType);
+
 		if (REQUEST_METHOD_POST.equalsIgnoreCase(httpRequest.getMethod())
 				&& request.getContentType() != null
 				&& sContentType.toLowerCase()
 						.startsWith(CONTENT_TYPE_MULTIPART)) {
 			logger.fine("Is multipart request.... wrapping it.");
-			
 			request = new MultipartRequestWrapper(httpRequest);
-			
-			
-			OutputStream out = response.getOutputStream();
-			//chain.doFilter(request, response);
-			 
-            out.write(new String("{ \"name\": \"HelloWorld\"}").getBytes());
- 
-            response.setContentType("application/json;charset=UTF-8");
- 
-            out.close();
-            logger.fine("Filter - ok - return");
-            return;
-			
-			
+
+			response.setContentType("application/json;charset=UTF-8");
+
+			PrintWriter out = response.getWriter();
+			out.write(((MultipartRequestWrapper) request).getJson());// .getBytes());
+			out.close();
+			logger.fine("[MulitpartRequestFilter] Filter - ok - return");
+			return;
+
 		}
 		chain.doFilter(request, response);
 	}

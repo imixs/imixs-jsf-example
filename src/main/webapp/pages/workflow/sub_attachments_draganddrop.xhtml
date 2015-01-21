@@ -15,9 +15,9 @@
 			 $('#imixsFileUpload').fileupload({
 			        dataType: 'json',
 			        done: function (e, data) {
-			        	alert('upload finished');
 			            $.each(data.result.files, function (index, file) {
-			                $('<p/>').text(file.name).appendTo(document.body);
+			            	
+			                $('<p/>').text(file.name + "("+sizeToString(file.size) + ")").appendTo('#imixsFileUpload_uploadlist');
 			            });
 			        },		
 			        fail: function (e, data) {
@@ -40,7 +40,13 @@
 		});
 		
 		
-
+		function sizeToString(bytes) {
+			if (bytes>=1000000000) {bytes=(bytes/1000000000).toFixed(2)+' GB';}
+		        else if (bytes>=1000000)    {bytes=(bytes/1000000).toFixed(2)+' MB';}
+		        else if (bytes>=1000)      {bytes=(bytes/1000).toFixed(2)+' KB';}
+		        else {bytes=bytes+' bytes';}
+		    return bytes;
+		}
 	
 
 		/*]]>*/
@@ -57,6 +63,9 @@
 			<input id="imixsFileUpload" type="file" name="files[]"
 				data-url="#{facesContext.externalContext.requestContextPath}/fileupload/"
 				multiple="multiple" />
+				
+				
+			<div id="imixsFileUpload_uploadlist" />
 
 		</dd>
 	</dl>
