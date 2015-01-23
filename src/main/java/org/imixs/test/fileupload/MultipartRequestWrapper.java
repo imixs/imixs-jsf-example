@@ -65,7 +65,7 @@ public class MultipartRequestWrapper extends HttpServletRequestWrapper {
 				String filename = request.getRequestURI().substring(
 						iCancel + 19);
 
-				removeFile(request, filename);
+				removeFile(filename);
 
 			} else {
 
@@ -86,6 +86,8 @@ public class MultipartRequestWrapper extends HttpServletRequestWrapper {
 						fileData = new MultiFileData(fileName,
 								p.getContentType(), b);
 						if (fileData != null) {
+							// remove existing file
+							removeFile(fileData.getName());
 							// update filedataList...
 							fileDataList.add(fileData);
 						}
@@ -209,7 +211,7 @@ public class MultipartRequestWrapper extends HttpServletRequestWrapper {
 	 * @param file
 	 *            - filename to be removed
 	 */
-	public void removeFile(HttpServletRequest request, String file) {
+	public void removeFile(String file) {
 
 		int pos = -1;
 		if (file == null)
@@ -229,10 +231,6 @@ public class MultipartRequestWrapper extends HttpServletRequestWrapper {
 		if (pos > -1) {
 			logger.fine("[MultipartRequestWrapper] remove file '" + file + "'");
 			fileDataList.remove(pos);
-
-			// update session
-			request.getSession()
-					.setAttribute(IMIXS_FILEDATA_LIST, fileDataList);
 		}
 	}
 

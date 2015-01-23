@@ -5,80 +5,82 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:i="http://java.sun.com/jsf/composite/imixs">
 
+
+<style>
+
+#imixsFileUpload_progress_bar {
+	width: 0%; 
+	background:#5cb85c; 
+	height:10px;
+}
+
+.imixsFileUpload_uploadlist_name,.imixsFileUpload_uploadlist_size {
+	padding-right: 30px;
+}
+</style>
+
+
 	<script type="text/javascript">
 		/*<![CDATA[*/
 
 		// special layout für wolfwurst tiny mce 
 		$(document).ready(function() {
 			
+			
+			// hide fileupload and replace with imixsFile-Button
+			$('#imixsFileUpload').hide();			
+			$('#imixsFileUpload_button').button({
+			      icons: {primary: "ui-icon-folder-open"}
+			});
+			
+			$('body').on('click', '#imixsFileUpload_button', function() { 
+			    $('#imixsFileUpload').trigger('click');   
+			    return false;
+			});			
+			
 			// draganddrop fileupload
 			 $('#imixsFileUpload').fileupload({
 			        dataType: 'json',
 			        done: function (e, data) {
-			        	
-			        	appendFileList(data);
-/* 			            $.each(data.result.files, function (index, file) {
-			            	
-			                
-			                var cancelButton='<button onclick="cancelFileUpload(\''+file.name + '\');return false;">Cancel</button>';
-			                var row='<tr><td class="imixsFileUpload_uploadlist_name">'+file.name+'</td><td class="imixsFileUpload_uploadlist_size">'+sizeToString(file.size)+'</td><td class="imixsFileUpload_uploadlist_cancel">'+cancelButton+'</td></tr>';
-			                
-			            	$('.imixsFileUpload_uploadlist tr:last').after(row);
-			                
-			            });
- */			        },		
+			        	refreshFileList(data.result.files);
+			        	$('#imixsFileUpload_button').blur();
+			        },		
 			        fail: function (e, data) {
-			            // data.errorThrown
-			            alert( data.textStatus);
-			            // data.jqXHR;
+			            alert("Unable to add file!");
 			        },
 			        progressall: function (e, data) {
-			        	//alert(data.loaded);
-			        	
 			            var progress = parseInt(data.loaded / data.total * 100, 10);
-			            $('#progress .bar').css(
+			            if (progress==100)
+			            	progress=0;
+			            $('#imixsFileUpload_progress_bar').css(
 			                'width',
 			                progress + '%'
 			            );
 			        }
 			    });
-			
-			
 		});
 		
-		
-		
-		function appendFileList(data) {
-			
+		function refreshFileList(files) {			
 			$('.imixsFileUpload_uploadlist').empty();
-			 $.each(data.result.files, function (index, file) {
-	            	
-	                //$('<p/>').text(file.name + "("+sizeToString(file.size) + ")").appendTo('#imixsFileUpload_uploadlist');
-	                
+			$.each(files, function (index, file) {
 	                var cancelButton='<button onclick="cancelFileUpload(\''+file.name + '\');return false;">Cancel</button>';
 	                var row='<tr><td class="imixsFileUpload_uploadlist_name">'+file.name+'</td><td class="imixsFileUpload_uploadlist_size">'+sizeToString(file.size)+'</td><td class="imixsFileUpload_uploadlist_cancel">'+cancelButton+'</td></tr>';
-	                
 	            	$('.imixsFileUpload_uploadlist').append(row);
-	                
-	            });
+	        });
+			$('button','.imixsFileUpload_uploadlist').button({
+			      icons: {primary: "ui-icon-close"}
+			});
 		}
 		
-		function cancelFileUpload(file) {
-		
+		function cancelFileUpload(file) {		
 			$.ajax({url:"#{facesContext.externalContext.requestContextPath}/fileupload/cancel/"+file,
 				type: "GET",
 				dataType: "json",
 				success:function(data){
-				    //$("#div1").html(result);
-				    alert('ok:'+data);
-				    
-				    appendFileList(data);
-				  }
-			
-			});
-			
+					refreshFileList(data.files);
+				}			
+			});			
 		}
-		
 		
 		function sizeToString(bytes) {
 			if (bytes>=1000000000) {bytes=(bytes/1000000000).toFixed(2)+' GB';}
@@ -96,23 +98,24 @@
 
 	<!-- **** General info ***** -->
 	<dl>
-		<dt style="clear: left;">
+		<dt style="">
 			<h:outputText value="#{global.attachments}" />
 		</dt>
 		<dd>
-			<input id="imixsFileUpload" type="file" name="files[]"
-				data-url="#{facesContext.externalContext.requestContextPath}/fileupload/"
-				multiple="multiple" />
-				
+		
+			<button id="imixsFileUpload_button">Datei Upload</button>
+				<input id="imixsFileUpload" type="file" name="files[]"
+					data-url="#{facesContext.externalContext.requestContextPath}/fileupload/"
+					multiple="multiple" />
+		
 				
 			<table class="imixsFileUpload_uploadlist"></table>
+			<div id="imixsFileUpload_progress_bar" />
 
 		</dd>
 	</dl>
-	<div id="progress" style="clear:left;">
-	<h1>Progress</h1>
-		<div class="bar" style="width: 0%; background:blue; height:10px;"></div>
-	</div>
+
+	
 
 
 </f:subview>
