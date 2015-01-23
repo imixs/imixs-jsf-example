@@ -9,7 +9,6 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.faces.context.FacesContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
@@ -26,13 +25,14 @@ import javax.servlet.http.Part;
 public class MultipartRequestWrapper extends HttpServletRequestWrapper {
 	private static final String CONTENT_DISPOSITION = "content-disposition";
 	private static final String CONTENT_DISPOSITION_FILENAME = "filename";
+	public static final String IMIXS_FILEDATA_LIST = "IMIXS_FILEDATA_LIST";
 
 	private static Logger logger = Logger
 			.getLogger(MultipartRequestWrapper.class.getName());
 
 	private Hashtable<String, String[]> params = new Hashtable<String, String[]>();
 
-	private List<MultiFileData> fileDataList = new ArrayList<MultiFileData>();
+	private List<MultiFileData> fileDataList = null;
 
 	/**
 	 * The constructor wrap the http servlet request and puts all params
@@ -47,40 +47,54 @@ public class MultipartRequestWrapper extends HttpServletRequestWrapper {
 	 * 
 	 * @param request
 	 */
+	@SuppressWarnings("unchecked")
 	public MultipartRequestWrapper(HttpServletRequest request) {
 		super(request);
-		logger.fine("Created multipart wrapper....");
 		try {
-			logger.fine("Looping parts");
-			for (Part p : request.getParts()) {
-				byte[] b = new byte[(int) p.getSize()];
-				p.getInputStream().read(b);
-				p.getInputStream().close();
-				params.put(p.getName(), new String[] { new String(b) });
 
-				// test if part contains a file
-				String fileName = getFilename(p);
-				if (fileName != null) {
-					// extract the file content...
-					MultiFileData fileData = null;
-					logger.fine("Filename : " + fileName + ", contentType "
-							+ p.getContentType());
-					fileData = new MultiFileData(fileName, p.getContentType(),
-							b);
-					if (fileData != null) {
-						fileDataList.add(fileData);
-
-						// MultiFileController multiFileController =
-						// (MultiFileController) request
-						// .getSession().getAttribute("multiFileController");
-
-					}
-
-				}
+			fileDataList = (List<MultiFileData>) request.getSession()
+					.getAttribute(IMIXS_FILEDATA_LIST);
+			if (fileDataList == null) {
+				fileDataList = new ArrayList<MultiFileData>();
 			}
 
+			// check cancel fileupload
+			int iCancel = request.getRequestURI()
+					.indexOf("/fileupload/cancel/");
+			if (iCancel > -1) {
+				String filename = request.getRequestURI().substring(
+						iCancel + 19);
+
+				removeFile(request, filename);
+
+			} else {
+
+				logger.fine("[MultipartRequestWrapper] Looping parts");
+				for (Part p : request.getParts()) {
+					byte[] b = new byte[(int) p.getSize()];
+					p.getInputStream().read(b);
+					p.getInputStream().close();
+					params.put(p.getName(), new String[] { new String(b) });
+
+					// test if part contains a file
+					String fileName = getFilename(p);
+					if (fileName != null) {
+						// extract the file content...
+						MultiFileData fileData = null;
+						logger.fine("Filename : " + fileName + ", contentType "
+								+ p.getContentType());
+						fileData = new MultiFileData(fileName,
+								p.getContentType(), b);
+						if (fileData != null) {
+							// update filedataList...
+							fileDataList.add(fileData);
+						}
+
+					}
+				}
+			}
 			request.getSession()
-					.setAttribute("imixsFileDataList", fileDataList);
+					.setAttribute(IMIXS_FILEDATA_LIST, fileDataList);
 
 		} catch (IOException ex) {
 			Logger.getLogger(MultipartRequestWrapper.class.getName()).log(
@@ -144,7 +158,7 @@ public class MultipartRequestWrapper extends HttpServletRequestWrapper {
 	 * 
 	 * @see https://github.com/blueimp/jQuery-File-Upload/wiki/JSON-Response
 	 * 
-	 *  <code>
+	 *      <code>
 			{
 			    "files": [
 			        {
@@ -164,8 +178,12 @@ public class MultipartRequestWrapper extends HttpServletRequestWrapper {
 	public String getJson() {
 
 		String result = "{ \"files\":[";
-		for (MultiFileData fileData : fileDataList) {
-			result += "{ \"url\": \"" + this.getRequest().getRemoteAddr() + "\",";
+		for (int i = 0; i < fileDataList.size(); i++) {
+
+			MultiFileData fileData = fileDataList.get(i);
+
+			result += "{ \"url\": \"" + this.getRequest().getRemoteAddr()
+					+ "\",";
 			result += "\"thumbnail_url\": \"\",";
 			result += "\"name\": \"" + fileData.getName() + "\",";
 			result += "\"type\": \"" + fileData.getContentType() + "\",";
@@ -173,12 +191,49 @@ public class MultipartRequestWrapper extends HttpServletRequestWrapper {
 			result += "\"delete_url\": \"\",";
 			result += "\"delete_type\": \"DELETE\"";
 
-			result += "}";
+			// last element?
+			if (i < fileDataList.size() - 1)
+				result += "},";
+			else
+				result += "}";
 		}
 
 		result += "]}";
 
 		return result;
+	}
+
+	/**
+	 * removes an uploaded file fromo the fileDataList...
+	 * 
+	 * @param file
+	 *            - filename to be removed
+	 */
+	public void removeFile(HttpServletRequest request, String file) {
+
+		int pos = -1;
+		if (file == null)
+			return;
+
+		for (int i = 0; i < fileDataList.size(); i++) {
+
+			MultiFileData fileData = fileDataList.get(i);
+			if (file.equals(fileData.getName())) {
+				pos = i;
+				break;
+			}
+
+		}
+
+		// found?
+		if (pos > -1) {
+			logger.fine("[MultipartRequestWrapper] remove file '" + file + "'");
+			fileDataList.remove(pos);
+
+			// update session
+			request.getSession()
+					.setAttribute(IMIXS_FILEDATA_LIST, fileDataList);
+		}
 	}
 
 }

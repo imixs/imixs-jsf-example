@@ -62,34 +62,63 @@ public class MultipartRequestFilter implements Filter {
 	 * a file content. Then wrap the request...
 	 * 
 	 */
+	@Override
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
 
-		String sContentType = request.getContentType();
-		logger.fine("[MulitpartRequestFilter]  contentType=" + sContentType);
-
-		if (REQUEST_METHOD_POST.equalsIgnoreCase(httpRequest.getMethod())
-				&& request.getContentType() != null
-				&& sContentType.toLowerCase()
-						.startsWith(CONTENT_TYPE_MULTIPART)) {
-			logger.fine("Is multipart request.... wrapping it.");
+		
+		// check fileupload
+		if (isNewFileUpload(httpRequest) || isCancelFileUpload(httpRequest)) {
+			logger.fine("[MultipartRequestFilter] wrapping request...");
 			request = new MultipartRequestWrapper(httpRequest);
 
+			// now return json string of uploaded files....
 			response.setContentType("application/json;charset=UTF-8");
-
 			PrintWriter out = response.getWriter();
-			out.write(((MultipartRequestWrapper) request).getJson());// .getBytes());
+			out.write(((MultipartRequestWrapper) request).getJson());
 			out.close();
-			logger.fine("[MulitpartRequestFilter] Filter - ok - return");
+			logger.fine("[MulitpartRequestFilter] request successfull");
 			return;
 
 		}
+		
+	
+		
+		
+		// default doFilter...
 		chain.doFilter(request, response);
 	}
 
 	public void destroy() {
 
 	}
+	
+	/**
+	 * checks if the httpRequest is a fileupload 
+	 * @param httpRequest
+	 * @return
+	 */
+	private boolean isNewFileUpload(HttpServletRequest httpRequest ) {
+		String sContentType = httpRequest.getContentType();
+		logger.fine("[MulitpartRequestFilter]  contentType=" + sContentType);
 
+		
+		return (REQUEST_METHOD_POST.equalsIgnoreCase(httpRequest.getMethod())
+		&& httpRequest.getContentType() != null
+		&& sContentType.toLowerCase()
+				.startsWith(CONTENT_TYPE_MULTIPART));
+	}
+
+	
+	/**
+	 * checks if the httpRequest is a fileupload cancel request... 
+	 * @param httpRequest
+	 * @return
+	 */
+	private boolean isCancelFileUpload(HttpServletRequest httpRequest ) {
+		return ( httpRequest.getRequestURI()
+				.indexOf("/fileupload/cancel/")>-1);
+			
+	}
 }

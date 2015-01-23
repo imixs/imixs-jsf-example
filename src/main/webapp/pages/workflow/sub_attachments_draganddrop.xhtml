@@ -15,11 +15,18 @@
 			 $('#imixsFileUpload').fileupload({
 			        dataType: 'json',
 			        done: function (e, data) {
-			            $.each(data.result.files, function (index, file) {
+			        	
+			        	appendFileList(data);
+/* 			            $.each(data.result.files, function (index, file) {
 			            	
-			                $('<p/>').text(file.name + "("+sizeToString(file.size) + ")").appendTo('#imixsFileUpload_uploadlist');
+			                
+			                var cancelButton='<button onclick="cancelFileUpload(\''+file.name + '\');return false;">Cancel</button>';
+			                var row='<tr><td class="imixsFileUpload_uploadlist_name">'+file.name+'</td><td class="imixsFileUpload_uploadlist_size">'+sizeToString(file.size)+'</td><td class="imixsFileUpload_uploadlist_cancel">'+cancelButton+'</td></tr>';
+			                
+			            	$('.imixsFileUpload_uploadlist tr:last').after(row);
+			                
 			            });
-			        },		
+ */			        },		
 			        fail: function (e, data) {
 			            // data.errorThrown
 			            alert( data.textStatus);
@@ -38,6 +45,39 @@
 			
 			
 		});
+		
+		
+		
+		function appendFileList(data) {
+			
+			$('.imixsFileUpload_uploadlist').empty();
+			 $.each(data.result.files, function (index, file) {
+	            	
+	                //$('<p/>').text(file.name + "("+sizeToString(file.size) + ")").appendTo('#imixsFileUpload_uploadlist');
+	                
+	                var cancelButton='<button onclick="cancelFileUpload(\''+file.name + '\');return false;">Cancel</button>';
+	                var row='<tr><td class="imixsFileUpload_uploadlist_name">'+file.name+'</td><td class="imixsFileUpload_uploadlist_size">'+sizeToString(file.size)+'</td><td class="imixsFileUpload_uploadlist_cancel">'+cancelButton+'</td></tr>';
+	                
+	            	$('.imixsFileUpload_uploadlist').append(row);
+	                
+	            });
+		}
+		
+		function cancelFileUpload(file) {
+		
+			$.ajax({url:"#{facesContext.externalContext.requestContextPath}/fileupload/cancel/"+file,
+				type: "GET",
+				dataType: "json",
+				success:function(data){
+				    //$("#div1").html(result);
+				    alert('ok:'+data);
+				    
+				    appendFileList(data);
+				  }
+			
+			});
+			
+		}
 		
 		
 		function sizeToString(bytes) {
@@ -65,7 +105,7 @@
 				multiple="multiple" />
 				
 				
-			<div id="imixsFileUpload_uploadlist" />
+			<table class="imixsFileUpload_uploadlist"></table>
 
 		</dd>
 	</dl>
