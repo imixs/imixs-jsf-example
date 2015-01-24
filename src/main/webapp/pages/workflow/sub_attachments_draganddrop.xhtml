@@ -63,9 +63,10 @@
 		function refreshFileList(files) {			
 			$('.imixsFileUpload_uploadlist').empty();
 			$.each(files, function (index, file) {
-	                var cancelButton='<button onclick="cancelFileUpload(\''+file.name + '\');return false;">Cancel</button>';
-	                var row='<tr><td class="imixsFileUpload_uploadlist_name">'+file.name+'</td><td class="imixsFileUpload_uploadlist_size">'+sizeToString(file.size)+'</td><td class="imixsFileUpload_uploadlist_cancel">'+cancelButton+'</td></tr>';
-	            	$('.imixsFileUpload_uploadlist').append(row);
+				var fileLink='<a href="'+file.url+'" target="_blank" >'+file.name+'</a>';
+	            var cancelButton='<button onclick="cancelFileUpload(\''+file.name + '\');return false;">Cancel</button>';
+	            var row='<tr><td class="imixsFileUpload_uploadlist_name">'+fileLink+'</td><td class="imixsFileUpload_uploadlist_size">'+sizeToString(file.size)+'</td><td class="imixsFileUpload_uploadlist_cancel">'+cancelButton+'</td></tr>';
+	            $('.imixsFileUpload_uploadlist').append(row);
 	        });
 			$('button','.imixsFileUpload_uploadlist').button({
 			      icons: {primary: "ui-icon-close"}
@@ -73,8 +74,8 @@
 		}
 		
 		function cancelFileUpload(file) {		
-			$.ajax({url:"#{facesContext.externalContext.requestContextPath}/fileupload/cancel/"+file,
-				type: "GET",
+			$.ajax({url:"#{facesContext.externalContext.requestContextPath}/fileupload/"+file,
+				type: 'DELETE',
 				dataType: "json",
 				success:function(data){
 					refreshFileList(data.files);
