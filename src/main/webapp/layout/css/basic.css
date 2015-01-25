@@ -289,3 +289,16 @@ a:hover {
 #imixs-content a {
 	color: #508AB5 !important;
 }
+
+
+.imixsFileUpload_help {
+	border-left: 2px solid #ccc;
+	margin-left: 10px;
+	float: left;
+	padding-left: 10px;
+	height: 30px;
+	font-size: 14px;
+	font-weight: bold;
+	color: #999;
+	line-height: 1.6em;
+}
