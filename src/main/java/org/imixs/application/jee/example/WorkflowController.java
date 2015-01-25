@@ -73,7 +73,7 @@ public class WorkflowController extends
 		}
 		
 		// update the file info for the current workitem
-		fileUploadController.updateWorkitem(this.getWorkitem(),false);
+		fileUploadController.updateWorkitem(this.getWorkitem());
 		
 
 	
