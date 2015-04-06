@@ -12,6 +12,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<org.imixs.workflow.version>3.2.0</org.imixs.workflow.version>
+		<custom.webResources>src/main/webapp</custom.webResources>
 	</properties>
 
 	<profiles>
