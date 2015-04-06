@@ -21,21 +21,29 @@
     <servlet-name>Faces Servlet</servlet-name>
     <url-pattern>*.xhtml</url-pattern>
   </servlet-mapping>
-  
-  
-  <!-- RESTfull Service config GlassFish -->
-  <servlet>
-    <servlet-name>ImixsRestService</servlet-name>
-    <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
-    <init-param>
-      <param-name>com.sun.jersey.config.property.packages</param-name>
-      <param-value>org.imixs.workflow.jaxrs</param-value>
-    </init-param>
-    <load-on-startup>1</load-on-startup>
-  </servlet>
-  
-  
-  
+
+	<!-- RESTfull Service config Wildfly -->
+	<context-param>
+		<param-name>resteasy.scan</param-name>
+		<param-value>true</param-value>
+	</context-param>
+ 	<context-param>
+		<param-name>resteasy.servlet.mapping.prefix</param-name>
+		<param-value>/rest-service</param-value>
+	</context-param>
+ 	<listener>
+		<listener-class>
+			org.jboss.resteasy.plugins.server.servlet.ResteasyBootstrap
+		</listener-class>
+	</listener>
+	<servlet>
+		<servlet-name>ImixsRestService</servlet-name>
+		<servlet-class>
+			org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher
+		</servlet-class>
+	</servlet>
+	 <!-- END Wilfly -->
+	
   
   <servlet-mapping>
     <servlet-name>ImixsRestService</servlet-name>
