@@ -21,6 +21,9 @@
     <servlet-name>Faces Servlet</servlet-name>
     <url-pattern>*.xhtml</url-pattern>
   </servlet-mapping>
+  
+  
+  <!-- RESTfull Service config GlassFish -->
   <servlet>
     <servlet-name>ImixsRestService</servlet-name>
     <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
@@ -30,6 +33,10 @@
     </init-param>
     <load-on-startup>1</load-on-startup>
   </servlet>
+  
+  
+  
+  
   <servlet-mapping>
     <servlet-name>ImixsRestService</servlet-name>
     <url-pattern>/rest-service/*</url-pattern>
