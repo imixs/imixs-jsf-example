@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.imixs.application</groupId>
 	<artifactId>imixs-jsf-example</artifactId>
@@ -7,7 +8,8 @@
 	<version>3.2.0-SNAPSHOT</version>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<org.imixs.workflow.version>3.1.9</org.imixs.workflow.version>
+		<org.imixs.workflow.version>3.2.0</org.imixs.workflow.version>
+		<custom.webResources>src/main/webapp_wildfly</custom.webResources>
 	</properties>
 
 
@@ -63,6 +65,25 @@
 		<url>https://github.com/imixs/imixs-jsf-example/issues</url>
 	</issueManagement>
 
+
+
+	<profiles>
+		<!-- wildfly profile -->
+		<profile>
+			<id>wildfly</id>
+			<properties>
+				<custom.webResources>src/main/webapp_wildfly</custom.webResources>
+				<custom.unpackTypes>war</custom.unpackTypes>
+				<!-- jndi Mail res-ref name -->
+				<imixs-mail-res-ref-name>java:/mail/org.imixs.workflow.mail</imixs-mail-res-ref-name>
+			</properties>
+
+
+		</profile>
+	</profiles>
+
+
+
 	<build>
 
 		<resources>
@@ -79,6 +100,20 @@
 				<configuration>
 					<source>1.6</source>
 					<target>1.6</target>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<webResources>
+						<resource>
+							<!-- this is relative to the pom.xml directory -->
+							<directory>${custom.webResources}</directory>
+						</resource>
+					</webResources>
 				</configuration>
 			</plugin>
 			<!-- relase management -->
@@ -125,8 +160,6 @@
 			<artifactId>imixs-workflow-faces</artifactId>
 			<version>${org.imixs.workflow.version}</version>
 		</dependency>
-
-
 
 	</dependencies>
 </project>
