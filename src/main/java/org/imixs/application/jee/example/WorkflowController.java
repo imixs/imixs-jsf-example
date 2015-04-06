@@ -73,14 +73,10 @@ public class WorkflowController extends
 		}
 		
 		// update the file info for the current workitem
+		/*
 		fileUploadController.updateWorkitem(this.getWorkitem());
 		
-<<<<<<< HEAD
 
-	
-
-=======
-/*
 	
 		if (fileUploadController.isDirty()) {
 			// test if workItem has the property '$BlobWorkitem'
@@ -102,12 +98,8 @@ public class WorkflowController extends
 		}
 		
 		*/
->>>>>>> refs/remotes/origin/master
 		String result = super.process();
 
-<<<<<<< HEAD
-	
-=======
 	/*	
 		if (fileUploadController.isDirty()) {
 			// ...save the blobWorkitem after processing the parent!!
@@ -122,7 +114,6 @@ public class WorkflowController extends
 		fileUploadController.doClear(null);
 		fileUploadController.setAttachedFiles(getWorkitem().getFileNames());
 		*/
->>>>>>> refs/remotes/origin/master
 		return result;
 	}
 
@@ -130,26 +121,19 @@ public class WorkflowController extends
 	public void setWorkitem(ItemCollection aworkitem) {
 
 		super.setWorkitem(aworkitem);
-<<<<<<< HEAD
-=======
 		
 		/*
 		fileUploadController
 				.setRestServiceURI("/workflow/rest/workflow/workitem/");
->>>>>>> refs/remotes/origin/master
 
 		fileUploadController.reset();
 
-<<<<<<< HEAD
-		
-=======
 		if (aworkitem != null) {
 			fileUploadController.setWorkitemID(aworkitem
 					.getItemValueString("$BlobWorkitem"));
 			fileUploadController.setAttachedFiles(getWorkitem().getFileNames());
 		}
 		*/
->>>>>>> refs/remotes/origin/master
 	}
 
 }
