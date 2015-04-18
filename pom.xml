@@ -8,7 +8,7 @@
 	<version>3.2.0-SNAPSHOT</version>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<org.imixs.workflow.version>3.2.0</org.imixs.workflow.version>
+		<org.imixs.workflow.version>3.3.0-SNAPSHOT</org.imixs.workflow.version>
 		<custom.webResources>src/main/webapp_wildfly</custom.webResources>
 	</properties>
 
