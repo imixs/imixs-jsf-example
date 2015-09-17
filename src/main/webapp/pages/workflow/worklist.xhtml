@@ -62,6 +62,15 @@
 								rendered="#{workitem.item['$isAuthor']}" >
 							</h:commandLink>
 						</h:column>
+						
+						
+						
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Model" />
+							</f:facet>
+							<h:outputText value="#{workitem.item['$modelversion']}" />
+						</h:column>
 
 					</h:dataTable>
 			

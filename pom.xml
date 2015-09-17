@@ -9,7 +9,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<org.imixs.workflow.version>3.4.0-SNAPSHOT</org.imixs.workflow.version>
-		<custom.webResources>src/main/webapp_wildfly</custom.webResources>
+		<custom.webResources>src/main/webapp</custom.webResources>
 	</properties>
 
 
