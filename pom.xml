@@ -8,7 +8,7 @@
 	<version>3.5.0</version>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<org.imixs.workflow.version>3.5.0-SNAPSHOT</org.imixs.workflow.version>
+		<org.imixs.workflow.version>3.4.3</org.imixs.workflow.version>
 		<custom.webResources>src/main/webapp</custom.webResources>
 	</properties>
 
