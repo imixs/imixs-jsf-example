@@ -6,81 +6,84 @@
 	template="/layout/template.xhtml">
 
 	<ui:define name="content">
-	
+
 		<f:view>
 
 
 			<h:form>
-			<h1>#{global.worklist}</h1>
-					
-					<h:dataTable class="imixsdatatable" 
+				<h1>#{global.worklist}</h1>
+
+				<h:dataTable class="imixsdatatable"
 					value="#{worklistController.workitems}" var="workitem">
 
-						<h:column>
-							<f:facet name="header">
-								<h:outputText value="#{global.creator}" />
-							</f:facet>
-							<h:outputText value="#{workitem.item['namcreator']}" />
-						</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="#{global.summary}" />
+						</f:facet>
+						<h:commandLink
+							action="#{workflowController.load(workitem.item['$uniqueid'],'workitem')}">
+							<h:outputText value="#{workitem.item['txtworkflowSummary']}" />
+						</h:commandLink>
 
-						<h:column>
-							<f:facet name="header">
-								<h:outputText value="#{global.subject}" />
-							</f:facet>
-							
-							<h:commandLink
-								action="#{workflowController.load(workitem.item['$uniqueid'],'workitem')}">
-								<h:outputText value="#{workitem.item['txtSubject']}" />
-							</h:commandLink>
-							
-							
-						</h:column>
+					</h:column>
 
-						<h:column>
-							<f:facet name="header">
-								<h:outputText value="#{global.created}" />
-							</f:facet>
-							<h:outputText value="#{workitem.item['$created']}">
-								<f:convertDateTime timeZone="CET" type="date" dateStyle="medium" />
-							</h:outputText>
-						</h:column>
-
-
-						<h:column>
-							<f:facet name="header">
-								<h:outputText value="#{global.status}" />
-							</f:facet>
-							<h:outputText value="#{workitem.item['txtworkflowstatus']}" />
-						</h:column>
-
-
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="#{global.owner}" />
+						</f:facet>
+						<ui:repeat var="owner" value="#{workitem.itemList['namOwner']}">
+							<h:outputText value="#{owner}"/><br />
+						
+						</ui:repeat>
 						
 
-						<h:column>
-							<h:commandLink value="#{global.delete}"
-								action="#{workflowController.delete(workitem.item['$uniqueid'],'worklist')}"
-								rendered="#{workitem.item['$isAuthor']}" >
-							</h:commandLink>
-						</h:column>
-						
-						
-						
-						<h:column>
-							<f:facet name="header">
-								<h:outputText value="Model" />
-							</f:facet>
-							<h:outputText value="#{workitem.item['$modelversion']}" />
-						</h:column>
+					</h:column>
 
-					</h:dataTable>
-			
+
+
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="#{global.created}" />
+						</f:facet>
+						<h:outputText value="#{workitem.item['$created']}">
+							<f:convertDateTime timeZone="CET" type="date" dateStyle="medium" />
+						</h:outputText>
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="#{global.creator}" />
+						</f:facet>
+						<h:outputText value="#{workitem.item['namcreator']}" />
+					</h:column>
+
+
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="#{global.status}" />
+						</f:facet>
+						<h:outputText value="#{workitem.item['txtworkflowstatus']}" />
+					</h:column>
+
+
+
+
+					<h:column>
+						<h:commandLink value="#{global.delete}"
+							action="#{workflowController.delete(workitem.item['$uniqueid'],'worklist')}"
+							rendered="#{workitem.item['$isAuthor']}">
+						</h:commandLink>
+					</h:column>
+
+				</h:dataTable>
+
 
 				<h:commandButton actionListener="#{worklistController.doLoadPrev}"
-					 disabled="#{!(worklistController.row>0)}"
+					disabled="#{!(worklistController.row>0)}"
 					value="&lt;&lt; #{global.prev}">
 				</h:commandButton>
 				<h:commandButton actionListener="#{worklistController.doLoadNext}"
-					 disabled="#{worklistController.endOfList}"
+					disabled="#{worklistController.endOfList}"
 					value="#{global.next} &gt;&gt;">
 				</h:commandButton>
 

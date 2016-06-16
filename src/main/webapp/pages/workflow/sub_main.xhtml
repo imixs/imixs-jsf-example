@@ -6,17 +6,6 @@
 	xmlns:i="http://java.sun.com/jsf/composite/imixs">
 
 
-	<script type="text/javascript">
-		/*<![CDATA[*/
-
-		$(document).ready(function() {
-		
-		});
-
-
-		/*]]>*/
-	</script>
-	
 	<!-- **** General info ***** -->
 	<dl>
 		<dt>
@@ -27,7 +16,7 @@
 		</dt>
 		<dd style="width: 400px;">
 			<h:inputText style="width: 20em;" required="true"
-				value="#{workflowController.workitem.item['txtSubject']}"
+				value="#{workflowController.workitem.item['subject']}"
 				id="subject_id">
 			</h:inputText>
 		</dd>
@@ -40,7 +29,7 @@
 
 
 			
-			<i:imixsDateInput value="#{workflowController.workitem.item['datDate']}"  showtime="true" minuteinterval="5"/>
+			<i:imixsDateInput value="#{workflowController.workitem.item['date']}"  showtime="true" minuteinterval="5"/>
 		</dd>
 
 		<dt style="clear: left;">
@@ -62,7 +51,7 @@
 		<dt style="clear: left;">#{global.details}</dt>
 		<dd>
 			<h:inputTextarea class="imixs-editor"
-				value="#{workflowController.workitem.item['htmlabstract']}" />
+				value="#{workflowController.workitem.item['description']}" />
 
 		</dd>
 	</dl>
