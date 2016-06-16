@@ -13,22 +13,7 @@
 			</c:if>
 
 			<c:if test="#{loginController.authenticated}">
-				<li><h:commandLink action="/pages/config/teamlist">Teamlist</h:commandLink></li>
-
-				<li><h:commandLink
-						actionListener="#{workflowController.create}"
-						action="/pages/workflow/workitem">create Ticket
-					 <f:setPropertyActionListener
-							target="#{workflowController.workitem.item['$ModelVersion']}"
-							value="1.0.1" />
-						<f:setPropertyActionListener
-							target="#{workflowController.workitem.item['$ProcessID']}"
-							value="1000" />
-					</h:commandLink></li>
- 
-
-				<li><h:commandLink action="/pages/workflow/worklist">Tasklist</h:commandLink></li>
-
+				<li><h:commandLink action="/pages/config/teamlist">Team List</h:commandLink></li>
 			</c:if>
 		</ul>
 	</h:form>

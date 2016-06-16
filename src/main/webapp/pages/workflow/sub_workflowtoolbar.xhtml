@@ -9,12 +9,12 @@
 
 
 	<div class="imixs-panel">
-		<h1>#{global.workflow}</h1>
+		<h3>#{global.workflow}</h3>
 
 		<i:imixsWorkflowActions workflowController="#{workflowController}"
 			disabletooltip="false" />
 
-		<h:commandButton value="#{global.close}" action="worklist" />
+		<h:commandButton value="#{global.close}" action="/pages/welcome" />
 
 		<h:panelGrid columns="3">
 			<h:outputLabel value="#{global.created}: " />
@@ -33,8 +33,7 @@
 				value=" #{global.by} #{workflowController.workitem.item['namcurrenteditor']}" />
 		</h:panelGrid>
 
-		<div class="imixs-toggle-panel">
-			<h1>History:</h1>
+			<h3>History:</h3>
 			<div>
 				<h:dataTable
 					value="#{workflowController.workitem.itemList['txtworkflowhistorylog']}"
@@ -44,10 +43,6 @@
 					</h:column>
 				</h:dataTable>
 			</div>
-		</div>
-
-
-
 
 
 	</div>
