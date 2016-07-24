@@ -65,7 +65,7 @@ public class DemoPlugin extends AbstractPlugin {
 			ItemCollection adocumentActivity) throws PluginException {
 	
 		// test model service
-		List<String> versions=modelService.getAllModelVersions();
+		List<String> versions=modelService.getVersions();
 		for (String aversion: versions) {
 			logger.info("ModelVersion found: " + aversion);
 		}
