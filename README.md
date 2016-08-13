@@ -24,15 +24,7 @@ The security concept of imixs-workflow defines default roles:
 
 Each user accessing the Imixs-Workflow engine should be mapped to one of these roles. The user roles can be mapped by configuration from the application server. You will find more information about the general ACL concept of the [Imixs-Workflow project site](http://www.imixs.org).
 
-
-## Wildfly Support
-
-
-The project uses the jax-rs implementation Jersey which is part of GlassFish Application server. To run the example on JBoss/Wildfly you need to use the RestEasy implementation. A maven profile contains the necessary configuration details. To deploy the example on wildfly run
-
-    mvn clean install -Pwildfly
-
-
+__NOTE:__ The Imixs-jsf-example is build on default for JBoss/Wildfly. You can use one of the GlassFish profiles to build for GlassFish Application server. See details below.
 
 # Run the Application
 After deployment you can start the sample application from:
@@ -48,3 +40,12 @@ After you have successful deployed your application you can upload the Ticket Wo
     curl --user admin:adminpassword --request POST -Tticket.bpmn http://localhost:8080/workflow/rest-service/model/bpmn
 
 The BPMN Model is part of the project and located under /src/workflow/ticket.bpmn
+
+
+## Glassfish Support
+
+The project uses the jax-rs implementation RestEasy which is part of JBoss/Wildfly Application server. To run the example on GlassFish you need to use the Jersey implementation. The project provides different maven profiles containing the necessary configuration details. To deploy the example on GlassFish4 or Payara run the maven install command with the profile 'glassfish4'
+
+    mvn clean install -Pglassfish4
+
+The project contains also a profile for GlassFish3 (Java EE5)
