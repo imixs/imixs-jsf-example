@@ -60,27 +60,28 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<org.imixs.workflow.version>3.9.0-SNAPSHOT</org.imixs.workflow.version>
 		<custom.webResources>src/main/webapp</custom.webResources>
+		<custom.unpackTypes>war</custom.unpackTypes>
 	</properties>
 
 	<profiles>
-		<!-- wildfly profile -->
+		<!-- Glassfish4 profile -->
 		<profile>
-			<id>wildfly</id>
+			<id>glassfish4</id>
 			<properties>
-				<custom.webResources>src/main/webapp_wildfly</custom.webResources>
-				<custom.unpackTypes>war</custom.unpackTypes>
-				<!-- jndi Mail res-ref name -->
-				<imixs-mail-res-ref-name>java:/mail/org.imixs.workflow.mail</imixs-mail-res-ref-name>
+				<custom.webResources>src/main/webapp_glassfish4</custom.webResources>
 			</properties>
+		</profile>
 
-
+		<!-- Glassfish3 profile -->
+		<profile>
+			<id>glassfish3</id>
+			<properties>
+				<custom.webResources>src/main/webapp_glassfish3</custom.webResources>
+			</properties>
 		</profile>
 	</profiles>
 
-
-
 	<build>
-
 		<resources>
 			<!-- enable resource filtering for multi language version -->
 			<resource>
@@ -105,13 +106,32 @@
 				<configuration>
 					<webResources>
 						<resource>
+							<filtering>true</filtering>
 							<!-- this is relative to the pom.xml directory -->
 							<directory>${custom.webResources}</directory>
+							<includes>
+								<include>**/WEB-INF/*</include>
+								<include>/src/main/resources/*</include>
+								<include>/src/main/webapp_glassfish4/WEB-INF/*</include>
+
+								<!-- include any other file types you want to filter -->
+							</includes>
 						</resource>
 					</webResources>
 					<failOnMissingWebXml>false</failOnMissingWebXml>
 				</configuration>
 			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+
+
 			<!-- relase management -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

@@ -25,18 +25,12 @@ package org.imixs.application.jee.example;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.ejb.EJB;
-import javax.faces.context.ExternalContext;
-import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
 import javax.faces.model.SelectItem;
 
 import org.imixs.workflow.ItemCollection;
-import org.imixs.workflow.exceptions.AccessDeniedException;
 import org.imixs.workflow.jee.faces.workitem.DataController;
 import org.imixs.workflow.jee.jpa.EntityIndex;
 
@@ -69,7 +63,7 @@ public class TeamController extends DataController implements Serializable {
 	public TeamController() {
 		super();
 		// set a default type
-		setType("team");
+		setDefaultType("team");
 	}
 
 	/**
@@ -99,7 +93,7 @@ public class TeamController extends DataController implements Serializable {
 
 		teamSelection = new ArrayList<SelectItem>();
 		String sQuery = "SELECT wi FROM Entity AS wi " + " WHERE wi.type= '"
-				+ getType() + "' ORDER BY wi.modified desc";
+				+ getDefaultType() + "' ORDER BY wi.modified desc";
 
 		List<ItemCollection> col = getEntityService().findAllEntities(sQuery,
 				0, -1);
