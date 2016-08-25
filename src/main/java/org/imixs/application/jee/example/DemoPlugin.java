@@ -36,8 +36,8 @@ import javax.ejb.EJB;
 import org.imixs.workflow.ItemCollection;
 import org.imixs.workflow.Plugin;
 import org.imixs.workflow.WorkflowContext;
+import org.imixs.workflow.ejb.ModelService;
 import org.imixs.workflow.exceptions.PluginException;
-import org.imixs.workflow.jee.ejb.ModelService;
 import org.imixs.workflow.plugins.AbstractPlugin;
 
 /**

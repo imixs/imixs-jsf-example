@@ -31,7 +31,6 @@ import org.imixs.workflow.ItemCollection;
 import org.imixs.workflow.exceptions.AccessDeniedException;
 import org.imixs.workflow.exceptions.PluginException;
 import org.imixs.workflow.exceptions.ProcessingErrorException;
-import org.imixs.workflow.jee.ejb.EntityService;
 import org.imixs.workflow.jee.faces.fileupload.FileUploadController;
 
 /**
@@ -67,7 +66,7 @@ public class WorkflowController extends
 		String id=this.getWorkitem().getItemValueString("Team");
 		// lookup the team entity...
 		if (!"".equals(id)) {
-			ItemCollection team=this.getEntityService().load(id);
+			ItemCollection team=this.getDocumentService().load(id);
 			if (team!=null)
 				this.getWorkitem().replaceItemValue("namTeam", team.getItemValue("Members"));
 		}

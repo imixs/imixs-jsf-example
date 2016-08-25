@@ -11,7 +11,7 @@
 
 		<session>
 			<ejb-name>WorkflowService</ejb-name>
-			<ejb-class>org.imixs.workflow.jee.ejb.WorkflowService</ejb-class>
+			<ejb-class>org.imixs.workflow.ejb.WorkflowService</ejb-class>
 			<session-type>Stateless</session-type>			
 			
 		
@@ -27,7 +27,7 @@
 			<ejb-ref>
 				<ejb-ref-name>ejb/PropertyService</ejb-ref-name>
 				<ejb-ref-type>Session</ejb-ref-type>
-				<remote>org.imixs.workflow.jee.util.PropertyService</remote>
+				<remote>org.imixs.workflow.ejb.PropertyService</remote>
 			</ejb-ref>
 			
 		
