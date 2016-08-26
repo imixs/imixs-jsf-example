@@ -48,13 +48,22 @@
 					<h:outputText value="#{workitem.item['$created']}">
 						<f:convertDateTime timeZone="CET" type="date" dateStyle="medium" />
 					</h:outputText>
+					<h:outputText value=" #{global.by} #{workitem.item['namcreator']}" />
 				</h:column>
+
+
+
 
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="#{global.creator}" />
+						<h:outputText value="#{global.modified}" />
 					</f:facet>
-					<h:outputText value="#{workitem.item['namcreator']}" />
+					<h:outputText value="#{workitem.item['$modified']}">
+						<f:convertDateTime timeZone="CET" type="both" dateStyle="medium" />
+					</h:outputText>
+
+					<h:outputText
+						value=" #{global.by} #{workitem.item['namcurrentEditor']}" />
 				</h:column>
 
 
@@ -79,7 +88,7 @@
 
 
 			<h:commandButton actionListener="#{worklistController.doLoadPrev}"
-				disabled="#{!(worklistController.row>0)}"
+				disabled="#{!(worklistController.pageIndex>0)}"
 				value="&lt;&lt; #{global.prev}">
 			</h:commandButton>
 			<h:commandButton actionListener="#{worklistController.doLoadNext}"
@@ -88,8 +97,8 @@
 			</h:commandButton>
 
 			<h:commandButton actionListener="#{workflowController.create}"
-				action="/pages/workflow/workitem"  value="Create New Ticket">
-					 <f:setPropertyActionListener
+				action="/pages/workflow/workitem" value="Create New Ticket">
+				<f:setPropertyActionListener
 					target="#{workflowController.workitem.item['$ModelVersion']}"
 					value="1.0.1" />
 				<f:setPropertyActionListener

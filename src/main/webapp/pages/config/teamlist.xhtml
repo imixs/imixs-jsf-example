@@ -61,7 +61,7 @@
 				</h:dataTable>
 
 				<h:commandButton actionListener="#{teamlistController.doLoadPrev}"
-					disabled="#{teamlistController.row==0}" value="#{global.prev}">
+					disabled="#{teamlistController.pageIndex==0}" value="#{global.prev}">
 				</h:commandButton>
 
 				<h:commandButton actionListener="#{teamlistController.doLoadNext}"

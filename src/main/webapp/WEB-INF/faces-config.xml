@@ -27,6 +27,11 @@
 			<property-class>java.lang.String</property-class>
 			<value>team</value>
 		</managed-property>
+		<managed-property>
+			<property-name>sortBy</property-name>
+			<property-class>java.lang.String</property-class>
+			<value>txtname</value>
+		</managed-property>
 	</managed-bean>
 
 	<managed-bean>
@@ -39,6 +44,26 @@
 			<property-class>java.lang.String</property-class>
 			<value>workitem</value>
 		</managed-property>
+		
+		<managed-property>
+			<property-name>query</property-name>
+			<property-class>java.lang.String</property-class>
+			<value>(type:"workitem")</value>
+		</managed-property>
+		
+		<managed-property>
+			<property-name>sortBy</property-name>
+			<property-class>java.lang.String</property-class>
+			<value>$modified</value>
+		</managed-property>
+		
+		<managed-property>
+			<property-name>sortReverse</property-name>
+			<property-class>boolean</property-class>
+			<value>true</value>
+		</managed-property>
+		
+		
 	</managed-bean>
 
 
