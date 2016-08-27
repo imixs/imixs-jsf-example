@@ -30,7 +30,7 @@ import java.util.List;
 import javax.faces.model.SelectItem;
 
 import org.imixs.workflow.ItemCollection;
-import org.imixs.workflow.jee.faces.workitem.DocumentController;
+import org.imixs.workflow.faces.workitem.DocumentController;
 
 /**
  * This backing bean is an example how to interact with the EntityService to
@@ -78,7 +78,7 @@ public class TeamController extends DocumentController implements Serializable {
 
 		teamSelection = new ArrayList<SelectItem>();
 
-		List<ItemCollection> col = getDocumentService().findAllDocumentsByType(getDefaultType());
+		List<ItemCollection> col = getDocumentService().getDocumentsByType(getDefaultType());
 
 		for (ItemCollection aworkitem : col) {
 			String sName = aworkitem.getItemValueString("txtName");
