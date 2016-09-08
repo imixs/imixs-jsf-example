@@ -27,12 +27,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 import javax.faces.model.SelectItem;
 
 import org.imixs.workflow.ItemCollection;
-import org.imixs.workflow.jee.faces.workitem.DataController;
-import org.imixs.workflow.jee.jpa.EntityIndex;
+import org.imixs.workflow.faces.workitem.DocumentController;
 
 /**
  * This backing bean is an example how to interact with the EntityService to
@@ -49,7 +47,7 @@ import org.imixs.workflow.jee.jpa.EntityIndex;
  */
 @javax.inject.Named("teamController")
 @javax.enterprise.context.SessionScoped
-public class TeamController extends DataController implements Serializable {
+public class TeamController extends DocumentController implements Serializable {
 
 
 	private static final long serialVersionUID = 1L;
@@ -66,19 +64,6 @@ public class TeamController extends DataController implements Serializable {
 		setDefaultType("team");
 	}
 
-	/**
-	 * The init method is used to add necessary indices to the entity index list
-	 * if index still exists the method did change any data
-	 */
-	@PostConstruct
-	public void init() {
-		// create default owner index
-		try {
-			getEntityService().addIndex("namowner", EntityIndex.TYP_TEXT);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
 
 	
 
@@ -92,11 +77,8 @@ public class TeamController extends DataController implements Serializable {
 	public ArrayList<SelectItem> getTeamSelection() {
 
 		teamSelection = new ArrayList<SelectItem>();
-		String sQuery = "SELECT wi FROM Entity AS wi " + " WHERE wi.type= '"
-				+ getDefaultType() + "' ORDER BY wi.modified desc";
 
-		List<ItemCollection> col = getEntityService().findAllEntities(sQuery,
-				0, -1);
+		List<ItemCollection> col = getDocumentService().getDocumentsByType(getDefaultType());
 
 		for (ItemCollection aworkitem : col) {
 			String sName = aworkitem.getItemValueString("txtName");

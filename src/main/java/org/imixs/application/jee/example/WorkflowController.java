@@ -31,8 +31,8 @@ import org.imixs.workflow.ItemCollection;
 import org.imixs.workflow.exceptions.AccessDeniedException;
 import org.imixs.workflow.exceptions.PluginException;
 import org.imixs.workflow.exceptions.ProcessingErrorException;
-import org.imixs.workflow.jee.ejb.EntityService;
-import org.imixs.workflow.jee.faces.fileupload.FileUploadController;
+import org.imixs.workflow.faces.fileupload.FileUploadController;
+
 
 /**
  * This WorkflowControler extends the basic WorkflowControler and implements an
@@ -45,7 +45,7 @@ import org.imixs.workflow.jee.faces.fileupload.FileUploadController;
 @javax.inject.Named("workflowController")
 @javax.enterprise.context.SessionScoped
 public class WorkflowController extends
-		org.imixs.workflow.jee.faces.workitem.WorkflowController implements
+		org.imixs.workflow.faces.workitem.WorkflowController implements
 		Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -67,7 +67,7 @@ public class WorkflowController extends
 		String id=this.getWorkitem().getItemValueString("Team");
 		// lookup the team entity...
 		if (!"".equals(id)) {
-			ItemCollection team=this.getEntityService().load(id);
+			ItemCollection team=this.getDocumentService().load(id);
 			if (team!=null)
 				this.getWorkitem().replaceItemValue("namTeam", team.getItemValue("Members"));
 		}

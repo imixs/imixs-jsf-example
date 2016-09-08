@@ -19,7 +19,7 @@
 
 	<managed-bean>
 		<managed-bean-name>teamlistController</managed-bean-name>
-		<managed-bean-class>org.imixs.workflow.jee.faces.workitem.ViewController</managed-bean-class>
+		<managed-bean-class>org.imixs.workflow.faces.workitem.ViewController</managed-bean-class>
 		<managed-bean-scope>view</managed-bean-scope>
 
 		<managed-property>
@@ -27,11 +27,16 @@
 			<property-class>java.lang.String</property-class>
 			<value>team</value>
 		</managed-property>
+		<managed-property>
+			<property-name>sortBy</property-name>
+			<property-class>java.lang.String</property-class>
+			<value>txtname</value>
+		</managed-property>
 	</managed-bean>
 
 	<managed-bean>
 		<managed-bean-name>worklistController</managed-bean-name>
-		<managed-bean-class>org.imixs.workflow.jee.faces.workitem.WorklistController</managed-bean-class>
+		<managed-bean-class>org.imixs.workflow.faces.workitem.ViewController</managed-bean-class>
 		<managed-bean-scope>view</managed-bean-scope>
 
 		<managed-property>
@@ -39,6 +44,26 @@
 			<property-class>java.lang.String</property-class>
 			<value>workitem</value>
 		</managed-property>
+		
+		<managed-property>
+			<property-name>query</property-name>
+			<property-class>java.lang.String</property-class>
+			<value>(type:"workitem")</value>
+		</managed-property>
+		
+		<managed-property>
+			<property-name>sortBy</property-name>
+			<property-class>java.lang.String</property-class>
+			<value>$modified</value>
+		</managed-property>
+		
+		<managed-property>
+			<property-name>sortReverse</property-name>
+			<property-class>boolean</property-class>
+			<value>true</value>
+		</managed-property>
+		
+		
 	</managed-bean>
 
 

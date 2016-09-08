@@ -16,33 +16,42 @@
 
 		<h:commandButton value="#{global.close}" action="/pages/welcome" />
 
-		<h:panelGrid columns="3">
-			<h:outputLabel value="#{global.created}: " />
-			<h:outputText
-				value="#{workflowController.workitem.item['$created']} ">
-				<f:convertDateTime timeZone="CET" type="both" dateStyle="medium" />
-			</h:outputText>
-			<h:outputText
-				value=" #{global.by} #{workflowController.workitem.item['namcreator']} " />
-			<h:outputLabel value="#{global.modified}: " />
-			<h:outputText
-				value="#{workflowController.workitem.item['$modified']} ">
-				<f:convertDateTime timeZone="CET" type="both" dateStyle="medium" />
-			</h:outputText>
-			<h:outputText
-				value=" #{global.by} #{workflowController.workitem.item['namcurrenteditor']}" />
-		</h:panelGrid>
+		<ui:fragment
+			rendered="#{!empty workflowController.workitem.item['txtworkflowhistory']}">
+			<h:panelGrid columns="3">
+				<h:outputLabel value="#{global.created}: " />
+				<h:outputText
+					value="#{workflowController.workitem.item['$created']} ">
+					<f:convertDateTime timeZone="CET" type="both" dateStyle="medium" />
+				</h:outputText>
+				<h:outputText
+					value=" #{global.by} #{workflowController.workitem.item['namcreator']} " />
+				<h:outputLabel value="#{global.modified}: " />
+				<h:outputText
+					value="#{workflowController.workitem.item['$modified']} ">
+					<f:convertDateTime timeZone="CET" type="both" dateStyle="medium" />
+				</h:outputText>
+				<h:outputText
+					value=" #{global.by} #{workflowController.workitem.item['namcurrenteditor']}" />
+			</h:panelGrid>
 
 			<h3>History:</h3>
 			<div>
-				<h:dataTable
-					value="#{workflowController.workitem.itemList['txtworkflowhistorylog']}"
-					var="log">
+
+				<h:dataTable var="log"
+					value="#{workflowController.workitem.itemListArray['txtworkflowhistory']}">
 					<h:column>
-						<h:outputText value="#{log}" />
+						<h:outputText value="#{log[0]}">
+							<f:convertDateTime timeZone="#{global.timeZone}" type="both"
+								pattern="#{global.dateTimePattern}" />
+						</h:outputText>
+					</h:column>
+					<h:column>
+						<h:outputText value="#{log[1]}" />
 					</h:column>
 				</h:dataTable>
 			</div>
+		</ui:fragment>
 
 
 	</div>

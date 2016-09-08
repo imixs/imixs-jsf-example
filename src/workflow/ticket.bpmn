@@ -11,13 +11,13 @@
       <imixs:value><![CDATA[CurrentEditor | namCurrentEditor]]></imixs:value>
     </imixs:item>
     <imixs:item name="txtplugins" type="xs:string">
-      <imixs:value><![CDATA[org.imixs.workflow.plugins.AccessPlugin]]></imixs:value>
-      <imixs:value><![CDATA[org.imixs.workflow.plugins.OwnerPlugin]]></imixs:value>
-      <imixs:value><![CDATA[org.imixs.workflow.plugins.HistoryPlugin]]></imixs:value>
-      <imixs:value><![CDATA[org.imixs.workflow.plugins.ResultPlugin]]></imixs:value>
-      <imixs:value><![CDATA[org.imixs.workflow.plugins.LogPlugin]]></imixs:value>
-      <imixs:value><![CDATA[org.imixs.workflow.plugins.ApplicationPlugin]]></imixs:value>
-      <imixs:value><![CDATA[org.imixs.workflow.plugins.jee.MailPlugin]]></imixs:value>
+      <imixs:value><![CDATA[org.imixs.workflow.engine.plugins.AccessPlugin]]></imixs:value>
+      <imixs:value><![CDATA[org.imixs.workflow.engine.plugins.OwnerPlugin]]></imixs:value>
+      <imixs:value><![CDATA[org.imixs.workflow.engine.plugins.HistoryPlugin]]></imixs:value>
+      <imixs:value><![CDATA[org.imixs.workflow.engine.plugins.ResultPlugin]]></imixs:value>
+      <imixs:value><![CDATA[org.imixs.workflow.engine.plugins.LogPlugin]]></imixs:value>
+      <imixs:value><![CDATA[org.imixs.workflow.engine.plugins.ApplicationPlugin]]></imixs:value>
+      <imixs:value><![CDATA[org.imixs.workflow.engine.plugins.MailPlugin]]></imixs:value>
     </imixs:item>
   </bpmn2:extensionElements>
   <bpmn2:process id="ticket" name="Ticket" isExecutable="false">
