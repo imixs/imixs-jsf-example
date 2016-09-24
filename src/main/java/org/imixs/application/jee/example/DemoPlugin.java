@@ -27,14 +27,12 @@
 
 package org.imixs.application.jee.example;
 
-
 import java.util.List;
 import java.util.logging.Logger;
 
 import javax.ejb.EJB;
 
 import org.imixs.workflow.ItemCollection;
-import org.imixs.workflow.Plugin;
 import org.imixs.workflow.WorkflowContext;
 import org.imixs.workflow.engine.ModelService;
 import org.imixs.workflow.engine.plugins.AbstractPlugin;
@@ -49,32 +47,32 @@ import org.imixs.workflow.exceptions.PluginException;
  */
 
 public class DemoPlugin extends AbstractPlugin {
-	
+
 	// inject services...
-	@EJB 
+	@EJB
 	ModelService modelService;
-	
+
 	private static Logger logger = Logger.getLogger(DemoPlugin.class.getName());
 
 	public void init(WorkflowContext actx) throws PluginException {
-		
+
 	}
 
+	public ItemCollection run(ItemCollection adocumentContext, ItemCollection adocumentActivity)
+			throws PluginException {
 
-	public int run(ItemCollection adocumentContext,
-			ItemCollection adocumentActivity) throws PluginException {
-	
 		// test model service
-		List<String> versions=modelService.getVersions();
-		for (String aversion: versions) {
+		List<String> versions = modelService.getVersions();
+		for (String aversion : versions) {
 			logger.info("ModelVersion found: " + aversion);
 		}
-		
-		return Plugin.PLUGIN_OK;
+
+		return adocumentContext;
 	}
 
-	public void close(int status) {
-		
+	@Override
+	public void close(boolean rollbackTransaction) throws PluginException {
+
 	}
 
 }
