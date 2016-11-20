@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14721106776230" configfile="/imixs-jsf-example/src/main/webapp/WEB-INF/faces-config.xml">
-  <nodes xsi:type="pageflow:PFPage" name="*" x="122" y="178" id="pf14722145955690" outlinks="pf14722145955691 pf14722145955692 pf14722145955693" path="*"/>
-  <nodes xsi:type="pageflow:PFPage" name="pages/welcome.xhtml" x="338" y="178" id="pf14722145955704" referenceLink="//@navigationRule.0/@navigationCase.1/@toViewId|" inlinks="pf14722145955691 pf14722145955692" path="/pages/welcome.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="logout.xhtml" x="338" y="562" id="pf14722145955705" referenceLink="//@navigationRule.0/@navigationCase.2/@toViewId|" inlinks="pf14722145955693" path="/logout.xhtml"/>
-  <links id="pf14722145955691" target="pf14722145955704" source="pf14722145955690" outcome="home" redirect="true"/>
-  <links id="pf14722145955692" target="pf14722145955704" source="pf14722145955690" outcome="worklist" redirect="true"/>
-  <links id="pf14722145955693" target="pf14722145955705" source="pf14722145955690" outcome="logout" redirect="true"/>
-</pageflow:Pageflow>
