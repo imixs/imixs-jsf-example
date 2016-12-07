@@ -49,3 +49,14 @@ The project uses the jax-rs implementation RestEasy which is part of JBoss/Wildf
     mvn clean install -Pglassfish4
 
 The project contains also a profile for GlassFish3 (Java EE5)
+
+## Reporting
+
+Imixs-Workflow provides a reporting interface which can be accessed by the [Imixs Rest API](http://www.imixs.org/doc/restapi/reportservice.html). A report definition can be created with the Eclipse Plug-in "Imixs-Report" which is part of the [Imixs-BPMN project](http://www.imixs.org/doc/modelling/index.html).
+
+A new report definition can be uploaded with the curl commandline tool:
+
+    curl --user admin:adminpassword --request POST -H "Content-Type: application/xml" -Ttickets.imixs-report http://localhost:8080/workflow/rest-service/report
+
+
+

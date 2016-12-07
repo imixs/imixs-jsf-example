@@ -56,6 +56,29 @@
 	</servlet-mapping>
 
 
+	<!-- LoadTest Rest Service -->
+	<servlet>
+		<servlet-name>Contact Service</servlet-name>
+		 <servlet-class>
+	        org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher
+	    </servlet-class>
+		<init-param>
+	        <param-name>resteasy.resources</param-name>
+	        <param-value>
+	            org.imixs.application.jee.rest
+	        </param-value>
+	    </init-param>
+		<init-param>
+	        <param-name>resteasy.servlet.mapping.prefix</param-name>
+	        <param-value>/test/</param-value>
+	  	</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Contact Service</servlet-name>
+		<url-pattern>/test/*</url-pattern>
+	</servlet-mapping>
+	<!-- CUSTOM EXTENTION END -->
+
 
 	<login-config>
 		<auth-method>BASIC</auth-method>

@@ -5,7 +5,7 @@
 	<artifactId>imixs-jsf-example</artifactId>
 	<packaging>war</packaging>
 	<name>Imixs Workflow JSF Sample Application</name>
-	<version>4.0.2</version>
+	<version>4.0.3</version>
 	<description>Imixs Workflow JSF Sample Application </description>
 	<url>https://github.com/imixs/imixs-jsf-example</url>
 	<organization>
@@ -58,10 +58,9 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<org.imixs.workflow.version>4.0.2</org.imixs.workflow.version>
+		<org.imixs.workflow.version>4.0.3-SNAPSHOT</org.imixs.workflow.version>
 		<custom.webResources>src/main/webapp</custom.webResources>
 		<custom.unpackTypes>war</custom.unpackTypes>
-
 		<!-- 5.5.2 (jdk-7), 6.2.0 (jdk-8)-->
 		<lucene.version>6.2.1</lucene.version>
 	</properties>
@@ -72,14 +71,6 @@
 			<id>glassfish4</id>
 			<properties>
 				<custom.webResources>src/main/webapp_glassfish4</custom.webResources>
-			</properties>
-		</profile>
-
-		<!-- Glassfish3 profile -->
-		<profile>
-			<id>glassfish3</id>
-			<properties>
-				<custom.webResources>src/main/webapp_glassfish3</custom.webResources>
 			</properties>
 		</profile>
 	</profiles>
