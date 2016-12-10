@@ -80,10 +80,19 @@
 	<!-- CUSTOM EXTENTION END -->
 
 
+	<!-- -->
 	<login-config>
 		<auth-method>BASIC</auth-method>
 		<realm-name>imixsrealm</realm-name>
 	</login-config>
+	
+	<!-- SSO 
+	<login-config>
+   		<auth-method>KEYCLOAK</auth-method>
+   		<realm-name>Master</realm-name>
+	</login-config>
+	-->
+
 	<security-constraint>
 		<web-resource-collection>
 			<web-resource-name>restricted</web-resource-name>
