@@ -58,11 +58,11 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<org.imixs.workflow.version>4.0.3-SNAPSHOT</org.imixs.workflow.version>
+		<org.imixs.workflow.version>4.0.3</org.imixs.workflow.version>
 		<custom.webResources>src/main/webapp</custom.webResources>
 		<custom.unpackTypes>war</custom.unpackTypes>
 		<!-- 5.5.2 (jdk-7), 6.2.0 (jdk-8)-->
-		<lucene.version>6.2.1</lucene.version>
+		<lucene.version>6.3.0</lucene.version>
 	</properties>
 
 	<profiles>
