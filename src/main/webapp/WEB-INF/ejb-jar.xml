@@ -16,11 +16,18 @@
 				<env-entry-name>IMIXS_MAIL_SESSION</env-entry-name>
 				<env-entry-type>java.lang.String</env-entry-type>
 				<env-entry-value>java:/mail/org.imixs.workflow.mail</env-entry-value>
+				<!-- Glassfish:
+				<env-entry-value>mail/org.imixs.workflow.mail</env-entry-value>
+				 -->
 			</env-entry>
 			
 			<!-- Mail resource -->
 			<resource-ref>
+				
 				<res-ref-name>java:/mail/org.imixs.workflow.mail</res-ref-name>
+				<!-- Glassfish:
+				<res-ref-name>mail/org.imixs.workflow.mail</res-ref-name>
+				 -->
 				<res-type>javax.mail.Session</res-type>
 				<res-auth>Container</res-auth>
 				<res-sharing-scope>Shareable</res-sharing-scope>

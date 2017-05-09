@@ -11,76 +11,8 @@
 		<param-name>javax.faces.PROJECT_STAGE</param-name>
 		<param-value>Development</param-value>
 	</context-param>
-	<servlet>
-		<servlet-name>Faces Servlet</servlet-name>
-		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>Faces Servlet</servlet-name>
-		<url-pattern>*.jsf</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>Faces Servlet</servlet-name>
-		<url-pattern>*.xhtml</url-pattern>
-	</servlet-mapping>
-
-	<!-- RESTfull Service configuration resteasy -->
-	<context-param>
-		<param-name>resteasy.scan</param-name>
-		<param-value>true</param-value>
-	</context-param>
-	<context-param>
-		<param-name>resteasy.servlet.mapping.prefix</param-name>
-		<param-value>/rest-service</param-value>
-	</context-param>
-	<listener>
-		<listener-class>
-			org.jboss.resteasy.plugins.server.servlet.ResteasyBootstrap</listener-class>
-	</listener>
-	<servlet>
-		<servlet-name>ImixsRestService</servlet-name>
-		<servlet-class>
-			org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher</servlet-class>
-	</servlet>
-	<!-- END Wilfly -->
-
-	<servlet-mapping>
-		<servlet-name>ImixsRestService</servlet-name>
-		<url-pattern>/rest-service/*</url-pattern>
-	</servlet-mapping>
-
-	<servlet-mapping>
-		<servlet-name>ImixsRestService</servlet-name>
-		<url-pattern>/rest/*</url-pattern>
-	</servlet-mapping>
-
-
-	<!-- LoadTest Rest Service -->
-	<servlet>
-		<servlet-name>Contact Service</servlet-name>
-		 <servlet-class>
-	        org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher
-	    </servlet-class>
-		<init-param>
-	        <param-name>resteasy.resources</param-name>
-	        <param-value>
-	            org.imixs.application.jee.rest
-	        </param-value>
-	    </init-param>
-		<init-param>
-	        <param-name>resteasy.servlet.mapping.prefix</param-name>
-	        <param-value>/test/</param-value>
-	  	</init-param>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>Contact Service</servlet-name>
-		<url-pattern>/test/*</url-pattern>
-	</servlet-mapping>
-	<!-- CUSTOM EXTENTION END -->
-
-
-	<!-- -->
+	
+	<!-- Basic authentication -->
 	<login-config>
 		<auth-method>BASIC</auth-method>
 		<realm-name>imixsrealm</realm-name>

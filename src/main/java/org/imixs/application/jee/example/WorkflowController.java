@@ -29,6 +29,7 @@ import javax.inject.Inject;
 
 import org.imixs.workflow.ItemCollection;
 import org.imixs.workflow.exceptions.AccessDeniedException;
+import org.imixs.workflow.exceptions.ModelException;
 import org.imixs.workflow.exceptions.PluginException;
 import org.imixs.workflow.exceptions.ProcessingErrorException;
 import org.imixs.workflow.faces.fileupload.FileUploadController;
@@ -60,7 +61,7 @@ public class WorkflowController extends
 
 	@Override
 	public String process() throws AccessDeniedException,
-			ProcessingErrorException, PluginException {
+			ProcessingErrorException, PluginException, ModelException {
 		
 		
 		// update team members
