@@ -2,16 +2,16 @@
 
 
 The Imixs-jsf-example provides a simple web application using the imixs workflow engine.
-You can take this application as a scaffolding for your own web business application based on the Imixs-Workflow.
+You can take this application as a scaffolding for your own web business application based on the [Imixs-Workflow project](http://www.imixs.org).
 
-see:
-[www.imixs.org](http://www.imixs.org)
 
 ## 1. Build the Application
 
 The Imixs-jsf-example  is based on Maven to build the project from sources run
 
     mvn clean install
+    
+You can also download the application from the [latest release](https://github.com/imixs/imixs-jsf-example/releases).    
 
 ## 2. Deploy the Application
 To deploy the application successfully, the application sever need to provide a valid database pool named 'jdbc/workflow-db' and a JAAS security configuration named 'imixsrealm'. You will find an installation guide [here](http://www.imixs.org/doc/sampleapplication.html).
