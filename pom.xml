@@ -5,7 +5,7 @@
 	<artifactId>imixs-jsf-example</artifactId>
 	<packaging>war</packaging>
 	<name>Imixs Workflow JSF Sample Application</name>
-	<version>4.0.4</version>
+	<version>4.0.5</version>
 	<description>Imixs Workflow JSF Sample Application </description>
 	<url>https://github.com/imixs/imixs-jsf-example</url>
 	<organization>
