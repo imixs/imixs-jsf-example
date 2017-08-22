@@ -12,4 +12,5 @@ target/
 .settings/
 .project
 .classpath
+.deployments
 
