@@ -1,10 +1,10 @@
-postgres:
+imixssample-db:
   image: postgres:9.6.1
   environment:
     POSTGRES_PASSWORD: adminadmin
     POSTGRES_DB: workflow-db
 
-imixssample:
+imixssample-app:
   image: imixs/imixs-sample
   environment:
     WILDFLY_PASS: adminadmin
@@ -14,7 +14,7 @@ imixssample:
     - "8787:8787"
     - "9990:9990"
   links: 
-    - postgres:postgres
+    - imixssample-db:imixssample-db
  
 
     

@@ -150,7 +150,7 @@
               
              	<!-- imixs-workflow datasource -->
                 <datasource jta="true" jndi-name="java:/jdbc/workflow-db" pool-name="workflow-db" enabled="true" use-ccm="true">
-                    <connection-url>jdbc:postgresql://postgres/workflow-db</connection-url>
+                    <connection-url>jdbc:postgresql://imixssample-db/workflow-db</connection-url>
                     <driver-class>org.postgresql.Driver</driver-class>
                     <driver>postgresql</driver>
                     <security>
