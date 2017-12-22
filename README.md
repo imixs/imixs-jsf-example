@@ -43,9 +43,13 @@ To access the rest api in this sample application use the root api URL:
 
 Find details about the Imixs REST api [here](http://www.imixs.org/doc/restapi/index.html). 
 
-## Upload BPMN Model using curl:
+## Upload the BPMN Model:
 
-After you have successful deployed your application you can upload the Ticket Worklfow Model via the Rest Service API. Use the following curl command:
+After you have successful deployed your application you can upload the Ticket workflow model via the [Imixs-REST Service API](http://www.imixs.org/doc/restapi/index.html). 
+
+<br><br><img src="model-ticket.png">
+
+Use the following curl command to upload the model from your workspace:
 
     curl --user admin:adminpassword --request POST -Tticket.bpmn http://localhost:8080/workflow/rest-service/model/bpmn
 
