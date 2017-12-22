@@ -34,6 +34,9 @@ After deployment you can start the sample application from:
 
 [http://localhost:8080/workflow/](http://localhost:8080/workflow/)
 
+<br><br><img width="75%" src="sample.png">
+
+
 # The Imixs Rest-API
 
 Imixs-Workflow provides a powerfull Rest API. Also the JSF-Sample Application has included this API which is based on the jax-rs specification. 
@@ -78,20 +81,14 @@ The docker image is based on the docker image [imixs/wildfly](https://hub.docker
 To run Sample Application in a Docker container, the container need to be linked to a postgreSQL database container. The database connection is configured in the Wildfly standalone.xml file and can be customized to any other database system. 
 
 ## 1. Build the Application
-Before you can start the container, build the application from sources
+Before you can start the container, build the application and the docker image from sources:
 
 
-	mvn clean install
+	mvn clean install -Pdocker-build
 	
-## 2. Build the Docker Image
+## 2. Starting the Application in a Docker Container
 
-After you have build the application, you can build the Docker image with the follwong command:
-
-	docker build --tag=imixs/imixs-sample .
- 
-## 3. Starting the Application in a Docker Container
-
-Now you can start the application. The workflow engine needs a SQL Database. Both containers can be started with one docker-compose command
+After you have build the application and the Docker image you can start the application. The workflow engine needs a SQL Database. Both containers can be started with one docker-compose command
 
 	docker-compose up
 
@@ -103,7 +100,7 @@ The Docker container creates user accounts for testing with the following userid
     manfred=password
     anna=password
 
-After your application was started, upload the ticket.bpmn exampl model:
+After your application was started, upload the ticket.bpmn example model:
 
 	curl --user admin:adminpassword --request POST -Tticket.bpmn http://localhost:8080/workflow/rest-service/model/bpmn
 

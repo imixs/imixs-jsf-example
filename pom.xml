@@ -56,7 +56,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<org.imixs.workflow.version>4.2.4-SNAPSHOT</org.imixs.workflow.version>
+		<org.imixs.workflow.version>4.2.4</org.imixs.workflow.version>
 		<custom.webResources>src/main/webapp</custom.webResources>
 		<custom.unpackTypes>war</custom.unpackTypes>
 		<lucene.version>6.6.1</lucene.version>
@@ -71,6 +71,45 @@
             <url>http://oss.sonatype.org/content/repositories/snapshots</url>
       	</repository> 
     </repositories>
+    
+    
+    
+    <profiles>
+
+		<profile>
+			<id>docker-build</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<version>1.8</version>
+						<executions>
+							<execution>
+								<phase>install</phase>
+								<configuration>
+
+									<target>
+										<exec executable="docker">
+											<arg value="build" />
+											<arg value="-t" />
+											<arg value="imixs/imixs-jsf-example" />
+											<arg value="./" />
+										</exec>
+									</target>
+								</configuration>
+								<goals>
+									<goal>run</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+    
 	<build>
 		<resources>
 			<!-- enable resource filtering for multi language version -->
