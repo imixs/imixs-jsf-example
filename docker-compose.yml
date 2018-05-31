@@ -8,7 +8,7 @@ services:
       POSTGRES_DB: workflow-db
   
   imixssample-app:
-    image: imixs/imixs-sample
+    image: imixs/imixs-jsf-example
     environment:
       WILDFLY_PASS: adminadmin
       DEBUG: "true"

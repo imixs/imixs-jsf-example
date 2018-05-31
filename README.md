@@ -54,7 +54,7 @@ After you have successful deployed your application you can upload the Ticket wo
 
 Use the following curl command to upload the model from your workspace:
 
-    curl --user admin:adminpassword --request POST -Tticket.bpmn http://localhost:8080/workflow/rest-service/model/bpmn
+    curl --user admin:adminpassword --request POST -Tsrc/workflow/ticket.bpmn http://localhost:8080/workflow/rest-service/model/bpmn
 
 The BPMN Model is part of the project and located under /src/workflow/ticket.bpmn
 
@@ -65,7 +65,7 @@ Imixs-Workflow provides a reporting interface which can be accessed by the [Imix
 
 A new report definition can be uploaded with the curl commandline tool:
 
-    curl --user admin:adminpassword --request POST -H "Content-Type: application/xml" -Ttickets.imixs-report http://localhost:8080/workflow/rest-service/report
+    curl --user admin:adminpassword --request POST -H "Content-Type: application/xml" -Tsrc/workflow/tickets.imixs-report http://localhost:8080/workflow/rest-service/report
 
 
 
