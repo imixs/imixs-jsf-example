@@ -25,15 +25,14 @@ package org.imixs.application.jee.example;
 
 import java.io.Serializable;
 
-import javax.inject.Inject;
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Named;
 
 import org.imixs.workflow.ItemCollection;
 import org.imixs.workflow.exceptions.AccessDeniedException;
 import org.imixs.workflow.exceptions.ModelException;
 import org.imixs.workflow.exceptions.PluginException;
 import org.imixs.workflow.exceptions.ProcessingErrorException;
-import org.imixs.workflow.faces.fileupload.FileUploadController;
-
 
 /**
  * This WorkflowControler extends the basic WorkflowControler and implements an
@@ -43,56 +42,25 @@ import org.imixs.workflow.faces.fileupload.FileUploadController;
  * 
  * @author rsoika
  */
-@javax.inject.Named("workflowController")
-@javax.enterprise.context.SessionScoped
-public class WorkflowController extends
-		org.imixs.workflow.faces.workitem.WorkflowController implements
-		Serializable {
+@Named
+@SessionScoped
+public class WorkflowController extends org.imixs.workflow.faces.workitem.WorkflowController implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Inject
-	private FileUploadController fileUploadController;
-	
-
-	public void setFileUploadController(FileUploadController fleUploadController) {
-		this.fileUploadController = fleUploadController;
-	}
-
 	@Override
-	public String process() throws AccessDeniedException,
-			ProcessingErrorException, PluginException, ModelException {
-		
-		
+	public String process() throws AccessDeniedException, ProcessingErrorException, PluginException, ModelException {
 		// update team members
-		String id=this.getWorkitem().getItemValueString("Team");
+		String id = this.getWorkitem().getItemValueString("Team");
 		// lookup the team entity...
 		if (!"".equals(id)) {
-			ItemCollection team=this.getDocumentService().load(id);
-			if (team!=null)
+			ItemCollection team = this.getDocumentService().load(id);
+			if (team != null)
 				this.getWorkitem().replaceItemValue("namTeam", team.getItemValue("Members"));
 		}
-		
-		// update the file info for the current workitem
-		fileUploadController.updateWorkitem(this.getWorkitem());
-		
-
-	
-
 		String result = super.process();
 
-	
 		return result;
-	}
-
-	@Override
-	public void setWorkitem(ItemCollection aworkitem) {
-
-		super.setWorkitem(aworkitem);
-
-		fileUploadController.reset();
-
-		
 	}
 
 }
