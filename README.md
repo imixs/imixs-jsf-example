@@ -107,3 +107,17 @@ After your application was started, upload the ticket.bpmn example model:
 and run the application in a web browser:	
 
 	http://localhost:8080/workflow/
+	
+	
+## Development
+
+During development you can use the docker-compose-dev.yml file. This stack maps the src/docker/deployments folder to the wildfly auto deploy directory. 
+
+	$ docker-compose -f docker-compose-dev.yml up
+	
+you may have to grant the deployment folder first to allow the docker non privileged user to access this location.
+
+	$ sudo chmod 777 src/docker/deployments/
+	
+	
+	 
