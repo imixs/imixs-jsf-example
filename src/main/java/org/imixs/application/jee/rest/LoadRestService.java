@@ -91,7 +91,7 @@ public class LoadRestService {
 			ItemCollection workitem = new ItemCollection();
 			workitem.replaceItemValue(WorkflowKernel.MODELVERSION, modelversion);
 			workitem.replaceItemValue(WorkflowKernel.PROCESSID, processid);
-			workitem.replaceItemValue(WorkflowKernel.ACTIVITYID, activityid);
+			workitem.replaceItemValue(WorkflowKernel.EVENTID, activityid);
 			workitem.replaceItemValue(WorkflowKernel.TYPE, "workitem");
 			workitem.replaceItemValue("subject", "Loadtest-" + System.currentTimeMillis());
 			try {

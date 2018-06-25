@@ -56,7 +56,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<org.imixs.workflow.version>4.3.2-SNAPSHOT</org.imixs.workflow.version>
+		<org.imixs.workflow.version>4.3.2</org.imixs.workflow.version>
 		<custom.webResources>src/main/webapp</custom.webResources>
 		<custom.unpackTypes>war</custom.unpackTypes>
 		<lucene.version>6.6.1</lucene.version>
