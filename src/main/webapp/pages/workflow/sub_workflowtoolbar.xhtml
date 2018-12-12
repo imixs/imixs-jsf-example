@@ -14,7 +14,8 @@
 		<i:imixsWorkflowActions workflowController="#{workflowController}"
 			disabletooltip="false" />
 
-		<h:commandButton value="#{global.close}" action="/pages/welcome" />
+		<h:commandButton value="#{global.close}" action="/pages/welcome?faced-redirect=true"
+		actionListener="#{workflowController.stopConversation()}" />
 
 		<ui:fragment
 			rendered="#{!empty workflowController.workitem.item['txtworkflowhistory']}">

@@ -25,7 +25,7 @@
  *  	Ralph Soika - Software Developer
  *******************************************************************************/
 
-package org.imixs.application.jee.example;
+package org.imixs.application.ui;
 
 import java.util.List;
 import java.util.logging.Logger;

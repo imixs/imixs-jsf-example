@@ -40,7 +40,7 @@
 		</dt>
 		<dd>
 			<h:selectOneMenu id="team_id"
-				value="#{workflowController.workitem.item['team']}" required="true">
+				value="#{workflowController.workitem.item['team']}" required="false">
 				<f:selectItem required="true" itemLabel="#{global.please_select}"
 					itemValue="" />
 				<f:selectItems value="#{teamController.teamSelection}" />

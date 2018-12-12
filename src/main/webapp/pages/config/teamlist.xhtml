@@ -5,6 +5,12 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	template="/layout/template.xhtml">
 
+
+	<f:metadata>
+		<f:viewAction action="#{viewController.setQuery('type:team')}" />
+		<f:viewAction action="#{viewHandler.loadData(viewController)}" />
+	</f:metadata>
+
 	<ui:define name="content">
 		<f:view>
 
@@ -15,12 +21,8 @@
 					<h:outputText value="#{global.team_form_title}" />
 				</h2>
 
-
-
-
 				<h:dataTable id="datatable_id" columns="7" class="imixsdatatable"
-					value="#{teamlistController.workitems}" var="record">
-
+					value="#{viewHandler.data}" var="record">
 
 					<h:column>
 						<f:facet name="header">
@@ -29,30 +31,33 @@
 						<h:outputText value="#{record.item['txtName']} " />
 					</h:column>
 
+
 					<h:column>
 						<f:facet name="header">
 							<h:outputText value="#{global.modified}" />
 						</f:facet>
 						<h:outputText value="#{record.item['$modified']}">
-							<f:convertDateTime type="both" dateStyle="short"
-								pattern="dd.MM.yy HH:mm:ss" />
+							
 						</h:outputText>
 					</h:column>
 
-
-
 					<!-- edit -->
 					<h:column>
-						<h:commandLink
-							action="#{teamController.load(record.item['$uniqueid'],'team')}">
+
+						<h:link outcome="/pages/config/team?faces-redirect=true">
 							<h:outputText value="#{global.edit}" />
-						</h:commandLink>
+							<f:param name="id" value="#{record.item['$uniqueid']}" />
+						</h:link>
+
+
+
 					</h:column>
 
 					<!-- delete -->
 					<h:column>
 						<h:commandLink value="#{global.delete}"
-							action="#{teamController.delete(record.item['$uniqueid'],'teamlist')}" />
+							action="teamlist"
+							actionListener="#{documentController.delete(record.item['$uniqueid'])}" />
 					</h:column>
 
 
@@ -60,14 +65,14 @@
 
 				</h:dataTable>
 
-				<h:commandButton actionListener="#{teamlistController.doLoadPrev}"
-					disabled="#{teamlistController.pageIndex==0}" value="#{global.prev}">
+				<h:commandButton actionListener="#{viewController.back()}"
+					disabled="#{viewController.pageIndex==0}" value="#{global.prev}">
 				</h:commandButton>
 
-				<h:commandButton actionListener="#{teamlistController.doLoadNext}"
-					disabled="#{teamlistController.endOfList}" value="#{global.next}">
+				<h:commandButton actionListener="#{viewController.next()}"
+					disabled="#{viewController.endOfList}" value="#{global.next}">
 				</h:commandButton>
-				<h:commandButton actionListener="#{teamController.create}"
+				<h:commandButton actionListener="#{documentController.create()}"
 					action="team" value="#{global.add}">
 
 				</h:commandButton>

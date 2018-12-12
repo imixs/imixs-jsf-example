@@ -7,6 +7,12 @@
 	template="/layout/template.xhtml">
 
 
+	<f:metadata>
+		<f:viewAction action="#{workflowController.onLoad()}" />
+	</f:metadata>
+
+
+
 	<ui:define name="content">
 		<f:view>
 			
@@ -37,13 +43,9 @@
 					
 				</div>
 
-
-
-
-
-
 				<!-- **** Workflow Actions & History ***** -->
 				<ui:include src="/pages/workflow/sub_workflowtoolbar.xhtml" />
+
 
 			</h:form>
 		</f:view>

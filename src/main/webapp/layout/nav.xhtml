@@ -7,14 +7,16 @@
 	<h:form>
 		<ul>
 
-			<li><h:commandLink action="/pages/welcome">Home</h:commandLink></li>
+			<li><h:commandLink action="/pages/welcome?faces-redirect=true">Home</h:commandLink></li>
 			<c:if test="#{!loginController.authenticated}">
 				<li><h:commandLink action="home">#{global.login}</h:commandLink></li>
 			</c:if>
 
 			<c:if test="#{loginController.authenticated}">
-				<li><h:commandLink action="/pages/config/teamlist">Team List</h:commandLink></li>
+				<li><h:commandLink action="/pages/config/teamlist?faces-redirect=true">Team List</h:commandLink></li>
 			</c:if>
+			
+			
 		</ul>
 	</h:form>
 </ui:composition>

@@ -5,25 +5,24 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 
-
 	<f:view>
 
-
+		<!-- #{viewHandler.loadData(worklistController)} -->
 		<h:form>
 			<h2>#{global.worklist}</h2>
 
 			<h:dataTable class="imixsdatatable" style="width:100%"
-				value="#{worklistController.workitems}" var="workitem">
+				value="#{viewHandler.data}" var="workitem">
 
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="#{global.summary}" />
 					</f:facet>
-					<h:commandLink
-						action="#{workflowController.load(workitem.item['$uniqueid'],'/pages/workflow/workitem')}">
-						<h:outputText value="#{workitem.item['txtworkflowSummary']}" />
-					</h:commandLink>
 
+					<h:link outcome="/pages/workflow/workitem">
+						<h:outputText value="#{workitem.item['txtworkflowSummary']}" />
+						<f:param name="id" value="#{workitem.item['$uniqueid']}" />
+					</h:link>
 				</h:column>
 
 				<h:column>
@@ -33,13 +32,8 @@
 					<ui:repeat var="owner" value="#{workitem.itemList['namOwner']}">
 						<h:outputText value="#{owner}" />
 						<br />
-
 					</ui:repeat>
-
-
 				</h:column>
-
-
 
 				<h:column>
 					<f:facet name="header">
@@ -52,8 +46,6 @@
 				</h:column>
 
 
-
-
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="#{global.modified}" />
@@ -61,7 +53,6 @@
 					<h:outputText value="#{workitem.item['$modified']}">
 						<f:convertDateTime timeZone="CET" type="both" dateStyle="medium" />
 					</h:outputText>
-
 					<h:outputText
 						value=" #{global.by} #{workitem.item['namcurrentEditor']}" />
 				</h:column>
@@ -73,8 +64,6 @@
 					</f:facet>
 					<h:outputText value="#{workitem.item['txtworkflowstatus']}" />
 				</h:column>
-
-
 
 
 				<h:column>
@@ -96,14 +85,10 @@
 				value="#{global.next} &gt;&gt;">
 			</h:commandButton>
 
-			<h:commandButton actionListener="#{workflowController.create}"
-				action="/pages/workflow/workitem" value="Create New Ticket">
-				<f:setPropertyActionListener
-					target="#{workflowController.workitem.item['$ModelVersion']}"
-					value="1.0.1" />
-				<f:setPropertyActionListener
-					target="#{workflowController.workitem.item['$ProcessID']}"
-					value="1000" />
+			<h:commandButton value="Create New Ticket"
+				action="/pages/workflow/workitem"
+				actionListener="#{workflowController.create('1.0.1',1000,null)}">
+				
 			</h:commandButton>
 
 

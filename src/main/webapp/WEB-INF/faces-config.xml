@@ -17,33 +17,11 @@
 	</application>
 
 
-	<managed-bean>
-		<managed-bean-name>teamlistController</managed-bean-name>
-		<managed-bean-class>org.imixs.workflow.faces.workitem.ViewController</managed-bean-class>
-		<managed-bean-scope>view</managed-bean-scope>
-
-		<managed-property>
-			<property-name>type</property-name>
-			<property-class>java.lang.String</property-class>
-			<value>team</value>
-		</managed-property>
-		<managed-property>
-			<property-name>sortBy</property-name>
-			<property-class>java.lang.String</property-class>
-			<value>txtname</value>
-		</managed-property>
-	</managed-bean>
 
 	<managed-bean>
 		<managed-bean-name>worklistController</managed-bean-name>
 		<managed-bean-class>org.imixs.workflow.faces.workitem.ViewController</managed-bean-class>
 		<managed-bean-scope>view</managed-bean-scope>
-
-		<managed-property>
-			<property-name>type</property-name>
-			<property-class>java.lang.String</property-class>
-			<value>workitem</value>
-		</managed-property>
 		
 		<managed-property>
 			<property-name>query</property-name>

@@ -25,7 +25,7 @@
  *  	Ralph Soika - Software Developer
  *******************************************************************************/
 
-package org.imixs.application.jee.example;
+package org.imixs.application.ui;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
