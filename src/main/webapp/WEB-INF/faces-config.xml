@@ -20,7 +20,7 @@
 
 	<managed-bean>
 		<managed-bean-name>worklistController</managed-bean-name>
-		<managed-bean-class>org.imixs.workflow.faces.workitem.ViewController</managed-bean-class>
+		<managed-bean-class>org.imixs.workflow.faces.data.ViewController</managed-bean-class>
 		<managed-bean-scope>view</managed-bean-scope>
 		
 		<managed-property>

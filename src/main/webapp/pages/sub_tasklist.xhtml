@@ -7,7 +7,7 @@
 
 	<f:view>
 
-		<!-- #{viewHandler.loadData(worklistController)} -->
+		<!-- #{viewHandler.onLoad(worklistController)} -->
 		<h:form>
 			<h2>#{global.worklist}</h2>
 
@@ -76,17 +76,19 @@
 			</h:dataTable>
 
 
-			<h:commandButton actionListener="#{worklistController.doLoadPrev}"
-				disabled="#{!(worklistController.pageIndex>0)}"
+			<h:commandButton action="/pages/welcome?faces-redirect=true"
+				actionListener="#{worklistController.back()}"
+				disabled="#{worklistController.pageIndex==0}"
 				value="&lt;&lt; #{global.prev}">
 			</h:commandButton>
-			<h:commandButton actionListener="#{worklistController.doLoadNext}"
+			<h:commandButton action="/pages/welcome?faces-redirect=true"
+				actionListener="#{worklistController.next()}"
 				disabled="#{worklistController.endOfList}"
 				value="#{global.next} &gt;&gt;">
 			</h:commandButton>
 
 			<h:commandButton value="Create New Ticket"
-				action="/pages/workflow/workitem"
+				action="/pages/workflow/workitem?faces-redirect=true"
 				actionListener="#{workflowController.create('1.0.1',1000,null)}">
 				
 			</h:commandButton>

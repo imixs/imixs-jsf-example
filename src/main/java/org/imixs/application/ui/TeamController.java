@@ -36,7 +36,7 @@ import javax.inject.Named;
 import org.imixs.workflow.ItemCollection;
 import org.imixs.workflow.engine.DocumentService;
 import org.imixs.workflow.exceptions.AccessDeniedException;
-import org.imixs.workflow.faces.workitem.WorkflowEvent;
+import org.imixs.workflow.faces.data.WorkflowEvent;
 
 /**
  * This backing bean is an example how to interact with the EntityService to

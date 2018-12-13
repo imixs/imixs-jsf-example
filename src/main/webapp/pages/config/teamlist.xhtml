@@ -8,12 +8,12 @@
 
 	<f:metadata>
 		<f:viewAction action="#{viewController.setQuery('type:team')}" />
-		<f:viewAction action="#{viewHandler.loadData(viewController)}" />
+		<f:viewAction action="#{viewController.setSortBy('txtname')}" />
+		<f:viewAction action="#{viewHandler.onLoad(viewController)}" />
 	</f:metadata>
 
 	<ui:define name="content">
 		<f:view>
-
 
 			<h:form id="teamlistForm">
 
@@ -43,14 +43,10 @@
 
 					<!-- edit -->
 					<h:column>
-
 						<h:link outcome="/pages/config/team?faces-redirect=true">
 							<h:outputText value="#{global.edit}" />
 							<f:param name="id" value="#{record.item['$uniqueid']}" />
 						</h:link>
-
-
-
 					</h:column>
 
 					<!-- delete -->
@@ -59,19 +55,21 @@
 							action="teamlist"
 							actionListener="#{documentController.delete(record.item['$uniqueid'])}" />
 					</h:column>
-
-
-
-
 				</h:dataTable>
 
-				<h:commandButton actionListener="#{viewController.back()}"
+				<h:commandButton 
+					action="/pages/config/teamlist?faces-redirect=true"
+					actionListener="#{viewController.back()}"
 					disabled="#{viewController.pageIndex==0}" value="#{global.prev}">
 				</h:commandButton>
 
-				<h:commandButton actionListener="#{viewController.next()}"
+				<h:commandButton 
+					action="/pages/config/teamlist?faces-redirect=true"
+					actionListener="#{viewController.next()}"
 					disabled="#{viewController.endOfList}" value="#{global.next}">
 				</h:commandButton>
+				
+				
 				<h:commandButton actionListener="#{documentController.create()}"
 					action="team" value="#{global.add}">
 
