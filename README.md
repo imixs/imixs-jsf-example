@@ -14,7 +14,7 @@ The Imixs-jsf-example  is based on Maven to build the project from sources run
 You can also download the application from the [latest release](https://github.com/imixs/imixs-jsf-example/releases).    
 
 ## 2. Deploy the Application
-To deploy the application successfully, the application sever need to provide a valid database pool named 'jdbc/workflow-db' and a JAAS security configuration named 'imixsrealm'. You will find an installation guide [here](http://www.imixs.org/doc/sampleapplication.html).
+To deploy the application successfully, the application sever need to provide a valid database pool named 'jdbc/workflow' and a JAAS security configuration named 'imixsrealm'. You will find an installation guide [here](http://www.imixs.org/doc/sampleapplication.html).
 
 ### Setup Security Roles
 The security concept of imixs-workflow defines default roles:
@@ -32,7 +32,7 @@ __NOTE:__ The Imixs-jsf-example is tested with JBoss/Wildfly and GlassFish4/Paya
 ## 3. Run the Application
 After deployment you can start the sample application from:
 
-[http://localhost:8080/workflow/](http://localhost:8080/workflow/)
+[http://localhost:8080/](http://localhost:8080/)
 
 <br><br><img width="75%" src="sample.png">
 
@@ -42,7 +42,7 @@ After deployment you can start the sample application from:
 Imixs-Workflow provides a powerfull Rest API. Also the JSF-Sample Application has included this API which is based on the jax-rs specification. 
 To access the rest api in this sample application use the root api URL:
 
-    http://localhost:8080/workflow/rest-service/
+    http://localhost:8080/api/
 
 Find details about the Imixs REST api [here](http://www.imixs.org/doc/restapi/index.html). 
 
@@ -54,7 +54,7 @@ After you have successful deployed your application you can upload the Ticket wo
 
 Use the following curl command to upload the model from your workspace:
 
-    curl --user admin:adminpassword --request POST -Tsrc/workflow/ticket.bpmn http://localhost:8080/workflow/rest-service/model/bpmn
+    curl --user admin:adminpassword --request POST -Tsrc/workflow/ticket.bpmn http://localhost:8080/api/model/bpmn
 
 The BPMN Model is part of the project and located under /src/workflow/ticket.bpmn
 
@@ -65,7 +65,7 @@ Imixs-Workflow provides a reporting interface which can be accessed by the [Imix
 
 A new report definition can be uploaded with the curl commandline tool:
 
-    curl --user admin:adminpassword --request POST -H "Content-Type: application/xml" -Tsrc/workflow/tickets.imixs-report http://localhost:8080/workflow/rest-service/report
+    curl --user admin:adminpassword --request POST -H "Content-Type: application/xml" -Tsrc/workflow/tickets.imixs-report http://localhost:8080/api/report
 
 
 
@@ -102,11 +102,11 @@ The Docker container creates user accounts for testing with the following userid
 
 After your application was started, upload the ticket.bpmn example model:
 
-	curl --user admin:adminpassword --request POST -Tticket.bpmn http://localhost:8080/workflow/rest-service/model/bpmn
+	curl --user admin:adminpassword --request POST -Tticket.bpmn http://localhost:8080/api/model/bpmn
 
 and run the application in a web browser:	
 
-	http://localhost:8080/workflow/
+	http://localhost:8080/
 	
 	
 ## Development

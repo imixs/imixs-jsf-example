@@ -29,7 +29,7 @@
 		<web-resource-collection>
 			<web-resource-name>restricted</web-resource-name>
 			<url-pattern>/pages/*</url-pattern>
-			<url-pattern>/rest-service/*</url-pattern>
+			<url-pattern>/api/*</url-pattern>
 			<http-method>GET</http-method>
 			<http-method>POST</http-method>
 			<http-method>PUT</http-method>

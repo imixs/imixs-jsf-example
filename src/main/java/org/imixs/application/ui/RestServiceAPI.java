@@ -38,7 +38,7 @@ import javax.ws.rs.core.Application;
  * 
  */
 
-@ApplicationPath("/rest-service/")
-public class ImixsApplication extends Application {
+@ApplicationPath("/api/")
+public class RestServiceAPI extends Application {
 
 }
