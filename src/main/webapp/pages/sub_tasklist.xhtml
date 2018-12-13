@@ -4,14 +4,11 @@
 	xmlns:c="http://java.sun.com/jstl/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
-
 	<f:view>
-
-		<!-- #{viewHandler.onLoad(worklistController)} -->
 		<h:form>
 			<h2>#{global.worklist}</h2>
 
-			<h:dataTable class="imixsdatatable" style="width:100%"
+			<h:dataTable class="imixsdatatable" style="width:100%" 
 				value="#{viewHandler.data}" var="workitem">
 
 				<h:column>
@@ -77,20 +74,19 @@
 
 
 			<h:commandButton action="/pages/welcome?faces-redirect=true"
-				actionListener="#{worklistController.back()}"
-				disabled="#{worklistController.pageIndex==0}"
+			actionListener="#{tasklistController.back()}"
+				disabled="#{tasklistController.pageIndex==0}"
 				value="&lt;&lt; #{global.prev}">
 			</h:commandButton>
 			<h:commandButton action="/pages/welcome?faces-redirect=true"
-				actionListener="#{worklistController.next()}"
-				disabled="#{worklistController.endOfList}"
+			actionListener="#{tasklistController.next()}"
+				disabled="#{tasklistController.endOfList}"
 				value="#{global.next} &gt;&gt;">
 			</h:commandButton>
 
 			<h:commandButton value="Create New Ticket"
 				action="/pages/workflow/workitem?faces-redirect=true"
 				actionListener="#{workflowController.create('1.0.1',1000,null)}">
-				
 			</h:commandButton>
 
 

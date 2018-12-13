@@ -17,7 +17,7 @@
 	</application>
 
 
-
+<!--  
 	<managed-bean>
 		<managed-bean-name>worklistController</managed-bean-name>
 		<managed-bean-class>org.imixs.workflow.faces.data.ViewController</managed-bean-class>
@@ -40,10 +40,10 @@
 			<property-class>boolean</property-class>
 			<value>true</value>
 		</managed-property>
-		
+	
 		
 	</managed-bean>
-
+	-->
 
 	<navigation-rule>
 		<navigation-case>
