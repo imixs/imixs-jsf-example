@@ -4,22 +4,26 @@
 	xmlns:c="http://java.sun.com/jstl/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
+
+
 	<f:view>
+
+
 		<h:form>
 			<h2>#{global.worklist}</h2>
 
-			<h:dataTable class="imixsdatatable" style="width:100%" 
-				value="#{viewHandler.data}" var="workitem">
+			<h:dataTable class="imixsdatatable" style="width:100%"
+				value="#{worklistController.workitems}" var="workitem">
 
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="#{global.summary}" />
 					</f:facet>
-
-					<h:link outcome="/pages/workflow/workitem">
+					<h:commandLink
+						action="#{workflowController.load(workitem.item['$uniqueid'],'/pages/workflow/workitem')}">
 						<h:outputText value="#{workitem.item['txtworkflowSummary']}" />
-						<f:param name="id" value="#{workitem.item['$uniqueid']}" />
-					</h:link>
+					</h:commandLink>
+
 				</h:column>
 
 				<h:column>
@@ -29,8 +33,13 @@
 					<ui:repeat var="owner" value="#{workitem.itemList['namOwner']}">
 						<h:outputText value="#{owner}" />
 						<br />
+
 					</ui:repeat>
+
+
 				</h:column>
+
+
 
 				<h:column>
 					<f:facet name="header">
@@ -43,6 +52,8 @@
 				</h:column>
 
 
+
+
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="#{global.modified}" />
@@ -50,6 +61,7 @@
 					<h:outputText value="#{workitem.item['$modified']}">
 						<f:convertDateTime timeZone="CET" type="both" dateStyle="medium" />
 					</h:outputText>
+
 					<h:outputText
 						value=" #{global.by} #{workitem.item['namcurrentEditor']}" />
 				</h:column>
@@ -63,6 +75,8 @@
 				</h:column>
 
 
+
+
 				<h:column>
 					<h:commandLink value="#{global.delete}"
 						action="#{workflowController.delete(workitem.item['$uniqueid'],'worklist')}"
@@ -73,20 +87,23 @@
 			</h:dataTable>
 
 
-			<h:commandButton action="/pages/welcome?faces-redirect=true"
-			actionListener="#{tasklistController.back()}"
-				disabled="#{tasklistController.pageIndex==0}"
+			<h:commandButton actionListener="#{worklistController.doLoadPrev}"
+				disabled="#{!(worklistController.pageIndex>0)}"
 				value="&lt;&lt; #{global.prev}">
 			</h:commandButton>
-			<h:commandButton action="/pages/welcome?faces-redirect=true"
-			actionListener="#{tasklistController.next()}"
-				disabled="#{tasklistController.endOfList}"
+			<h:commandButton actionListener="#{worklistController.doLoadNext}"
+				disabled="#{worklistController.endOfList}"
 				value="#{global.next} &gt;&gt;">
 			</h:commandButton>
 
-			<h:commandButton value="Create New Ticket"
-				action="/pages/workflow/workitem?faces-redirect=true"
-				actionListener="#{workflowController.create('1.0.1',1000,null)}">
+			<h:commandButton actionListener="#{workflowController.create}"
+				action="/pages/workflow/workitem" value="Create New Ticket">
+				<f:setPropertyActionListener
+					target="#{workflowController.workitem.item['$ModelVersion']}"
+					value="1.0.1" />
+				<f:setPropertyActionListener
+					target="#{workflowController.workitem.item['$ProcessID']}"
+					value="1000" />
 			</h:commandButton>
 
 

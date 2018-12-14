@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf15443406260270" configfile="/imixs-jsf-example/src/main/webapp/WEB-INF/faces-config.xml">
-  <nodes xsi:type="pageflow:PFPage" name="*" x="122" y="178" id="pf15443881762521" outlinks="pf15443881762532 pf15443881762533 pf15443881762534" path="*"/>
-  <nodes xsi:type="pageflow:PFPage" name="pages/welcome.xhtml" x="338" y="178" id="pf15443881762535" referenceLink="//@navigationRule.0/@navigationCase.1/@toViewId|" inlinks="pf15443881762532 pf15443881762533" path="/pages/welcome.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="logout.xhtml" x="338" y="562" id="pf15443881762536" referenceLink="//@navigationRule.0/@navigationCase.2/@toViewId|" inlinks="pf15443881762534" path="/logout.xhtml"/>
-  <links id="pf15443881762532" target="pf15443881762535" source="pf15443881762521" outcome="home" redirect="true"/>
-  <links id="pf15443881762533" target="pf15443881762535" source="pf15443881762521" outcome="worklist" redirect="true"/>
-  <links id="pf15443881762534" target="pf15443881762536" source="pf15443881762521" outcome="logout" redirect="true"/>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf15448136247990" configfile="/imixs-jsf-example/src/main/webapp/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="*" x="122" y="178" id="pf15448137228921" outlinks="pf15448137228932 pf15448137228933 pf15448137228934" path="*"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/welcome.xhtml" x="338" y="178" id="pf15448137228935" referenceLink="//@navigationRule.0/@navigationCase.1/@toViewId|" inlinks="pf15448137228932 pf15448137228933" path="/pages/welcome.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="logout.xhtml" x="338" y="562" id="pf15448137228936" referenceLink="//@navigationRule.0/@navigationCase.2/@toViewId|" inlinks="pf15448137228934" path="/logout.xhtml"/>
+  <links id="pf15448137228932" target="pf15448137228935" source="pf15448137228921" outcome="home" redirect="true"/>
+  <links id="pf15448137228933" target="pf15448137228935" source="pf15448137228921" outcome="worklist" redirect="true"/>
+  <links id="pf15448137228934" target="pf15448137228936" source="pf15448137228921" outcome="logout" redirect="true"/>
 </pageflow:Pageflow>

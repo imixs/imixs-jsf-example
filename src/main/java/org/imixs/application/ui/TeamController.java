@@ -27,16 +27,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.ejb.EJB;
-import javax.enterprise.context.RequestScoped;
-import javax.enterprise.event.Observes;
 import javax.faces.model.SelectItem;
-import javax.inject.Named;
 
 import org.imixs.workflow.ItemCollection;
-import org.imixs.workflow.engine.DocumentService;
-import org.imixs.workflow.exceptions.AccessDeniedException;
-import org.imixs.workflow.faces.data.WorkflowEvent;
+import org.imixs.workflow.faces.workitem.DocumentController;
 
 /**
  * This backing bean is an example how to interact with the EntityService to
@@ -51,24 +45,30 @@ import org.imixs.workflow.faces.data.WorkflowEvent;
  * @author rsoika
  * 
  */
-@Named
-@RequestScoped
-public class TeamController implements Serializable {
+@javax.inject.Named("teamController")
+@javax.enterprise.context.SessionScoped
+public class TeamController extends DocumentController implements Serializable {
+
 
 	private static final long serialVersionUID = 1L;
 
 	@javax.enterprise.context.SessionScoped
 	private ArrayList<SelectItem> teamSelection;
-
-	@EJB
-	DocumentService documentService;
-
-	public static final String TYPE = "team";
+	
+	
+	
 
 	public TeamController() {
 		super();
+		// set a default type
+		setDefaultType("team");
 	}
 
+
+	
+
+	
+	
 	/**
 	 * returns an arrayList of Selectitems with all team IDs
 	 * 
@@ -77,7 +77,9 @@ public class TeamController implements Serializable {
 	public ArrayList<SelectItem> getTeamSelection() {
 
 		teamSelection = new ArrayList<SelectItem>();
-		List<ItemCollection> col = documentService.getDocumentsByType(TYPE);
+
+		List<ItemCollection> col = getDocumentService().getDocumentsByType(getDefaultType());
+
 		for (ItemCollection aworkitem : col) {
 			String sName = aworkitem.getItemValueString("txtName");
 			String sID = aworkitem.getItemValueString("$UniqueID");
@@ -88,28 +90,5 @@ public class TeamController implements Serializable {
 	}
 
 	
-
-	/**
-	 * Update the current type attribute for the team document on save. Update the
-	 * selected team members into the workitem
-	 */
-	public void onWorkflowEvent(@Observes WorkflowEvent workflowEvent) throws AccessDeniedException {
-
-		if (workflowEvent.getEventType() == WorkflowEvent.DOCUMENT_BEFORE_SAVE) {
-			// Update the current type attribute for the team document on save
-			workflowEvent.getWorkitem().replaceItemValue("type", TYPE);
-		}
-
-		if (workflowEvent.getEventType() == WorkflowEvent.WORKITEM_BEFORE_PROCESS) {
-			String id = workflowEvent.getWorkitem().getItemValueString("Team");
-			// lookup the team entity...
-			if (!"".equals(id)) {
-				ItemCollection team = documentService.load(id);
-				if (team != null)
-					workflowEvent.getWorkitem().replaceItemValue("namTeam", team.getItemValue("Members"));
-			}
-		}
-
-	}
-
+	
 }
