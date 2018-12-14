@@ -30,7 +30,6 @@ import java.util.List;
 import javax.faces.model.SelectItem;
 
 import org.imixs.workflow.ItemCollection;
-import org.imixs.workflow.faces.workitem.DocumentController;
 
 /**
  * This backing bean is an example how to interact with the EntityService to
@@ -47,7 +46,7 @@ import org.imixs.workflow.faces.workitem.DocumentController;
  */
 @javax.inject.Named("teamController")
 @javax.enterprise.context.SessionScoped
-public class TeamController extends DocumentController implements Serializable {
+public class TeamController implements Serializable {
 
 
 	private static final long serialVersionUID = 1L;
@@ -61,7 +60,7 @@ public class TeamController extends DocumentController implements Serializable {
 	public TeamController() {
 		super();
 		// set a default type
-		setDefaultType("team");
+		//setDefaultType("team");
 	}
 
 
@@ -78,13 +77,13 @@ public class TeamController extends DocumentController implements Serializable {
 
 		teamSelection = new ArrayList<SelectItem>();
 
-		List<ItemCollection> col = getDocumentService().getDocumentsByType(getDefaultType());
+		//List<ItemCollection> col = getDocumentService().getDocumentsByType(getDefaultType());
 
-		for (ItemCollection aworkitem : col) {
-			String sName = aworkitem.getItemValueString("txtName");
-			String sID = aworkitem.getItemValueString("$UniqueID");
-			teamSelection.add(new SelectItem(sID, sName));
-		}
+//		for (ItemCollection aworkitem : col) {
+//			String sName = aworkitem.getItemValueString("txtName");
+//			String sID = aworkitem.getItemValueString("$UniqueID");
+//			teamSelection.add(new SelectItem(sID, sName));
+//		}
 
 		return teamSelection;
 	}

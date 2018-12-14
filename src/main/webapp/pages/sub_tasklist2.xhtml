@@ -19,10 +19,10 @@
 					<f:facet name="header">
 						<h:outputText value="#{global.summary}" />
 					</f:facet>
-						<h:link outcome="/pages/workflow/workitem">
-							<h:outputText value="#{workitem.item['txtworkflowSummary']}" />
-							<f:param name="id" value="#{workitem.item['$uniqueid']}" />
-					</h:link>
+					<h:commandLink
+						action="#{workflowController.load(workitem.item['$uniqueid'],'/pages/workflow/workitem')}">
+						<h:outputText value="#{workitem.item['txtworkflowSummary']}" />
+					</h:commandLink>
 
 				</h:column>
 
