@@ -92,7 +92,7 @@
 				disabled="#{!(tasklistController.pageIndex>0)}"
 				value="&lt;&lt; #{global.prev}">
 			</h:commandButton>
-			<h:commandButton actionListener="#{tasklistController.next()}"
+			<h:commandButton actionListener="#{tasklistController.forward()}"
 				disabled="#{tasklistController.endOfList}" 
 				value="#{global.next} &gt;&gt;">
 			</h:commandButton>
