@@ -58,7 +58,9 @@
 
 				<h3>#{global.workflow}</h3>
 
-				<h:commandButton actionListener="#{documentController.save()}"
+				<h:commandButton
+					action="/pages/config/teamlist?faces-redirect=true"
+					 actionListener="#{documentController.save()}"
 					value="#{global.save}">
 				</h:commandButton>
 

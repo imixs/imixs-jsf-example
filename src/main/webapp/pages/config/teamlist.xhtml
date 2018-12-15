@@ -6,12 +6,6 @@
 	template="/layout/template.xhtml">
 
 
-	<f:metadata>
-		<f:viewAction action="#{viewController.setQuery('type:team')}" />
-		<f:viewAction action="#{viewController.setSortBy('txtname')}" />
-		<f:viewAction action="#{viewHandler.onLoad(viewController)}" />
-	</f:metadata>
-
 	<ui:define name="content">
 		<f:view>
 
@@ -22,7 +16,7 @@
 				</h2>
 
 				<h:dataTable id="datatable_id" columns="7" class="imixsdatatable"
-					value="#{viewHandler.data}" var="record">
+					value="#{teamlistController.data}" var="record">
 
 					<h:column>
 						<f:facet name="header">
@@ -58,15 +52,13 @@
 				</h:dataTable>
 
 				<h:commandButton 
-					action="/pages/config/teamlist?faces-redirect=true"
-					actionListener="#{viewController.back()}"
-					disabled="#{viewController.pageIndex==0}" value="#{global.prev}">
+					actionListener="#{teamlistController.back()}"
+					disabled="#{teamlistController.pageIndex==0}" value="#{global.prev}">
 				</h:commandButton>
 
 				<h:commandButton 
-					action="/pages/config/teamlist?faces-redirect=true"
-					actionListener="#{viewController.next()}"
-					disabled="#{viewController.endOfList}" value="#{global.next}">
+					actionListener="#{teamlistController.next()}"
+					disabled="#{teamlistController.endOfList}" value="#{global.next}">
 				</h:commandButton>
 				
 				

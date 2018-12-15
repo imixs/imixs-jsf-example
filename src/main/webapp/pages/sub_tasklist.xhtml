@@ -13,7 +13,7 @@
 			<h2>#{global.worklist}</h2>
 
 			<h:dataTable class="imixsdatatable" style="width:100%"
-				value="#{worklistController.workitems}" var="workitem">
+				value="#{tasklistController.data}" var="workitem">
 
 				<h:column>
 					<f:facet name="header">
@@ -87,12 +87,12 @@
 			</h:dataTable>
 
 
-			<h:commandButton actionListener="#{worklistController.doLoadPrev}"
-				disabled="#{!(worklistController.pageIndex>0)}"
+			<h:commandButton actionListener="#{tasklistController.back()}"
+				disabled="#{!(tasklistController.pageIndex>0)}"
 				value="&lt;&lt; #{global.prev}">
 			</h:commandButton>
-			<h:commandButton actionListener="#{worklistController.doLoadNext}"
-				disabled="#{worklistController.endOfList}"
+			<h:commandButton actionListener="#{tasklistController.next()}"
+				disabled="#{tasklistController.endOfList}" 
 				value="#{global.next} &gt;&gt;">
 			</h:commandButton>
 
