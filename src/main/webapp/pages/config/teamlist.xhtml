@@ -6,6 +6,9 @@
 	xmlns:i="http://xmlns.jcp.org/jsf/composite/imixs"
 	template="/layout/template.xhtml">
 
+
+
+
 	<ui:define name="content">
 		<f:view>
 
@@ -16,7 +19,7 @@
 				</h2>
 
 				<h:dataTable id="datatable_id" columns="7" class="imixsdatatable"
-					value="#{teamlistController.data}" var="record">
+					value="#{viewHandler.getData(teamlistController)}" var="record">
 
 					<h:column>
 						<f:facet name="header">
@@ -52,12 +55,13 @@
 				</h:dataTable>
 
 				<h:commandButton 
-					actionListener="#{teamlistController.back()}"
+					actionListener="#{viewHandler.back(teamlistController)}"
 					disabled="#{teamlistController.pageIndex==0}" value="#{global.prev}">
 				</h:commandButton>
 
+				
 				<h:commandButton 
-					actionListener="#{teamlistController.forward()}"
+					actionListener="#{viewHandler.forward(teamlistController)}" 
 					disabled="#{teamlistController.endOfList}" value="#{global.next}">
 				</h:commandButton>
 				

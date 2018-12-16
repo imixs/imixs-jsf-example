@@ -14,7 +14,7 @@
 			<h2>#{global.worklist}</h2>
 
 			<h:dataTable class="imixsdatatable" style="width:100%"
-				value="#{tasklistController.data}" var="workitem">
+				value="#{viewHandler.getData(tasklistController)}" var="workitem">
 
 				<h:column>
 					<f:facet name="header">
@@ -88,11 +88,11 @@
 			</h:dataTable>
 
 
-			<h:commandButton actionListener="#{tasklistController.back()}"
+			<h:commandButton actionListener="#{viewHandler.back(tasklistController)}"
 				disabled="#{!(tasklistController.pageIndex>0)}"
 				value="&lt;&lt; #{global.prev}">
 			</h:commandButton>
-			<h:commandButton actionListener="#{tasklistController.forward()}"
+			<h:commandButton actionListener="#{viewHandler.forward(tasklistController)}"
 				disabled="#{tasklistController.endOfList}" 
 				value="#{global.next} &gt;&gt;">
 			</h:commandButton>
@@ -103,7 +103,7 @@
 					target="#{workflowController.workitem.item['$ModelVersion']}"
 					value="1.0.1" />
 				<f:setPropertyActionListener
-					target="#{workflowController.workitem.item['$ProcessID']}"
+					target="#{workflowController.workitem.item['$taskID']}"
 					value="1000" />
 			</h:commandButton>
 

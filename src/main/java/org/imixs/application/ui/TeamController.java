@@ -27,9 +27,18 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.ejb.EJB;
+import javax.enterprise.context.SessionScoped;
+import javax.enterprise.event.Observes;
 import javax.faces.model.SelectItem;
+import javax.inject.Named;
 
 import org.imixs.workflow.ItemCollection;
+import org.imixs.workflow.engine.DocumentService;
+import org.imixs.workflow.exceptions.AccessDeniedException;
+import org.imixs.workflow.faces.data.WorkflowEvent;
+
+
 
 /**
  * This backing bean is an example how to interact with the EntityService to
@@ -44,30 +53,25 @@ import org.imixs.workflow.ItemCollection;
  * @author rsoika
  * 
  */
-@javax.inject.Named("teamController")
-@javax.enterprise.context.SessionScoped
+@Named
+@SessionScoped
 public class TeamController implements Serializable {
-
 
 	private static final long serialVersionUID = 1L;
 
-	@javax.enterprise.context.SessionScoped
+	
 	private ArrayList<SelectItem> teamSelection;
-	
-	
-	
 
-	public TeamController() {
-		super();
-		// set a default type
-		//setDefaultType("team");
+	@EJB
+	DocumentService documentSerivce;
+
+	public void onWorkflowEvent(@Observes WorkflowEvent workflowEvent) throws AccessDeniedException {
+		if (workflowEvent.getEventType() == WorkflowEvent.DOCUMENT_BEFORE_SAVE) {
+			 workflowEvent.getWorkitem().setItemValue("type", "team");
+		}
+
 	}
 
-
-	
-
-	
-	
 	/**
 	 * returns an arrayList of Selectitems with all team IDs
 	 * 
@@ -77,17 +81,15 @@ public class TeamController implements Serializable {
 
 		teamSelection = new ArrayList<SelectItem>();
 
-		//List<ItemCollection> col = getDocumentService().getDocumentsByType(getDefaultType());
+		List<ItemCollection> col = documentSerivce.getDocumentsByType("type");
 
-//		for (ItemCollection aworkitem : col) {
-//			String sName = aworkitem.getItemValueString("txtName");
-//			String sID = aworkitem.getItemValueString("$UniqueID");
-//			teamSelection.add(new SelectItem(sID, sName));
-//		}
+		for (ItemCollection aworkitem : col) {
+			String sName = aworkitem.getItemValueString("txtName");
+			String sID = aworkitem.getItemValueString("$UniqueID");
+			teamSelection.add(new SelectItem(sID, sName));
+		}
 
 		return teamSelection;
 	}
 
-	
-	
 }
