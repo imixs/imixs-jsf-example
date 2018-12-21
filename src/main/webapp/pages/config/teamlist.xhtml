@@ -34,7 +34,7 @@
 							<h:outputText value="#{global.modified}" />
 						</f:facet>
 						<h:outputText value="#{record.item['$modified']}">
-							
+
 						</h:outputText>
 					</h:column>
 
@@ -48,27 +48,28 @@
 
 					<!-- delete -->
 					<h:column>
-						<h:commandLink value="#{global.delete}"
-							action="teamlist"
+						<h:commandLink value="#{global.delete}" action="teamlist"
 							actionListener="#{documentController.delete(record.item['$uniqueid'])}" />
 					</h:column>
 				</h:dataTable>
 
-				<h:commandButton 
+				<h:commandButton
 					actionListener="#{viewHandler.back(teamlistController)}"
-					disabled="#{teamlistController.pageIndex==0}" value="#{global.prev}">
+					disabled="#{teamlistController.pageIndex==0}"
+					value="#{global.prev}">
 				</h:commandButton>
 
-				
-				<h:commandButton 
-					actionListener="#{viewHandler.forward(teamlistController)}" 
+
+				<h:commandButton
+					actionListener="#{viewHandler.forward(teamlistController)}"
 					disabled="#{teamlistController.endOfList}" value="#{global.next}">
 				</h:commandButton>
-				
-				
+
+
 				<h:commandButton actionListener="#{documentController.create()}"
 					action="team" value="#{global.add}">
-
+					<f:setPropertyActionListener
+						target="#{documentController.document.item['type']}" value="team" />
 				</h:commandButton>
 
 

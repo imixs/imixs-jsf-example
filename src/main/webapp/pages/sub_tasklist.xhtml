@@ -34,10 +34,15 @@
 					<ui:repeat var="owner" value="#{workitem.itemList['namOwner']}">
 						<h:outputText value="#{owner}" />
 						<br />
-
 					</ui:repeat>
-
-
+				</h:column>
+				
+				
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Team" />
+					</f:facet>
+					<h:outputText  value="#{workitem.item['_teamName']}" />
 				</h:column>
 
 
@@ -51,8 +56,6 @@
 					</h:outputText>
 					<h:outputText value=" #{global.by} #{workitem.item['namcreator']}" />
 				</h:column>
-
-
 
 
 				<h:column>
@@ -75,9 +78,6 @@
 					<h:outputText value="#{workitem.item['txtworkflowstatus']}" />
 				</h:column>
 
-
-
-
 				<h:column>
 					<h:commandLink value="#{global.delete}"
 						action="#{workflowController.delete(workitem.item['$uniqueid'],'worklist')}"
@@ -97,14 +97,8 @@
 				value="#{global.next} &gt;&gt;">
 			</h:commandButton>
 
-			<h:commandButton actionListener="#{workflowController.create}"
+			<h:commandButton actionListener="#{workflowController.create('1.0.1',1000,'')}"
 				action="/pages/workflow/workitem" value="Create New Ticket">
-				<f:setPropertyActionListener
-					target="#{workflowController.workitem.item['$ModelVersion']}"
-					value="1.0.1" />
-				<f:setPropertyActionListener
-					target="#{workflowController.workitem.item['$taskID']}"
-					value="1000" />
 			</h:commandButton>
 
 

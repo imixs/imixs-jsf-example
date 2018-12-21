@@ -38,8 +38,6 @@ import org.imixs.workflow.engine.DocumentService;
 import org.imixs.workflow.exceptions.AccessDeniedException;
 import org.imixs.workflow.faces.data.WorkflowEvent;
 
-
-
 /**
  * This backing bean is an example how to interact with the EntityService to
  * manage ItemCollections as instances of Entities
@@ -59,15 +57,25 @@ public class TeamController implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	
 	private ArrayList<SelectItem> teamSelection;
 
 	@EJB
 	DocumentService documentSerivce;
 
+	/**
+	 * Translate team ref into the team name (_teamName)
+	 * 
+	 * @param workflowEvent
+	 * @throws AccessDeniedException
+	 */
 	public void onWorkflowEvent(@Observes WorkflowEvent workflowEvent) throws AccessDeniedException {
-		if (workflowEvent.getEventType() == WorkflowEvent.DOCUMENT_BEFORE_SAVE) {
-			 workflowEvent.getWorkitem().setItemValue("type", "team");
+		if (workflowEvent.getEventType() == WorkflowEvent.WORKITEM_BEFORE_PROCESS) {
+			String ref = workflowEvent.getWorkitem().getItemValueString("team");
+			// load team object
+			ItemCollection team = documentSerivce.load(ref);
+			if (team != null) {
+				workflowEvent.getWorkitem().setItemValue("_teamName", team.getItemValueString("txtname"));
+			}
 		}
 
 	}
@@ -81,7 +89,7 @@ public class TeamController implements Serializable {
 
 		teamSelection = new ArrayList<SelectItem>();
 
-		List<ItemCollection> col = documentSerivce.getDocumentsByType("type");
+		List<ItemCollection> col = documentSerivce.getDocumentsByType("team");
 
 		for (ItemCollection aworkitem : col) {
 			String sName = aworkitem.getItemValueString("txtName");
