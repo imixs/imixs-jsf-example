@@ -20,3 +20,7 @@ services:
       - "8787:8787"
       - "9990:9990"
     
+  imixsadmin:
+    image: imixs/imixs-admin
+    ports:
+      - "8888:8080"
