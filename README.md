@@ -16,18 +16,35 @@ You can also download the application from the [latest release](https://github.c
 ## 2. Deploy the Application
 To deploy the application successfully, the application sever need to provide a valid database pool named 'jdbc/workflow' and a JAAS security configuration named 'imixsrealm'. You will find an installation guide [here](http://www.imixs.org/doc/sampleapplication.html).
 
-### Setup Security Roles
-The security concept of imixs-workflow defines default roles:
 
-* org.imixs.ACCESSLEVEL.NOACCESS
-* org.imixs.ACCESSLEVEL.READACCESS
-* org.imixs.ACCESSLEVEL.AUTHORACCESS
-* org.imixs.ACCESSLEVEL.EDITORACCESS
-* org.imixs.ACCESSLEVEL.MANAGERACCESS
 
-Each user accessing the Imixs-Workflow engine should be mapped to one of these roles. The user roles can be mapped by configuration from the application server. You will find more information about the general ACL concept of the [Imixs-Workflow Deployent guide](http://www.imixs.org/doc/deployment/security.html).
 
-__NOTE:__ The Imixs-jsf-example is tested with JBoss/Wildfly and GlassFish4/Payara Servers.
+### Authentication and Authorization
+
+Imixs-Workflow is a human-centry workflow engine which means that each actor need to authenticate against the service to interact. The Workflow Engine is based on Java EE and so the authentication is also standardized by the JAAS Specification which supports different authentication solutions like LDAP, Database, SSO and more.  
+
+The default Docker setup in this project provides a set of predefined users which can be used for testing purpose. The test users are stored in a separate user and roles properties file named 'sampleapp-roles.roperties' and 'sampleapp-users.properties'. The property files are configured in a file based security domain within the server configuration. See the following list of predefined test user accounts:
+
+
+| User    | Role                   | Password |
+|---------|------------------------|----------|
+| admin   | IMIXS-WORKFLOW-Manager | adminadmin |
+| manfred | IMIXS-WORKFLOW-Manager | password |
+| alex    | IMIXS-WORKFLOW-Manager | password |
+| anna    | IMIXS-WORKFLOW-Author  | password |
+| marty   | IMIXS-WORKFLOW-Author  | password |
+| melman  | IMIXS-WORKFLOW-Author  | password |
+| gloria  | IMIXS-WORKFLOW-Author  | password |
+| skipper | IMIXS-WORKFLOW-Author  | password |
+| kowalski| IMIXS-WORKFLOW-Author  | password |
+| private | IMIXS-WORKFLOW-Author  | password |
+| rico    | IMIXS-WORKFLOW-Author  | password |
+
+
+You can add additional accounts or change the default account later, by updated the files "_sampleapp-roles.properties_" and "_sampleapp-users.properties_". You can also configure a different custom security realm (e.g. LDAP or Database). 
+
+You will find more information about the security concept of the [Imixs-Workflow Deployent guide](http://www.imixs.org/doc/deployment/security.html).
+
 
 ## 3. Run the Application
 After deployment you can start the sample application from:
