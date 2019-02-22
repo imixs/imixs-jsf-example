@@ -38,11 +38,10 @@ import org.imixs.workflow.engine.plugins.AbstractPlugin;
 import org.imixs.workflow.exceptions.PluginException;
 
 /**
- * This Plugin demonstrates the CDI behavior of an imixs workflow pugin.
- * <p>
- * The plugin copies the team members from the selected team into the item
- * teamMembers.
- * 
+ * The TeamPlugin copies the team members from the selected team into the item
+ * 'teamMembers'. This item is mapped into the workflow model 'ticket.bpmn'.
+ * When a ticket is submitted, the teamMembers become owner of the process
+ * instance.
  * 
  * @See team.xhtml, sub_main.xhtm.
  * @author Ralph Soika
@@ -58,7 +57,6 @@ public class TeamPlugin extends AbstractPlugin {
 
 	private static Logger logger = Logger.getLogger(TeamPlugin.class.getName());
 
-	
 	/**
 	 * The run method looks up the team entity and copies the member list into the
 	 * item 'teamMembers'
@@ -68,15 +66,15 @@ public class TeamPlugin extends AbstractPlugin {
 
 		String teamRef = documentContext.getItemValueString("team");
 		logger.info("...lookup team reference: " + teamRef);
-		
+
 		// now we load the team configuration
 		ItemCollection team = documentService.load(teamRef);
 		if (team != null) {
 			// copy team members into the item 'namTeam'
-			List<String> teamMembers=team.getItemValue("members");
+			List<String> teamMembers = team.getItemValue("members");
 			documentContext.replaceItemValue("teamMembers", teamMembers);
 			// write new team list into the server log....
-			for (String member: teamMembers) {
+			for (String member : teamMembers) {
 				logger.info("...... add team member " + member);
 			}
 		}
