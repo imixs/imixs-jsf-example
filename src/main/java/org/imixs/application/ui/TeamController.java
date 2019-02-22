@@ -45,6 +45,8 @@ import org.imixs.workflow.faces.data.WorkflowEvent;
  * The bean provides an ItemCollectionAdapter to simplify to access properties
  * of the ItemCollection from an JSP page.
  * <p>
+ * See also the TeamPlugin. This plugin maps the team selection into a team item
+ * of the workitem during processing.
  * 
  * @see team.xhtml, teamlist.xhtml
  * 

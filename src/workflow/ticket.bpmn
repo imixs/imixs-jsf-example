@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- origin at X=0.0 Y=0.0 -->
-<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:ext="http://org.eclipse.bpmn2/ext" xmlns:imixs="http://www.imixs.org/bpmn2" xmlns:xs="http://www.w3.org/2001/XMLSchema" id="Definitions_1" exporter="org.eclipse.bpmn2.modeler.core" exporterVersion="1.4.2.SNAPSHOT-v20180116-1616-B1" targetNamespace="http://www.imixs.org/bpmn2">
+<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:ext="http://org.eclipse.bpmn2/ext" xmlns:imixs="http://www.imixs.org/bpmn2" xmlns:xs="http://www.w3.org/2001/XMLSchema" id="Definitions_1" exporter="org.eclipse.bpmn2.modeler.core" exporterVersion="1.5.0.Final-v20180515-1642-B1" targetNamespace="http://www.imixs.org/bpmn2">
   <bpmn2:extensionElements>
     <imixs:item name="txtworkflowmodelversion" type="xs:string">
-      <imixs:value><![CDATA[1.0.1]]></imixs:value>
+      <imixs:value><![CDATA[1.1]]></imixs:value>
     </imixs:item>
     <imixs:item name="txtfieldmapping" type="xs:string">
-      <imixs:value><![CDATA[Team | namteam]]></imixs:value>
+      <imixs:value><![CDATA[Team | teamMembers]]></imixs:value>
       <imixs:value><![CDATA[Creator | namCreator]]></imixs:value>
       <imixs:value><![CDATA[CurrentEditor | namCurrentEditor]]></imixs:value>
     </imixs:item>
     <imixs:item name="txtplugins" type="xs:string">
+      <imixs:value><![CDATA[org.imixs.application.ui.TeamPlugin]]></imixs:value>
       <imixs:value><![CDATA[org.imixs.workflow.engine.plugins.AccessPlugin]]></imixs:value>
       <imixs:value><![CDATA[org.imixs.workflow.engine.plugins.OwnerPlugin]]></imixs:value>
       <imixs:value><![CDATA[org.imixs.workflow.engine.plugins.HistoryPlugin]]></imixs:value>
@@ -36,6 +37,13 @@
         <imixs:item name="txtworkflowabstract" type="CDATA">
           <imixs:value><![CDATA[Create a new Ticket workflow]]></imixs:value>
         </imixs:item>
+        <imixs:item name="keyupdateacl" type="xs:boolean">
+          <imixs:value>true</imixs:value>
+        </imixs:item>
+        <imixs:item name="keyownershipfields" type="xs:string">
+          <imixs:value><![CDATA[namCreator]]></imixs:value>
+          <imixs:value><![CDATA[namCurrentEditor]]></imixs:value>
+        </imixs:item>
       </bpmn2:extensionElements>
       <bpmn2:documentation id="Documentation_1">Create a new ticket</bpmn2:documentation>
       <bpmn2:incoming>SequenceFlow_1</bpmn2:incoming>
@@ -51,16 +59,15 @@
           <imixs:value>true</imixs:value>
         </imixs:item>
         <imixs:item name="keyownershipfields" type="xs:string">
-          <imixs:value><![CDATA[namCreator]]></imixs:value>
+          <imixs:value><![CDATA[teamMembers]]></imixs:value>
         </imixs:item>
         <imixs:item name="keyaddwritefields" type="xs:string">
           <imixs:value><![CDATA[namteam]]></imixs:value>
-          <imixs:value><![CDATA[namCreator]]></imixs:value>
+          <imixs:value><![CDATA[teamMembers]]></imixs:value>
+          <imixs:value><![CDATA[namCurrentEditor]]></imixs:value>
         </imixs:item>
         <imixs:item name="namownershipnames" type="xs:string"/>
-        <imixs:item name="namaddwriteaccess" type="xs:string">
-          <imixs:value><![CDATA[{process:Finance:assist}]]></imixs:value>
-        </imixs:item>
+        <imixs:item name="namaddwriteaccess" type="xs:string"/>
       </bpmn2:extensionElements>
       <bpmn2:incoming>SequenceFlow_3</bpmn2:incoming>
       <bpmn2:incoming>SequenceFlow_6</bpmn2:incoming>
@@ -80,6 +87,7 @@
         <imixs:item name="keyaddwritefields" type="xs:string">
           <imixs:value><![CDATA[namteam]]></imixs:value>
           <imixs:value><![CDATA[namCurrentEditor]]></imixs:value>
+          <imixs:value><![CDATA[teamMembers]]></imixs:value>
         </imixs:item>
       </bpmn2:extensionElements>
       <bpmn2:incoming>SequenceFlow_8</bpmn2:incoming>
@@ -231,6 +239,10 @@
       <bpmn2:text>assign the process instance</bpmn2:text>
     </bpmn2:textAnnotation>
     <bpmn2:association id="Association_2" sourceRef="TextAnnotation_2" targetRef="IntermediateCatchEvent_3"/>
+    <bpmn2:textAnnotation id="TextAnnotation_3">
+      <bpmn2:text>The TeamPlugin copies the members of the selected Team into the item 'teamMembers'. </bpmn2:text>
+    </bpmn2:textAnnotation>
+    <bpmn2:association id="Association_3" sourceRef="TextAnnotation_3" targetRef="IntermediateCatchEvent_1"/>
   </bpmn2:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1" name="Default Process Diagram">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="ticket">
@@ -322,6 +334,12 @@
           <dc:Bounds height="44.0" width="109.0" x="557.0" y="70.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_TextAnnotation_3" bpmnElement="TextAnnotation_3">
+        <dc:Bounds height="81.0" width="131.0" x="370.0" y="300.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_13">
+          <dc:Bounds height="75.0" width="119.0" x="376.0" y="300.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_1" bpmnElement="SequenceFlow_1" sourceElement="BPMNShape_1" targetElement="BPMNShape_Task_1">
         <di:waypoint xsi:type="dc:Point" x="76.0" y="148.0"/>
         <di:waypoint xsi:type="dc:Point" x="103.0" y="148.0"/>
@@ -411,6 +429,12 @@
         <di:waypoint xsi:type="dc:Point" x="485.0" y="148.0"/>
         <di:waypoint xsi:type="dc:Point" x="510.0" y="148.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_27"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_Association_3" bpmnElement="Association_3" sourceElement="BPMNShape_TextAnnotation_3" targetElement="BPMNShape_IntermediateCatchEvent_1">
+        <di:waypoint xsi:type="dc:Point" x="370.0" y="340.0"/>
+        <di:waypoint xsi:type="dc:Point" x="298.0" y="340.0"/>
+        <di:waypoint xsi:type="dc:Point" x="298.0" y="166.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_15"/>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
     <bpmndi:BPMNLabelStyle id="BPMNLabelStyle_1">
