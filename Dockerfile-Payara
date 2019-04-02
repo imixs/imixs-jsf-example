@@ -1,0 +1,17 @@
+FROM payara/server-full:181
+
+# Imixs-JSF-Sample Version 1.0.2
+MAINTAINER ralph.soika@imixs.com
+
+# Setup configuration
+USER payara
+COPY ./src/docker/configuration/payara/postgresql-9.4.1212.jar /opt/payara41/glassfish/domains/domain1/lib
+COPY ./src/docker/configuration/payara/domain.xml /opt/payara41/glassfish/domains/domain1/config
+COPY ./src/docker/configuration/payara/keyfile /opt/payara41/glassfish/domains/domain1/config 
+
+USER root
+RUN chown payara:payara /opt/payara41/glassfish/domains/domain1/config/keyfile
+USER payara
+
+# Copy sample application
+COPY ./target/imixs-jsf-example-*.war /opt/payara41/glassfish/domains/domain1/autodeploy/
