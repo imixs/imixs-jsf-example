@@ -1,4 +1,4 @@
-# Payara
+# Glassfish / Payara
 
 This folder contains configuration files used to build a docker container running Payara 4.1.2.
 
