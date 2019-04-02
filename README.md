@@ -136,5 +136,7 @@ you may have to grant the deployment folder first to allow the docker non privil
 
 	$ sudo chmod 777 src/docker/deployments/
 	
-	
+## GlassFish / Payara
+
+The Imixs-JSF-Sample application includes also a setup to run Payara on Docker. You can find additional information [here](src/docker/configuration/payara/).	
 	 
