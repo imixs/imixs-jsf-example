@@ -25,7 +25,7 @@
  *  	Ralph Soika - Software Developer
  *******************************************************************************/
 
-package org.imixs.application.ui;
+package org.imixs.application.plugin;
 
 import java.util.List;
 import java.util.logging.Logger;

@@ -11,7 +11,8 @@
       <imixs:value><![CDATA[CurrentEditor | namCurrentEditor]]></imixs:value>
     </imixs:item>
     <imixs:item name="txtplugins" type="xs:string">
-      <imixs:value><![CDATA[org.imixs.application.ui.TeamPlugin]]></imixs:value>
+      <imixs:value><![CDATA[org.imixs.application.plugin.DemoPlugin]]></imixs:value>
+      <imixs:value><![CDATA[org.imixs.application.plugin.TeamPlugin]]></imixs:value>
       <imixs:value><![CDATA[org.imixs.workflow.engine.plugins.AccessPlugin]]></imixs:value>
       <imixs:value><![CDATA[org.imixs.workflow.engine.plugins.OwnerPlugin]]></imixs:value>
       <imixs:value><![CDATA[org.imixs.workflow.engine.plugins.HistoryPlugin]]></imixs:value>

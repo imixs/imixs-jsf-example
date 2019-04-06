@@ -25,7 +25,7 @@
  *  	Ralph Soika - Software Developer
  *******************************************************************************/
 
-package org.imixs.application.ui;
+package org.imixs.application.plugin;
 
 import java.util.List;
 import java.util.logging.Logger;
@@ -61,6 +61,7 @@ public class DemoPlugin extends AbstractPlugin {
 	public ItemCollection run(ItemCollection adocumentContext, ItemCollection adocumentActivity)
 			throws PluginException {
 
+		logger.info("...running demo plugin...");
 		// test model service
 		List<String> versions = modelService.getVersions();
 		for (String aversion : versions) {

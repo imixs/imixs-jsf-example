@@ -21,3 +21,8 @@ services:
       - "9990:9990"
     volumes:
       - ~/git/imixs-jsf-example/src/docker/deployments:/opt/wildfly/standalone/deployments/    
+
+  imixsadmin:
+    image: imixs/imixs-admin
+    ports:
+      - "8888:8080"      
