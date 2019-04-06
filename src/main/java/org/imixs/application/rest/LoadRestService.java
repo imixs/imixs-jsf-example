@@ -42,6 +42,7 @@ import org.imixs.workflow.ItemCollection;
 import org.imixs.workflow.WorkflowKernel;
 import org.imixs.workflow.engine.WorkflowService;
 import org.imixs.workflow.exceptions.AccessDeniedException;
+import org.imixs.workflow.exceptions.AdapterException;
 import org.imixs.workflow.exceptions.ModelException;
 import org.imixs.workflow.exceptions.PluginException;
 import org.imixs.workflow.exceptions.ProcessingErrorException;
@@ -89,14 +90,13 @@ public class LoadRestService {
 
 			// create example workitem
 			ItemCollection workitem = new ItemCollection();
-			workitem.replaceItemValue(WorkflowKernel.MODELVERSION, modelversion);
-			workitem.replaceItemValue(WorkflowKernel.PROCESSID, processid);
-			workitem.replaceItemValue(WorkflowKernel.EVENTID, activityid);
+			
+			workitem.model( modelversion).task( processid).event( activityid);
 			workitem.replaceItemValue(WorkflowKernel.TYPE, "workitem");
 			workitem.replaceItemValue("subject", "Loadtest-" + System.currentTimeMillis());
 			try {
 				workflowService.processWorkItem(workitem);
-			} catch (AccessDeniedException | ProcessingErrorException | PluginException | ModelException e) {
+			} catch (AccessDeniedException | ProcessingErrorException | PluginException | ModelException | AdapterException e) {
 				e.printStackTrace();
 
 				return "load test failed: " + e.getMessage();
