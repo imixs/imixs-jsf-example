@@ -76,6 +76,9 @@ Use the following curl command to upload the model from your workspace:
 The BPMN Model is part of the project and located under /src/workflow/ticket.bpmn
 
 
+**NOTE:** cURL isn't installed in Windows by default. See the [Use Curl on Windows](https://stackoverflow.com/questions/9507353/how-do-i-install-and-use-curl-on-windows) discussion on stackoverflow.
+
+
 ## Reporting
 
 Imixs-Workflow provides a reporting interface which can be accessed by the [Imixs Rest API](http://www.imixs.org/doc/restapi/reportservice.html). A report definition can be created with the Eclipse Plug-in "Imixs-Report" which is part of the [Imixs-BPMN project](http://www.imixs.org/doc/modelling/index.html).
