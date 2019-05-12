@@ -56,6 +56,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<!-- 4.5.5 -->
 		<org.imixs.workflow.version>4.5.5</org.imixs.workflow.version>
 		<custom.webResources>src/main/webapp</custom.webResources>
 		<custom.unpackTypes>war</custom.unpackTypes>
@@ -148,7 +149,7 @@
 
 
 		<profile>
-			<id>docker-build-openlibertry</id>
+			<id>docker-build-openliberty</id>
 			<build>
 				<plugins>
 					<plugin>
