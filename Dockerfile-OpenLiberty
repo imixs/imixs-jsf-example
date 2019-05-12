@@ -1,0 +1,13 @@
+FROM open-liberty
+
+# Imixs-JSF-Sample Version 1.0.2
+MAINTAINER ralph.soika@imixs.com
+
+# Copy postgres JDBC driver
+COPY ./src/docker/configuration/openliberty/postgresql-9.4.1212.jar /opt/ol/wlp/lib
+
+# Add config
+COPY ./src/docker/configuration/openliberty/server.xml /config/
+
+# Copy sample application
+COPY ./target/imixs-jsf-example-*.war /config/dropins/
