@@ -54,6 +54,45 @@
                     user="postgres"
                     password="adminadmin"/>
     </dataSource>
-    
 
+
+
+	<!-- security realm -->    
+	<basicRegistry id="basic" realm="imixsrealm">
+	    <user name="admin" password="adminadmin" /> 
+	    <user name="manfred" password="password" /> 
+	    <user name="alex" password="password" /> 
+	    <user name="anna" password="password" /> 
+	    <user name="marty" password="password" /> 
+	    <user name="melman" password="password" /> 
+	    <user name="gloria" password="password" /> 
+	    <user name="skipper" password="password" /> 
+	    <user name="kowalski" password="password" /> 
+	    <user name="private" password="password" /> 
+	    <user name="rico" password="password" /> 
+	   
+	    <group name="org.imixs.ACCESSLEVEL.MANAGERACCESS">
+	      <member name="admin" />
+	    </group>
+	
+	    <group name="org.imixs.ACCESSLEVEL.AUTHORACCESS">
+	      <member name="admin" />
+	      <member name="alex" />
+	      <member name="manfred" />
+	      <member name="anna" />
+	      <member name="anna" />
+	      <member name="marty" />
+	      <member name="melman" />
+	      <member name="gloria" />
+	      <member name="skipper" />
+	      <member name="kowalski" />
+	      <member name="private" />
+	      <member name="rico" />
+	    </group>
+	
+	   
+	</basicRegistry>
+  
+  
+  
 </server>
