@@ -1,4 +1,4 @@
-version: "3.1"
+version: "3.6"
 services:
 
   imixssample-db:
@@ -26,3 +26,11 @@ services:
     image: imixs/imixs-admin
     ports:
       - "8888:8080"      
+      
+  mailgateway:
+    image: imixs/exim4
+    environment:
+      EXIM_SMARTHOST: "www149.your-server.de:25"
+      EXIM_PASSWORD: "www149.your-server.de:webmaster@imixs.com:webmaster4imixsmail"
+      EXIM_ALLOWED_SENDERS: "10.0.0.0/8:172.16.0.0/12:192.168.0.0/16"  
+      
