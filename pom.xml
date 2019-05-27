@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.imixs.application</groupId>
@@ -65,17 +66,17 @@
 
 
 	<repositories>
-	   	<!-- Sonatype Snapshot repository -->
-      	<repository>
-            <id>sonatype-snaptshots</id>
-            <name>Sonatype Snapshot repository</name>
-            <url>http://oss.sonatype.org/content/repositories/snapshots</url>
-      	</repository> 
-    </repositories>
-    
-    
-    
-    <profiles>
+		<!-- Sonatype Snapshot repository -->
+		<repository>
+			<id>sonatype-snaptshots</id>
+			<name>Sonatype Snapshot repository</name>
+			<url>http://oss.sonatype.org/content/repositories/snapshots</url>
+		</repository>
+	</repositories>
+
+
+
+	<profiles>
 
 		<profile>
 			<id>docker-build</id>
@@ -109,8 +110,8 @@
 				</plugins>
 			</build>
 		</profile>
-		
-		
+
+
 		<profile>
 			<id>docker-build-payara</id>
 			<build>
@@ -185,7 +186,7 @@
 
 
 	</profiles>
-    
+
 	<build>
 		<resources>
 			<!-- enable resource filtering for multi language version -->
@@ -302,7 +303,6 @@
 			<artifactId>lucene-codecs</artifactId>
 			<version>${lucene.version}</version>
 		</dependency>
-
 
 	</dependencies>
 </project>

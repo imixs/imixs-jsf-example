@@ -8,11 +8,14 @@ services:
       POSTGRES_DB: workflow-db
   
   imixssample-app:
+    depends_on:
+      - imixssample-db
     image: imixs/imixs-jsf-example
     environment:
       TZ: "Europe/Berlin"
     ports:
       - "9080:9080"
+      - "9443:9443"
     volumes:
       - ~/git/imixs-jsf-example/src/docker/deployments:/config/dropins/   
 

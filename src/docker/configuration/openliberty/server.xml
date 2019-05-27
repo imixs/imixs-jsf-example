@@ -4,7 +4,14 @@
     <!-- Enable features -->
     <featureManager>
         <feature>javaee-8.0</feature>
-        <feature>mpOpenAPI-1.1</feature>
+        
+        <feature>mpMetrics-1.1</feature>
+
+<!-- 
+<feature>mpOpenAPI-1.1</feature>
+        <feature>mpHealth-1.0</feature>
+        <feature>mpConfig-1.3</feature>
+ -->     
         <!-- 
         <feature>apiDiscovery-1.0</feature>
     	<feature>jaxrs-1.1</feature>
@@ -25,10 +32,55 @@
         basicRegistry element. Specify your own user name below in the name attribute of the user element. For the password, 
         generate an encoded password using bin/securityUtility encode and add it in the password attribute of the user element. 
         Then uncomment the user element. -->
-    <basicRegistry id="basic" realm="BasicRealm"> 
-        <!-- <user name="yourUserName" password="" />  --> 
-    </basicRegistry>
-    
+        
+        
+    <basicRegistry id="basic" realm="imixsrealm">
+	    <user name="admin" password="adminadmin" /> 
+	    <user name="manfred" password="password" /> 
+	    <user name="alex" password="password" /> 
+	    <user name="anna" password="password" /> 
+	    <user name="marty" password="password" /> 
+	    <user name="melman" password="password" /> 
+	    <user name="gloria" password="password" /> 
+	    <user name="skipper" password="password" /> 
+	    <user name="kowalski" password="password" /> 
+	    <user name="private" password="password" /> 
+	    <user name="rico" password="password" /> 
+	    
+	    <!-- metrics access -->
+	    <group name="Administrator">
+	      <member name="admin" />
+	    </group>
+
+	    <group name="Viewer">
+	      <member name="admin" />
+	    </group>
+
+
+	  
+	    <group name="org.imixs.ACCESSLEVEL.MANAGERACCESS">
+	      <member name="admin" />
+	    </group>
+
+	    <group name="org.imixs.ACCESSLEVEL.AUTHORACCESS">
+	      <member name="alex" />
+	      <member name="manfred" />
+	      <member name="anna" />
+	      <member name="marty" />
+	      <member name="melman" />
+	      <member name="gloria" />
+	      <member name="skipper" />
+	      <member name="kowalski" />
+	      <member name="private" />
+	      <member name="rico" />
+	    </group>
+	
+	   
+	</basicRegistry>
+  
+  
+  
+  
     <!-- To access this server from a remote client add a host attribute to the following element, e.g. host="*" -->
     <httpEndpoint id="defaultHttpEndpoint"
                   httpPort="9080"
@@ -63,42 +115,5 @@
 
 
 
-	<!-- security realm -->    
-	<basicRegistry id="basic" realm="imixsrealm">
-	    <user name="admin" password="adminadmin" /> 
-	    <user name="manfred" password="password" /> 
-	    <user name="alex" password="password" /> 
-	    <user name="anna" password="password" /> 
-	    <user name="marty" password="password" /> 
-	    <user name="melman" password="password" /> 
-	    <user name="gloria" password="password" /> 
-	    <user name="skipper" password="password" /> 
-	    <user name="kowalski" password="password" /> 
-	    <user name="private" password="password" /> 
-	    <user name="rico" password="password" /> 
-	   
-	    <group name="org.imixs.ACCESSLEVEL.MANAGERACCESS">
-	      <member name="admin" />
-	    </group>
-	
-	    <group name="org.imixs.ACCESSLEVEL.AUTHORACCESS">
-	      <member name="admin" />
-	      <member name="alex" />
-	      <member name="manfred" />
-	      <member name="anna" />
-	      <member name="anna" />
-	      <member name="marty" />
-	      <member name="melman" />
-	      <member name="gloria" />
-	      <member name="skipper" />
-	      <member name="kowalski" />
-	      <member name="private" />
-	      <member name="rico" />
-	    </group>
-	
-	   
-	</basicRegistry>
-  
-  
   
 </server>
