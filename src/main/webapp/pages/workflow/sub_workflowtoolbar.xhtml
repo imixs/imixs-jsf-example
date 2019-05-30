@@ -9,11 +9,21 @@
 	<div class="imixs-panel">
 		<h3>#{global.workflow}</h3>
 
-		<i:imixsWorkflowActions workflowController="#{workflowController}"
-			disabletooltip="false" />
 
-		<h:commandButton value="#{global.close}" action="/pages/welcome?faced-redirect=true"
-		actionListener="#{workflowController.close()}" />
+		<!-- **** Workflow Actions only visible if user is autor ***** -->
+		<ui:fragment
+			rendered="#{empty workflowController.workitem.item['$lastevent'] or workflowController.workitem.item['$isauthor']}">
+			<i:imixsWorkflowActions workflowController="#{workflowController}"
+				disabletooltip="false" />
+		</ui:fragment>
+		<ui:fragment
+			rendered="#{!(empty workflowController.workitem.item['$lastevent'] or workflowController.workitem.item['$isauthor'])}">
+			<p style="color:red">You are not allowed to edit this Workitem!</p>
+		</ui:fragment>
+
+		<h:commandButton value="#{global.close}"
+			action="/pages/welcome?faced-redirect=true"
+			actionListener="#{workflowController.close()}" />
 
 		<ui:fragment
 			rendered="#{!empty workflowController.workitem.item['txtworkflowhistory']}">

@@ -17,7 +17,7 @@
 
 	<ui:define name="content">
 		<f:view>
-			
+
 
 
 			<h:form id="workitem_form_id">
@@ -33,21 +33,20 @@
 					<ul>
 						<li><a href="#tab-1">General</a></li>
 						<li><a href="#tab-2">Files</a></li>
-						
+
 					</ul>
 					<div id="tab-1">
 						<ui:include src="/pages/workflow/sub_main.xhtml" />
-					</div> 
+					</div>
 					<div id="tab-2">
 						<ui:include src="/pages/workflow/sub_attachments.xhtml" />
-						<div style="clear:left;" />
+						<div style="clear: left;" />
 					</div>
-					
+
 				</div>
 
-				<!-- **** Workflow Actions & History ***** -->
+				<!-- **** Workflow Actions & History  ***** -->
 				<ui:include src="/pages/workflow/sub_workflowtoolbar.xhtml" />
-
 
 			</h:form>
 		</f:view>
