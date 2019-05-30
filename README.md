@@ -144,9 +144,9 @@ you may have to grant the deployment folder first to allow the docker non privil
 The Imixs-JSF-Sample application includes also a setup to run Payara on Docker. You can find additional information [here](src/docker/configuration/payara/).	
 	 
 	 
-## Liberty Application Server
+## Open Liberty 
 
-To run the 	 Imixs-JSF-Sample application on Liberty Application Server with Docker run:
+To run the 	 Imixs-JSF-Sample application on the Open Liberty Application Server with Docker run:
 
 	$ mvn clean install -Pdocker-build-openliberty
 	$ docker-compose -f docker-compose-openliberty.yml up

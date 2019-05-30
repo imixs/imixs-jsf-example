@@ -65,7 +65,7 @@ import org.imixs.workflow.exceptions.ProcessingErrorException;
 public class LoadRestService {
 
 	@javax.ws.rs.core.Context
-	private static HttpServletRequest servletRequest;
+	private HttpServletRequest servletRequest;
 
 	private static Logger logger = Logger.getLogger(LoadRestService.class.getName());
 

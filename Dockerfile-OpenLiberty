@@ -1,4 +1,4 @@
-FROM open-liberty
+FROM open-liberty:kernel
 
 # Imixs-JSF-Sample Version 1.0.2
 MAINTAINER ralph.soika@imixs.com
@@ -7,7 +7,11 @@ MAINTAINER ralph.soika@imixs.com
 COPY ./src/docker/configuration/openliberty/postgresql-9.4.1212.jar /opt/ol/wlp/lib
 
 # Add config
-COPY ./src/docker/configuration/openliberty/server.xml /config/
+COPY --chown=1001:0 ./src/docker/configuration/openliberty/server.xml /config/
+
+#COPY --chown=1001:0  server.xml /config/
+
+
 
 # Copy sample application
 COPY ./target/imixs-jsf-example-*.war /config/dropins/
