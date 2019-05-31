@@ -71,7 +71,7 @@ After you have successful deployed your application you can upload the Ticket wo
 
 Use the following curl command to upload the model from your workspace:
 
-    curl --user admin:adminpassword --request POST -Tsrc/workflow/ticket.bpmn http://localhost:8080/api/model/bpmn
+    curl --user admin:adminadmin --request POST -Tsrc/workflow/ticket.bpmn http://localhost:8080/api/model/bpmn
 
 The BPMN Model is part of the project and located under /src/workflow/ticket.bpmn
 

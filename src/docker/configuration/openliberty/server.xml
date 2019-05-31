@@ -25,6 +25,7 @@
 
 	<basicRegistry id="basic" realm="imixsrealm">
 		<user name="admin" password="adminadmin" />
+		<user name="workflow-service"  password="xxxx" />  
 		<user name="manfred" password="password" />
 		<user name="alex" password="password" />
 		<user name="anna" password="password" />
@@ -35,39 +36,40 @@
 		<user name="kowalski" password="password" />
 		<user name="private" password="password" />
 		<user name="rico" password="password" />
-
-		<!-- metrics access -->
-		<group name="Administrator">
-			<member name="admin" />
-		</group>
-
-		<group name="Viewer">
-			<member name="admin" />
-		</group>
-
-
-
-		<group name="org.imixs.ACCESSLEVEL.MANAGERACCESS">
-			<member name="admin" />
-		</group>
-
-		<group name="org.imixs.ACCESSLEVEL.AUTHORACCESS">
-			<member name="alex" />
-			<member name="manfred" />
-			<member name="anna" />
-			<member name="marty" />
-			<member name="melman" />
-			<member name="gloria" />
-			<member name="skipper" />
-			<member name="kowalski" />
-			<member name="private" />
-			<member name="rico" />
-		</group>
-
-
 	</basicRegistry>
 
 
+	<!-- @RunAs see: 
+		https://stackoverflow.com/questions/51830570/how-to-authorize-a-java-batch-job-so-it-can-run-from-a-startup-bean-in-websphere
+		https://www.ibm.com/support/knowledgecenter/en/SSEQTP_liberty/com.ibm.websphere.wlp.doc/ae/twlp_sec_runas.html
+		https://groups.io/g/openliberty/messages
+	 -->
+	<applicationMonitor dropinsEnabled="false" />
+	
+	<application name="imixs-jsf-example"  context-root="/" type="war" 
+		id="imixs-jsf-example"
+    	location="${server.config.dir}dropins/imixs-jsf-example-4.2.2.war">
+    
+	    <application-bnd>
+	        <security-role name="org.imixs.ACCESSLEVEL.MANAGERACCESS" >
+	            <user name="workflow-service" />
+	            <user name="admin" />
+	            <run-as userid="workflow-service"/>
+	        </security-role>
+	        
+	         <security-role name="org.imixs.ACCESSLEVEL.AUTHORACCESS" >
+	            <user name="manfred"  />
+				<user name="alex"  />
+				<user name="anna" />
+				<user name="marty"  />
+				<user name="melman"  />
+				<user name="gloria"  />
+				<user name="skipper"  />
+				<user name="kowalski"  />
+				<user name="private" />
+	        </security-role>
+	    </application-bnd>
+	</application>
 
 
 	<!-- To access this server from a remote client add a host attribute to 
@@ -98,15 +100,24 @@
 	</dataSource>
 
 
-
+	<!-- timerdb psql -->
 	<dataSource id="timerDataSource"
-		jndiName="jdbc/timerDataSource">
+		jndiName="jdbc/timerDataSource" jdbcDriverRef="postgresql-driver"
+		type="javax.sql.ConnectionPoolDataSource" transactional="false">
+		<properties serverName="imixssample-db" portNumber="5432"
+			databaseName="workflow-db" user="postgres" password="adminadmin" />
 	</dataSource>
-
 	<databaseStore id="EJBTimerDatabaseStore"
-		tablePrefix="EJBTimer_" dataSourceRef="timerDataSource" />
+		tablePrefix="EJBTIMER_" dataSourceRef="timerDataSource">
+		<authData user="postgres" password="adminadmin" />
+	</databaseStore>
 	<persistentExecutor
-		id="defaultEJBPersistentTimerExecutor"
-		taskStoreRef="EJBTimerDatabaseStore" />
+		id="defaultEJBPersistentTimerExecutor" retryInterval="10s"
+		retryLimit="10" taskStoreRef="EJBTimerDatabaseStore">
+	</persistentExecutor>
+	<library id="DerbyLib">
+		<fileset dir="${server.config.dir}/derbyDriverDir/" />
+	</library>
+
 
 </server>
