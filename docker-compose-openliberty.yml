@@ -12,18 +12,19 @@ services:
       - imixssample-db
     image: imixs/imixs-jsf-example
     environment:
-      IMIXS_MODEL: "ticket.bpmn"
+      MODEL_DEFAULT_DATA: "ticket.bpmn"
       TZ: "Europe/Berlin"
     ports:
       - "9080:9080"
       - "9443:9443"
+      - "7777:7777"
 #    volumes:
 #      - ~/git/imixs-jsf-example/src/docker/deployments:/config/dropins/   
 
 
 
     
-#  imixsadmin:
-#    image: imixs/imixs-admin
-#    ports:
-#      - "8888:8080"
+  imixsadmin:
+    image: imixs/imixs-admin
+    ports:
+      - "8888:8080"

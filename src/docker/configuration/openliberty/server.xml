@@ -5,7 +5,12 @@
 		<feature>javaee-8.0</feature>
 		<feature>microProfile-2.2</feature>
 	</featureManager>
-
+	
+	<!--  -->
+	<logging consoleLogLevel="INFO" />
+<!--
+	<logging traceSpecification="org.imixs.*=info"/>
+-->
 	<!-- This template enables security. To get the full use of all the capabilities, 
 		a keystore and user registry are required. -->
 
@@ -43,6 +48,7 @@
 		https://stackoverflow.com/questions/51830570/how-to-authorize-a-java-batch-job-so-it-can-run-from-a-startup-bean-in-websphere
 		https://www.ibm.com/support/knowledgecenter/en/SSEQTP_liberty/com.ibm.websphere.wlp.doc/ae/twlp_sec_runas.html
 		https://groups.io/g/openliberty/messages
+		https://www.ibm.com/support/knowledgecenter/de/SS7K4U_liberty/com.ibm.websphere.wlp.zseries.doc/ae/cwlp_authorization.html
 	 -->
 	<applicationMonitor dropinsEnabled="false" />
 	
