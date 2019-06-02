@@ -8,6 +8,12 @@
 	
 	<!--  -->
 	<logging consoleLogLevel="INFO" />
+	
+	
+	<logging traceSpecification="com.ibm.ws.*=audit"/>
+	<logging traceSpecification="org.imixs.workflow.*=info"/>
+	
+	
 <!--
 	<logging traceSpecification="org.imixs.*=info"/>
 -->

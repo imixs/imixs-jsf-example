@@ -10,7 +10,7 @@ COPY ./src/docker/configuration/openliberty/postgresql-9.4.1212.jar /opt/ol/wlp/
 COPY --chown=1001:0 ./src/docker/configuration/openliberty/server.xml /config/
 
 # Activate Debug Mode...
-COPY --chown=1001:0 ./src/docker/configuration/openliberty/jvm.options /config/
+#COPY --chown=1001:0 ./src/docker/configuration/openliberty/jvm.options /config/
 
 # Copy sample application
 COPY ./target/imixs-jsf-example-*.war /config/dropins/

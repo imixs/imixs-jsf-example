@@ -3,8 +3,13 @@
     xsi:schemaLocation="http://websphere.ibm.com/xml/ns/javaee http://websphere.ibm.com/xml/ns/javaee/ibm-application-bnd_1_2.xsd"
     xmlns="http://websphere.ibm.com/xml/ns/javaee"
 version="1.2">
-          <security-role name="org.imixs.ACCESSLEVEL.AUTHORACCESS">
-               <user name="user5" />
-               <run-as userid="user5" />
-          </security-role>
+
+
+
+	<security-role name="org.imixs.ACCESSLEVEL.MANAGERACCESS" >
+	            <user name="workflow-service" password="{xor}Lz4sLCgwLTs=" />
+	            <run-as userid="workflow-service"/>
+	        </security-role>
+	        
+	      
      </application-bnd>   
