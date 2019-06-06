@@ -36,7 +36,7 @@
     <bpmn2:task id="Task_1" imixs:processid="1000" name="New Ticket">
       <bpmn2:extensionElements>
         <imixs:item name="txtworkflowsummary" type="xs:string">
-          <imixs:value><![CDATA[<itemvalue>subject</itemvalue> ]]></imixs:value>
+          <imixs:value><![CDATA[<itemvalue>subject</itemvalue> (<itemvalue>_teamName</itemvalue>)]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtworkflowabstract" type="CDATA">
           <imixs:value><![CDATA[Create a new Ticket workflow]]></imixs:value>
@@ -57,7 +57,7 @@
     <bpmn2:task id="Task_2" imixs:processid="1100" name="Open">
       <bpmn2:extensionElements>
         <imixs:item name="txtworkflowsummary" type="xs:string">
-          <imixs:value><![CDATA[<itemvalue>subject</itemvalue> ]]></imixs:value>
+          <imixs:value><![CDATA[<itemvalue>subject</itemvalue> (<itemvalue>_teamName</itemvalue>)]]></imixs:value>
         </imixs:item>
         <imixs:item name="keyupdateacl" type="xs:boolean">
           <imixs:value>true</imixs:value>
@@ -66,7 +66,6 @@
           <imixs:value><![CDATA[teamMembers]]></imixs:value>
         </imixs:item>
         <imixs:item name="keyaddwritefields" type="xs:string">
-          <imixs:value><![CDATA[namteam]]></imixs:value>
           <imixs:value><![CDATA[teamMembers]]></imixs:value>
           <imixs:value><![CDATA[namCurrentEditor]]></imixs:value>
         </imixs:item>
@@ -80,7 +79,7 @@
     <bpmn2:task id="Task_3" imixs:processid="1200" name="in Progress">
       <bpmn2:extensionElements>
         <imixs:item name="txtworkflowsummary" type="xs:string">
-          <imixs:value><![CDATA[<itemvalue>subject</itemvalue> ]]></imixs:value>
+          <imixs:value><![CDATA[<itemvalue>subject</itemvalue> (<itemvalue>_teamName</itemvalue>)]]></imixs:value>
         </imixs:item>
         <imixs:item name="keyupdateacl" type="xs:boolean">
           <imixs:value>true</imixs:value>
@@ -89,7 +88,6 @@
           <imixs:value><![CDATA[namCurrentEditor]]></imixs:value>
         </imixs:item>
         <imixs:item name="keyaddwritefields" type="xs:string">
-          <imixs:value><![CDATA[namteam]]></imixs:value>
           <imixs:value><![CDATA[namCurrentEditor]]></imixs:value>
           <imixs:value><![CDATA[teamMembers]]></imixs:value>
         </imixs:item>
@@ -101,7 +99,7 @@
     <bpmn2:task id="Task_4" imixs:processid="1900" name="Closed">
       <bpmn2:extensionElements>
         <imixs:item name="txtworkflowsummary" type="xs:string">
-          <imixs:value><![CDATA[<itemvalue>subject</itemvalue> ]]></imixs:value>
+          <imixs:value><![CDATA[<itemvalue>subject</itemvalue> (<itemvalue>_teamName</itemvalue>)]]></imixs:value>
         </imixs:item>
         <imixs:item name="keyupdateacl" type="xs:boolean">
           <imixs:value>true</imixs:value>
@@ -121,13 +119,9 @@
         <imixs:item name="keyupdateacl" type="xs:boolean">
           <imixs:value>false</imixs:value>
         </imixs:item>
-        <imixs:item name="keyownershipfields" type="xs:string">
-          <imixs:value><![CDATA[namteam]]></imixs:value>
-        </imixs:item>
+        <imixs:item name="keyownershipfields" type="xs:string"/>
         <imixs:item name="keyaddreadfields" type="xs:string"/>
-        <imixs:item name="keyaddwritefields" type="xs:string">
-          <imixs:value><![CDATA[namteam]]></imixs:value>
-        </imixs:item>
+        <imixs:item name="keyaddwritefields" type="xs:string"/>
         <imixs:item name="txtmailsubject" type="xs:string">
           <imixs:value><![CDATA[New Ticket]]></imixs:value>
         </imixs:item>
@@ -166,7 +160,6 @@
           <imixs:value><![CDATA[namCurrentEditor]]></imixs:value>
         </imixs:item>
         <imixs:item name="keyaddwritefields" type="xs:string">
-          <imixs:value><![CDATA[namteam]]></imixs:value>
           <imixs:value><![CDATA[namCurrentEditor]]></imixs:value>
         </imixs:item>
         <imixs:item name="keyrestrictedvisibility" type="xs:string"/>
@@ -201,12 +194,8 @@
         <imixs:item name="keyupdateacl" type="xs:boolean">
           <imixs:value>false</imixs:value>
         </imixs:item>
-        <imixs:item name="keyownershipfields" type="xs:string">
-          <imixs:value><![CDATA[namteam]]></imixs:value>
-        </imixs:item>
-        <imixs:item name="keyaddwritefields" type="xs:string">
-          <imixs:value><![CDATA[namteam]]></imixs:value>
-        </imixs:item>
+        <imixs:item name="keyownershipfields" type="xs:string"/>
+        <imixs:item name="keyaddwritefields" type="xs:string"/>
       </bpmn2:extensionElements>
       <bpmn2:incoming>SequenceFlow_21</bpmn2:incoming>
       <bpmn2:outgoing>SequenceFlow_14</bpmn2:outgoing>

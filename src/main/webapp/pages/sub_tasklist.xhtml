@@ -21,7 +21,7 @@
 						<h:outputText value="#{global.summary}" />
 					</f:facet>
 						<h:link outcome="/pages/workflow/workitem">
-							<h:outputText value="#{workitem.item['txtworkflowSummary']}" />
+							<h:outputText value="#{workitem.item['$workflowSummary']}" />
 							<f:param name="id" value="#{workitem.item['$uniqueid']}" />
 					</h:link>
 
@@ -36,16 +36,6 @@
 						<br />
 					</ui:repeat>
 				</h:column>
-				
-				
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="Team" />
-					</f:facet>
-					<h:outputText  value="#{workitem.item['_teamName']}" />
-				</h:column>
-
-
 
 				<h:column>
 					<f:facet name="header">
@@ -54,7 +44,7 @@
 					<h:outputText value="#{workitem.item['$created']}">
 						<f:convertDateTime timeZone="CET" type="date" dateStyle="medium" />
 					</h:outputText>
-					<h:outputText value=" #{global.by} #{workitem.item['namcreator']}" />
+					<h:outputText value=" #{global.by} #{workitem.item['$creator']}" />
 				</h:column>
 
 
@@ -67,7 +57,7 @@
 					</h:outputText>
 
 					<h:outputText
-						value=" #{global.by} #{workitem.item['namcurrentEditor']}" />
+						value=" #{global.by} #{workitem.item['$editor']}" />
 				</h:column>
 
 
@@ -75,7 +65,7 @@
 					<f:facet name="header">
 						<h:outputText value="#{global.status}" />
 					</f:facet>
-					<h:outputText value="#{workitem.item['txtworkflowstatus']}" />
+					<h:outputText value="#{workitem.item['$workflowstatus']}" />
 				</h:column>
 
 				<h:column>
