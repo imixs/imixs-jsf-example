@@ -42,50 +42,6 @@
     <managed-scheduled-executor-service object-type="system-all" jndi-name="concurrent/__defaultManagedScheduledExecutorService"></managed-scheduled-executor-service>
     <connector-connection-pool resource-adapter-name="jmsra" max-pool-size="250" steady-pool-size="1" name="jms/__defaultConnectionFactory-Connection-Pool" connection-definition-name="javax.jms.ConnectionFactory"></connector-connection-pool>
     <connector-resource pool-name="jms/__defaultConnectionFactory-Connection-Pool" object-type="system-all-req" jndi-name="jms/__defaultConnectionFactory"></connector-resource>
-	
-	<!-- Imixs-Workflow resoruces BEGINN -->
-	<jdbc-connection-pool datasource-classname="org.postgresql.ds.PGSimpleDataSource" name="workflow" res-type="javax.sql.DataSource">
-      <property name="TargetServerType" value="any"></property>
-      <property name="BinaryTransfer" value="true"></property>
-      <property name="UnknownLength" value="2147483647"></property>
-      <property name="DisableColumnSanitiser" value="false"></property>
-      <property name="UseSpNego" value="false"></property>
-      <property name="SspiServiceClass" value="POSTGRES"></property>
-      <property name="ProtocolVersion" value="0"></property>
-      <property name="LogLevel" value="0"></property>
-      <property name="SendBufferSize" value="-1"></property>
-      <property name="ReceiveBufferSize" value="-1"></property>
-      <property name="LoadBalanceHosts" value="false"></property>
-      <property name="ReadOnly" value="false"></property>
-      <property name="LogUnclosedConnections" value="false"></property>
-      <property name="GssLib" value="auto"></property>
-      <property name="CancelSignalTimeout" value="10"></property>
-      <property name="PortNumber" value="0"></property>
-      <property name="DefaultRowFetchSize" value="0"></property>
-      <property name="User" value="postgres"></property>
-      <property name="DatabaseMetadataCacheFieldsMiB" value="5"></property>
-      <property name="Url" value="jdbc:postgresql://imixssample-db/workflow-db"></property>
-      <property name="AllowEncodingChanges" value="false"></property>
-      <property name="PrepareThreshold" value="5"></property>
-      <property name="ReWriteBatchedInserts" value="false"></property>
-      <property name="SocketTimeout" value="0"></property>
-      <property name="HostRecheckSeconds" value="10"></property>
-      <property name="Password" value="adminadmin"></property>
-      <property name="ConnectTimeout" value="10"></property>
-      <property name="PreparedStatementCacheQueries" value="256"></property>
-      <property name="Compatible" value="9.4"></property>
-      <property name="Ssl" value="false"></property>
-      <property name="PreparedStatementCacheSizeMiB" value="5"></property>
-      <property name="Loglevel" value="0"></property>
-      <property name="LoginTimeout" value="0"></property>
-      <property name="ServerName" value="imixssample-db"></property>
-      <property name="DatabaseMetadataCacheFields" value="65536"></property>
-      <property name="TcpKeepAlive" value="false"></property>
-    </jdbc-connection-pool>
-    <jdbc-resource pool-name="workflow" jndi-name="jdbc/workflow"></jdbc-resource>
-    <mail-resource auth="false" host="smarthost" from="info@foo.com" user="admin" jndi-name="mail/org.imixs.workflow.mail"></mail-resource>
-    <!-- Imixs-Workflow resoruces END -->
-
   </resources>
   <servers>
     <server config-ref="server-config" name="server">
@@ -95,7 +51,6 @@
       <resource-ref ref="concurrent/__defaultManagedExecutorService"></resource-ref>
       <resource-ref ref="concurrent/__defaultManagedScheduledExecutorService"></resource-ref>
       <resource-ref ref="jms/__defaultConnectionFactory"></resource-ref>
-      <resource-ref ref="jdbc/workflow"></resource-ref>
     </server>
   </servers>
   <nodes>
@@ -128,7 +83,7 @@
         <property name="adminConsoleContextRoot" value="/admin"></property>
         <property name="adminConsoleDownloadLocation" value="${com.sun.aas.installRoot}/lib/install/applications/admingui.war"></property>
         <property name="ipsRoot" value="${com.sun.aas.installRoot}/.."></property>
-        <das-config dynamic-reload-enabled="false" autodeploy-enabled="true"></das-config>
+        <das-config dynamic-reload-enabled="false" autodeploy-enabled="false"></das-config>
       </admin-service>
       <hazelcast-config-specific-configuration></hazelcast-config-specific-configuration>
       <connector-service></connector-service>
@@ -263,8 +218,6 @@
         <jvm-options>-XX:+UnlockExperimentalVMOptions</jvm-options>
         <jvm-options>-XX:+UseCGroupMemoryLimitForHeap</jvm-options>
         <jvm-options>-XX:MaxRAMFraction=1</jvm-options>
-        <!-- ignore missing mail resource -->
-        <jvm-options>-Ddeployment.resource.validation=false</jvm-options>
       </java-config>
       <availability-service>
         <web-container-availability></web-container-availability>

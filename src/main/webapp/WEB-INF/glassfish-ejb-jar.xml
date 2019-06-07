@@ -8,10 +8,12 @@
 		<!-- resource-ref and RunAs declaration -->
 		<ejb>
 			<ejb-name>WorkflowService</ejb-name>
+			<!--  -->
 			<resource-ref>
-				<res-ref-name>${imixs-mail-res-ref-name}</res-ref-name>
-				<jndi-name>${imixs-mail-res-ref-name}</jndi-name>
+				<res-ref-name>mail/org.imixs.workflow.mail</res-ref-name>
+				<jndi-name>mail/org.imixs.workflow.mail</jndi-name>
 			</resource-ref>
+			
 		</ejb>
 		<ejb>
 			<ejb-name>WorkflowSchedulerService</ejb-name>
@@ -27,6 +29,13 @@
 		</ejb>
 		<ejb>
 			<ejb-name>SchedulerService</ejb-name>
+			<principal>
+				<name>imixs-workflow-service</name>
+			</principal>
+		</ejb>
+		
+		<ejb>
+			<ejb-name>SetupService</ejb-name>
 			<principal>
 				<name>imixs-workflow-service</name>
 			</principal>

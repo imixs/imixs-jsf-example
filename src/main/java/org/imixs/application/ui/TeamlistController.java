@@ -29,6 +29,7 @@ public class TeamlistController extends ViewController implements Serializable {
 		this.setQuery("(type:\"team\")");
 		this.setSortBy("txtname");
 		this.setSortReverse(false);
+		this.setLoadStubs(false);
 	}
 
 }

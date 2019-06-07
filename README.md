@@ -150,10 +150,5 @@ To run the 	 Imixs-JSF-Sample application on the Open Liberty Application Server
 
 	$ mvn clean install -Pdocker-build-openliberty
 	$ docker-compose -f docker-compose-openliberty.yml up
-	
-	
-	
-	
-	
-	
-	
+
+
