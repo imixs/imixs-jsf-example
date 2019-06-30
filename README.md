@@ -9,7 +9,7 @@ You can take this application as a scaffolding for your own web business applica
 
 The Imixs-jsf-example  is based on Maven to build the project from sources run
 
-    mvn clean install
+    $ mvn clean install
     
 You can also download the application from the [latest release](https://github.com/imixs/imixs-jsf-example/releases).    
 
@@ -71,7 +71,7 @@ After you have successful deployed your application you can upload the Ticket wo
 
 Use the following curl command to upload the model from your workspace:
 
-    curl --user admin:adminadmin --request POST -Tsrc/workflow/ticket.bpmn http://localhost:8080/api/model/bpmn
+    $ curl --user admin:adminadmin --request POST -Tsrc/workflow/ticket.bpmn http://localhost:8080/api/model/bpmn
 
 The BPMN Model is part of the project and located under /src/workflow/ticket.bpmn
 
@@ -85,7 +85,7 @@ Imixs-Workflow provides a reporting interface which can be accessed by the [Imix
 
 A new report definition can be uploaded with the curl commandline tool:
 
-    curl --user admin:adminpassword --request POST -H "Content-Type: application/xml" -Tsrc/workflow/tickets.imixs-report http://localhost:8080/api/report
+    $ curl --user admin:adminpassword --request POST -H "Content-Type: application/xml" -Tsrc/workflow/tickets.imixs-report http://localhost:8080/api/report
 
 
 
@@ -104,13 +104,13 @@ To run Sample Application in a Docker container, the container need to be linked
 Before you can start the container, build the application and the docker image from sources:
 
 
-	mvn clean install -Pdocker-build
+	$ mvn clean install -Pdocker-build
 	
 ## 2. Starting the Application in a Docker Container
 
 After you have build the application and the Docker image you can start the application. The workflow engine needs a SQL Database. Both containers can be started with one docker-compose command
 
-	docker-compose up
+	$ docker-compose up
 
 See the docker-compose.yml file for details
 
@@ -122,7 +122,7 @@ The Docker container creates user accounts for testing with the following userid
 
 After your application was started, upload the ticket.bpmn example model:
 
-	curl --user admin:adminpassword --request POST -Tticket.bpmn http://localhost:8080/api/model/bpmn
+	$ curl --user admin:adminpassword --request POST -Tticket.bpmn http://localhost:8080/api/model/bpmn
 
 and run the application in a web browser:	
 
