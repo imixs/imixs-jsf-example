@@ -14,13 +14,7 @@
 				<jndi-name>mail/org.imixs.workflow.mail</jndi-name>
 			</resource-ref>
 			
-		</ejb>
-		<ejb>
-			<ejb-name>WorkflowSchedulerService</ejb-name>
-			<principal>
-				<name>imixs-workflow-service</name>
-			</principal>
-		</ejb>
+		</ejb>	
 		<ejb>
 			<ejb-name>AdminPService</ejb-name>
 			<principal>

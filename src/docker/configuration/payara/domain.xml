@@ -96,6 +96,7 @@
       <resource-ref ref="concurrent/__defaultManagedScheduledExecutorService"></resource-ref>
       <resource-ref ref="jms/__defaultConnectionFactory"></resource-ref>
       <resource-ref ref="jdbc/workflow"></resource-ref>
+      <resource-ref ref="mail/org.imixs.workflow.mail"></resource-ref>
     </server>
   </servers>
   <nodes>
