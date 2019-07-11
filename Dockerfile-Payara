@@ -13,5 +13,7 @@ USER root
 RUN chown payara:payara /opt/payara/appserver/glassfish/domains/production/config/keyfile
 USER payara
 
+# ENV PAYARA_ARGS --debug
+
 # Copy sample application
-COPY ./target/imixs-jsf-example-*.war /opt/payara/appserver/glassfish/domains/production/autodeploy/
+COPY ./target/imixs-jsf-example-*.war $DEPLOY_DIR

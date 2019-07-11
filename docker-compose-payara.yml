@@ -11,6 +11,7 @@ services:
     image: imixs/imixs-jsf-example
     environment:
       TZ: "Europe/Berlin"
+      PAYARA_ARGS: "--debug"
     ports:
       - "8080:8080"
       - "4848:4848"
