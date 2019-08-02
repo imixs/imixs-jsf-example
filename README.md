@@ -152,3 +152,12 @@ To run the 	 Imixs-JSF-Sample application on the Open Liberty Application Server
 	$ docker-compose -f docker-compose-openliberty.yml up
 
 
+
+## TomEE 
+
+To run the 	 Imixs-JSF-Sample application on the Apache TomEE Application Server with Docker run:
+
+	$ mvn clean install -Pdocker-build-tomee
+	$ docker-compose -f docker-compose-tomee.yml up
+
+
