@@ -29,6 +29,7 @@ public class TasklistController extends ViewController implements Serializable {
 		this.setQuery("(type:\"workitem\")");
 		this.setSortBy("$modified");
 		this.setSortReverse(true);
+		this.setLoadStubs(false);
 	}
 
 }
