@@ -14,10 +14,21 @@
 			</c:if>
 
 			<c:if test="#{loginController.authenticated}">
-				<li><h:commandLink action="/pages/config/teamlist?faces-redirect=true">Team List</h:commandLink></li>
+				<li><h:commandLink
+						action="/pages/config/teamlist?faces-redirect=true">Team List</h:commandLink></li>
+
+
+				<h:panelGroup style="margin-left:30px;"> 
+					<h:inputText style="width: 10em;" value="#{searchController.input}"/> 
+					<h:commandLink actionListener="#{searchController.search()}"
+						action="/pages/search" value="#{global.search}" />
+				</h:panelGroup>
+
+
+
 			</c:if>
-			
-			
+
+
 		</ul>
 	</h:form>
 </ui:composition>
