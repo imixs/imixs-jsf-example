@@ -29,4 +29,13 @@ services:
     ports:
       - "8983:8983"      
       
-  
+    volumes:
+      - solr-data:/opt/solr/server/solr/imixs-workflow
+    entrypoint:
+      - docker-entrypoint.sh
+      - solr-precreate
+      - imixs-workflow
+
+
+volumes:
+  solr-data: 
