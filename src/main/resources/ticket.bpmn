@@ -13,7 +13,6 @@
     <imixs:item name="txtplugins" type="xs:string">
       <imixs:value><![CDATA[org.imixs.application.plugin.DemoPlugin]]></imixs:value>
       <imixs:value><![CDATA[org.imixs.application.plugin.TeamPlugin]]></imixs:value>
-      <imixs:value><![CDATA[org.imixs.workflow.engine.plugins.AccessPlugin]]></imixs:value>
       <imixs:value><![CDATA[org.imixs.workflow.engine.plugins.OwnerPlugin]]></imixs:value>
       <imixs:value><![CDATA[org.imixs.workflow.engine.plugins.HistoryPlugin]]></imixs:value>
       <imixs:value><![CDATA[org.imixs.workflow.engine.plugins.ResultPlugin]]></imixs:value>
