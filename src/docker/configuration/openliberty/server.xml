@@ -132,5 +132,24 @@
 		<fileset dir="${server.config.dir}/derbyDriverDir/" />
 	</library>
 
-
+	<!--  Mail Config 
+	<mailSession>
+        <mailSessionID>imixsSMTPSession</mailSessionID>             
+        <jndiName>mail/org.imixs.workflow.mail</jndiName>
+        <description>Imixs SMTP Session</description>
+        <storeProtocol>imaps</storeProtocol>
+        <transportProtocol>smtp</transportProtocol>
+        <host>my.host.com</host>
+        <user>youruseraccount</user>
+        <password>yourpassword</password>
+        <from>youruseraccount@info.com</from>
+        <property name="mail.imap.host" value="my.host.com" />
+        <property name="mail.smtp.port" value="587" />
+        <property name="mail.smtp.auth" value="true" />
+        <property name="mail.smtp.starttls.enable" value="true" />
+    </mailSession>
+    -->
+    
+    
+    
 </server>
