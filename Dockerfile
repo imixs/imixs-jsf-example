@@ -8,5 +8,5 @@ COPY ./src/docker/configuration/wildfly/*.properties ${WILDFLY_CONFIG}/
 COPY ./src/docker/configuration/wildfly/standalone.xml ${WILDFLY_CONFIG}/
 
 # Copy sample application
-COPY ./target/imixs-jsf-example-*.war $WILDFLY_DEPLOYMENT  
+COPY ./target/imixs-jsf-example.war $WILDFLY_DEPLOYMENT  
 

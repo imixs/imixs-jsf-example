@@ -141,7 +141,13 @@ you may have to grant the deployment folder first to allow the docker non privil
 	
 ## GlassFish / Payara
 
-The Imixs-JSF-Sample application includes also a setup to run Payara on Docker. You can find additional information [here](src/docker/configuration/payara/).	
+The Imixs-JSF-Sample application includes also a setup to run Payara on Docker. 
+To run the 	 Imixs-JSF-Sample application on the a Payara Server with Docker run:
+
+	$ mvn clean install -Pdocker-build-payara
+	$ docker-compose -f docker-compose-payara.yml up
+
+You can find the configuration details of payara server in /src/docker/configuration/payara/	
 	 
 	 
 ## Open Liberty 
@@ -151,6 +157,11 @@ To run the 	 Imixs-JSF-Sample application on the Open Liberty Application Server
 	$ mvn clean install -Pdocker-build-openliberty
 	$ docker-compose -f docker-compose-openliberty.yml up
 
+The application running on OpenLiberty is available from:
+
+	http://localhost:9080/
+
+You can find the configuration details of open liberty server in /src/docker/configuration/openliberty/	
 
 
 ## TomEE 
@@ -161,3 +172,4 @@ To run the 	 Imixs-JSF-Sample application on the Apache TomEE Application Server
 	$ docker-compose -f docker-compose-tomee.yml up
 
 
+You can find the configuration details of payara server in /src/docker/configuration/tomee/	
