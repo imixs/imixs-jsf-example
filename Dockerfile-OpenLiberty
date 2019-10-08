@@ -13,5 +13,5 @@ COPY --chown=1001:0 ./src/docker/configuration/openliberty/server.xml /config/
 #COPY --chown=1001:0 ./src/docker/configuration/openliberty/jvm.options /config/
 
 # Copy sample application
-COPY ./target/imixs-jsf-example-*.war /config/dropins/
+COPY ./target/imixs-jsf-example.war /config/dropins/
 

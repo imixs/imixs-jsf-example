@@ -12,7 +12,7 @@ After you have build the payara image with the sample application you can start 
 	
 and run the sample applciation at:
 
-	http://localhost:8080/
+	http://localhost:9080/
 
 
 ## Configuration
