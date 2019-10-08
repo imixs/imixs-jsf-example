@@ -10,7 +10,7 @@
 
 			<li><h:commandLink action="/pages/welcome?faces-redirect=true">Home</h:commandLink></li>
 			<c:if test="#{!loginController.authenticated}">
-				<li><h:commandLink action="home">#{global.login}</h:commandLink></li>
+				<li><h:commandLink action="/pages/welcome">#{global.login}</h:commandLink></li>
 			</c:if>
 
 			<c:if test="#{loginController.authenticated}">

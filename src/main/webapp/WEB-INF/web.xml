@@ -28,8 +28,7 @@
 	<security-constraint>
 		<web-resource-collection>
 			<web-resource-name>restricted</web-resource-name>
-			<url-pattern>/pages/*</url-pattern>
-			<url-pattern>/api/*</url-pattern>
+			<url-pattern>/*</url-pattern>
 		</web-resource-collection>
 		<auth-constraint>
 			<role-name>org.imixs.ACCESSLEVEL.READERACCESS</role-name>

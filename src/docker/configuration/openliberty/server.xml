@@ -61,7 +61,7 @@
 	
 	<application name="imixs-jsf-example"  context-root="/" type="war" 
 		id="imixs-jsf-example"
-    	location="${server.config.dir}dropins/imixs-jsf-example-4.2.2.war">
+    	location="${server.config.dir}dropins/imixs-jsf-example.war">
     
 	    <application-bnd>
 	        <security-role name="org.imixs.ACCESSLEVEL.MANAGERACCESS" >

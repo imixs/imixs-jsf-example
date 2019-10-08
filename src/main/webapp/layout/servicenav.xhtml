@@ -11,10 +11,6 @@
 			<h:panelGroup rendered="#{loginController.authenticated}">
 				<li><h:outputText
 							value="#{global.logged_in}: #{loginController.userPrincipal}" /></li>
-
-				<li><h:commandLink actionListener="#{loginController.doLogout}"
-						action="logout" value="#{global.log_out}" /></li>
-			
 			</h:panelGroup>
 			<li><a href="http://www.imixs.org" target="_blank">imixs.og</a></li>
 			<li><a href="http://www.imixs.com" target="_blank">imixs.com</a></li>

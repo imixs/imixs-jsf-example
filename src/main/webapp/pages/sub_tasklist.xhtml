@@ -68,9 +68,9 @@
 					<h:outputText value="#{workitem.item['$workflowstatus']}" />
 				</h:column>
 
-				<h:column>
+				<h:column> 
 					<h:commandLink value="#{global.delete}"
-						action="#{workflowController.delete(workitem.item['$uniqueid'],'worklist')}"
+						action="/pages/welcome?faces-redirect=true" actionListener="#{documentController.delete(workitem.item['$uniqueid'])}"
 						rendered="#{workitem.item['$isAuthor']}">
 					</h:commandLink>
 				</h:column>

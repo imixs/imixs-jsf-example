@@ -48,7 +48,7 @@
 
 					<!-- delete -->
 					<h:column>
-						<h:commandLink value="#{global.delete}" action="teamlist"
+						<h:commandLink value="#{global.delete}" action="/pages/config/teamlist?faces-redirect=true"
 							actionListener="#{documentController.delete(record.item['$uniqueid'])}" />
 					</h:column>
 				</h:dataTable>
