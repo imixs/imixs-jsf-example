@@ -37,5 +37,11 @@ services:
       - imixs-workflow
 
 
+  imixsadmin:
+    image: imixs/imixs-admin
+    ports:
+      - "8888:8080"    
+      
+      
 volumes:
   solr-data: 
