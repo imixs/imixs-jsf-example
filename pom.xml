@@ -278,6 +278,8 @@
 			</plugin>
 
 		</plugins>
+		
+		<finalName>imixs-jsf-example</finalName>
 	</build>
 
 	<dependencies>
@@ -319,7 +321,7 @@
 		<!-- Apache Lucene Core -->
 		<dependency>
 			<groupId>org.imixs.workflow</groupId>
-			<artifactId>imixs-workflow-lucene</artifactId>
+			<artifactId>imixs-workflow-index-lucene</artifactId>
 			<version>${org.imixs.workflow.version}</version>
 		</dependency>
 		
@@ -327,7 +329,7 @@
 		<!-- Apache Lucene Solr 
 		<dependency>
 			<groupId>org.imixs.workflow</groupId>
-			<artifactId>imixs-workflow-solr</artifactId>
+			<artifactId>imixs-workflow-index-solr</artifactId>
 			<version>${org.imixs.workflow.version}</version>
 		</dependency>
 		-->

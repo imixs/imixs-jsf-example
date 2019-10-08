@@ -2,9 +2,6 @@
 <tomee>
 	<!-- see http://tomee.apache.org/containers-and-resources.html -->
 
-	<!-- activate next line to be able to deploy applications in apps -->
-	<!-- <Deployments dir="apps" /> -->
-
 	<Resource id="jdbc/workflow" type="DataSource">
 		JdbcDriver org.postgresql.Driver
 		JdbcUrl jdbc:postgresql://imixssample-db/workflow-db
@@ -16,5 +13,6 @@
 	<!-- activate next line to be able to deploy applications in apps 
 	<Deployments dir="apps" />
 	-->
+	
 </tomee>
 

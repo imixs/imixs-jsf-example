@@ -11,6 +11,8 @@ services:
     depends_on:
       - imixssample-db
     image: imixs/imixs-jsf-example
+    depends_on:
+      - imixssample-db
     environment:
       MODEL_DEFAULT_DATA: "ticket.bpmn"
       TZ: "Europe/Berlin"

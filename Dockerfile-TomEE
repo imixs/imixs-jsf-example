@@ -18,4 +18,4 @@ COPY ./src/docker/configuration/tomee/tomcat-users.xml /usr/local/tomee/conf
 
 
 # Copy sample application
-COPY ./target/imixs-jsf-example-*.war /usr/local/tomee/webapps/
+COPY ./target/imixs-jsf-example.war /usr/local/tomee/webapps/
