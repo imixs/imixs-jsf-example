@@ -16,4 +16,4 @@ USER payara
 # ENV PAYARA_ARGS --debug
 
 # Copy sample application
-COPY ./target/imixs-jsf-example-*.war $DEPLOY_DIR
+COPY ./target/imixs-jsf-example.war $DEPLOY_DIR
