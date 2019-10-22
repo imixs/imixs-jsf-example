@@ -16,7 +16,7 @@ You can also download the application as an deployable artifact from the [latest
 ## 2. Deploy the Application
 To deploy the application successfully, the application sever need to provide a valid database pool named 'jdbc/workflow' and a JAAS security configuration named 'imixsrealm'. You will find an installation guide [here](http://www.imixs.org/doc/sampleapplication.html).
 
-To avoid a manual deployment, see the section [Docker](#1-build-the-application-1) below showing how you can start the application from docker. 
+To avoid a manual deployment, see the section [Docker](#docker-1) below showing how you can start the application from docker. 
 
 
 ### Authentication and Authorization
@@ -67,7 +67,7 @@ Find details about the Imixs REST api [here](http://www.imixs.org/doc/restapi/in
 
 After you have successful deployed your application you can upload the Ticket workflow model via the [Imixs-REST Service API](http://www.imixs.org/doc/restapi/index.html). 
 
-<a id="docker-1" class="anchor" aria-hidden="true" href="#1-build-the-application-1"></a>
+<a id="docker-1" class="anchor" aria-hidden="true" href="#docker-1"></a>
 <br><br><img src="model-ticket.png">
 
 Use the following curl command to upload the model from your workspace:
