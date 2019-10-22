@@ -1,27 +1,27 @@
 # imixs-jsf-example
 
+The Imixs-jsf-example provides a simple web application running the imixs workflow engine.
+You can take this application as a scaffolding for your own web application based on the [Imixs-Workflow project](http://www.imixs.org).
 
-The Imixs-jsf-example provides a simple web application using the imixs workflow engine.
-You can take this application as a scaffolding for your own web business application based on the [Imixs-Workflow project](http://www.imixs.org).
-
+The sample application provides a simple workflow model for a 'Ticket-Management'. This workflow is available in the file /src/workflow/ticket.bpmn. You can load the bpmn model using the [Imixs-BPMN Modeling Tool](https://www.imixs.org/doc/modelling/index.html). 
 
 ## 1. Build the Application
 
-The Imixs-jsf-example  is based on Maven to build the project from sources run
+The Imixs-jsf-example  is based on Maven to build the project from sources, check out the sources from Github and run the maven command:
 
     $ mvn clean install
     
-You can also download the application from the [latest release](https://github.com/imixs/imixs-jsf-example/releases).    
+You can also download the application as an deployable artifact from the [latest release](https://github.com/imixs/imixs-jsf-example/releases).    
 
 ## 2. Deploy the Application
 To deploy the application successfully, the application sever need to provide a valid database pool named 'jdbc/workflow' and a JAAS security configuration named 'imixsrealm'. You will find an installation guide [here](http://www.imixs.org/doc/sampleapplication.html).
 
-
+To avoid a manual deployment, see the section [Docker](#1-build-the-application-1) below showing how you can start the application from docker. 
 
 
 ### Authentication and Authorization
 
-Imixs-Workflow is a human-centry workflow engine which means that each actor need to authenticate against the service to interact. The Workflow Engine is based on Java EE and so the authentication is also standardized by the JAAS Specification which supports different authentication solutions like LDAP, Database, SSO and more.  
+Imixs-Workflow is a human-centric workflow engine which means that each actor need to authenticate against the service to interact. The Workflow Engine is based on [Jakarta EE](https://jakarta.ee/) and so the authentication is also standardized by the JAAS Specification which supports different authentication solutions like LDAP, Database, SSO and more.  
 
 The default Docker setup in this project provides a set of predefined users which can be used for testing purpose. The test users are stored in a separate user and roles properties file named 'sampleapp-roles.roperties' and 'sampleapp-users.properties'. The property files are configured in a file based security domain within the server configuration. See the following list of predefined test user accounts:
 
@@ -67,6 +67,7 @@ Find details about the Imixs REST api [here](http://www.imixs.org/doc/restapi/in
 
 After you have successful deployed your application you can upload the Ticket workflow model via the [Imixs-REST Service API](http://www.imixs.org/doc/restapi/index.html). 
 
+<a id="docker-1" class="anchor" aria-hidden="true" href="#1-build-the-application-1"></a>
 <br><br><img src="model-ticket.png">
 
 Use the following curl command to upload the model from your workspace:
@@ -120,13 +121,15 @@ The Docker container creates user accounts for testing with the following userid
     manfred=password
     anna=password
 
-After your application was started, upload the ticket.bpmn example model:
+After your application was started, the test model 'ticket.bpmn' is automatically installed. You run the application from your web browser:	
+
+	http://localhost:8080/
+	
+If you want to upload your own BPMN model (or update the ticket.bpmn) you can use the curl tool:
 
 	$ curl --user admin:adminpassword --request POST -Tticket.bpmn http://localhost:8080/api/model/bpmn
 
-and run the application in a web browser:	
 
-	http://localhost:8080/
 	
 	
 ## Development
