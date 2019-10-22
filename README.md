@@ -5,6 +5,9 @@ You can take this application as a scaffolding for your own web application base
 
 The sample application provides a simple workflow model for a 'Ticket-Management'. This workflow is available in the file /src/workflow/ticket.bpmn. You can load the bpmn model using the [Imixs-BPMN Modeling Tool](https://www.imixs.org/doc/modelling/index.html). 
 
+
+The example also includes a Docker container to start the application out of the box. See the section [Docker](#docker-1) below.
+
 ## 1. Build the Application
 
 The Imixs-jsf-example  is based on Maven to build the project from sources, check out the sources from Github and run the maven command:
