@@ -31,6 +31,16 @@
 							class="typcn typcn-home"></span><label>Home</label></a></li>
 
 
+
+					<li class="nav-item"><h:commandLink
+							actionListener="#{workflowController.create('1.1',1000,'')}"
+							action="/pages/workflow/workitem" ><span class="typcn typcn-document"></span><label>New Ticket</label>
+							
+						</h:commandLink></li>
+
+
+
+
 					<li class="nav-item"><a
 						href="#{facesContext.externalContext.requestContextPath}/pages/tasklist.jsf"><span
 							class="typcn typcn-th-list"></span><label>Tasklist</label></a></li>
