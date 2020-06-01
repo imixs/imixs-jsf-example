@@ -5,32 +5,64 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:i="http://xmlns.jcp.org/jsf/composite/imixs">
 
-	<h:form>
-		<ul>
-
-			<li><h:commandLink action="/pages/welcome?faces-redirect=true">Home</h:commandLink></li>
-			<c:if test="#{!loginController.authenticated}">
-				<li><h:commandLink action="/pages/welcome">#{global.login}</h:commandLink></li>
-			</c:if>
-
-			<c:if test="#{loginController.authenticated}">
-				<li><h:commandLink
-						action="/pages/config/teamlist?faces-redirect=true">Team List</h:commandLink></li>
+	<nav>
+		<h:form>
+			<!-- Sidebar -->
+			<div class="nav-sidebar">
 
 
-				<h:panelGroup style="margin-left:30px;"> 
-					<h:inputText style="width: 10em;" value="#{searchController.input}"/> 
-					<h:commandLink actionListener="#{searchController.search()}"
-						action="/pages/search" value="#{global.search}" />
-				</h:panelGroup>
+				<div class="nav-title">
+					<h4>
+						<a href="#{facesContext.externalContext.requestContextPath}/">
+							<label>Imixs-Sample</label>
+						</a> <span class="pull-right typcn typcn-th-menu-outline"
+							style="margin-right: 10px; cursor: pointer; margin-bottom: 20px;"
+							onclick="togglemenu();"></span>
+					</h4>
+
+					<small><label>v5.2.0</label></small>
+
+
+				</div>
+				<hr />
+				<ul>
+					<li class="nav-item"><a
+						href="#{facesContext.externalContext.requestContextPath}/"><span
+							class="typcn typcn-home"></span><label>Home</label></a></li>
+
+
+					<li class="nav-item"><a
+						href="#{facesContext.externalContext.requestContextPath}/pages/tasklist.jsf"><span
+							class="typcn typcn-th-list"></span><label>Tasklist</label></a></li>
+
+				</ul>
+				<hr />
+				<ul>
+
+					<li class="nav-item"><h:commandLink
+							action="/pages/config/teamlist?faces-redirect=true">
+							<span class="typcn typcn-group"></span>
+							<label>Teams</label>
+						</h:commandLink></li>
+
+					<li class="nav-item"><a target="_blank"
+						href="#{facesContext.externalContext.requestContextPath}/api/model">
+							<span class="typcn typcn-flow-merge"></span><label>Models</label>
+					</a></li>
+
+					<hr />
+					<li class="nav-item"><a target="admin"
+						href="http://localhost:8888/"> <span
+							class="typcn typcn-spanner"></span><label>Admin-Client</label>
+					</a></li>
+				</ul>
 
 
 
-			</c:if>
+			</div>
+		</h:form>
+	</nav>
 
-
-		</ul>
-	</h:form>
 </ui:composition>
 
 
