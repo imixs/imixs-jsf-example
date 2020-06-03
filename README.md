@@ -54,7 +54,7 @@ After deployment you can start the sample application from:
 
 [http://localhost:8080/](http://localhost:8080/)
 
-<br><br><img width="75%" src="sample.png">
+<br><br><img src="sample.png">
 
 
 # The Imixs Rest-API
