@@ -2,9 +2,10 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
 
-	<h:form>
+	<h:form onkeypress="if (event.keyCode == 13) { $('.header-search-button').click(); return false; }">
 		<div class="header">
 
 
@@ -23,8 +24,8 @@
 				<div class="searchbox col-6">
 
 
-					<h:inputText style="width: 80%;" value="#{searchController.input}" />
-					<h:commandLink actionListener="#{searchController.search()}"
+					<h:inputText style="width: 80%;" value="#{searchController.input}"  a:placeholder="search..."/>
+					<h:commandLink actionListener="#{searchController.search()}" styleClass="header-search-button"
 						action="/pages/search" title="#{global.search}" ><span class="typcn typcn-zoom-outline"></span></h:commandLink>
 					
 				</div>
