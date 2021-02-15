@@ -10,8 +10,7 @@ services:
   imixssample-app:
     image: imixs/imixs-jsf-example
     environment:
-      WILDFLY_PASS: adminadmin
-      DEBUG: "true"
+      JAVA_OPTS: "-Dnashorn.args=--no-deprecation-warning"
       POSTGRES_USER: "postgres"
       POSTGRES_PASSWORD: "adminadmin"
       POSTGRES_CONNECTION: "jdbc:postgresql://imixssample-db/workflow-db"

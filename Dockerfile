@@ -1,12 +1,17 @@
-FROM imixs/wildfly:1.2.9
+FROM jboss/wildfly:22.0.1.Final
 
-# Imixs-Microservice Version 1.0.2
-MAINTAINER ralph.soika@imixs.com
+LABEL description="Imixs-JSF-Example"
+LABEL maintainer="ralph.soika@imixs.com"
 
-# add configuration files
-COPY ./src/docker/configuration/wildfly/*.properties ${WILDFLY_CONFIG}/
-COPY ./src/docker/configuration/wildfly/standalone.xml ${WILDFLY_CONFIG}/
+# Copy EclipseLink
+COPY ./docker/configuration/wildfly/modules/ /opt/jboss/wildfly/modules/
 
-# Copy sample application
-COPY ./target/imixs-jsf-example.war $WILDFLY_DEPLOYMENT  
+# Setup configuration
+COPY ./docker/configuration/wildfly/*.properties /opt/jboss/wildfly/standalone/configuration/
+COPY ./docker/configuration/wildfly/standalone.xml /opt/jboss/wildfly/standalone/configuration/
 
+# Deploy artefact
+ADD ./target/*.war /opt/jboss/wildfly/standalone/deployments/
+
+# Run with management interface
+CMD ["/opt/jboss/wildfly/bin/standalone.sh", "-b", "0.0.0.0", "-bmanagement", "0.0.0.0"]
