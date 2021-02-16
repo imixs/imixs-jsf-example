@@ -8,6 +8,16 @@ The sample application provides a simple workflow model for a 'Ticket-Management
 
 The example also includes a Docker container to start the application out of the box. See the section [Docker](#docker-1) below.
 
+## Support
+
+If you need any help, start a [discussion](https://github.com/imixs/imixs-jsf-example/discussions) or create an new issue in the [issue-tracker](https://github.com/imixs/imixs-jsf-example/issues).
+
+
+# How to Get Started
+
+The following section provides information how to build the project form sources and how to deploy the application on a Jakarta EE server. 
+If you just want to take a first look, you can run the application with docker. Find details below in the section [Docker](#docker-1) below. 
+ 
 ## 1. Build the Application
 
 The Imixs-jsf-example  is based on Maven to build the project from sources, check out the sources from Github and run the maven command:
