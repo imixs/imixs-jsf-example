@@ -21,7 +21,7 @@ services:
       - "8009:8009"
       - "8888:8888"
 #    volumes:
-#      - ~/git/imixs-jsf-example/src/docker/deployments:/config/dropins/   
+#      - ./docker/deployments:/config/dropins/   
 
 
 

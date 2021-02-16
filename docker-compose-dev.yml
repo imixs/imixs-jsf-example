@@ -19,7 +19,7 @@ services:
       - "8787:8787"
       - "9990:9990"
     volumes:
-      - ~/git/imixs-jsf-example/src/docker/deployments:/opt/wildfly/standalone/deployments/    
+      - ./docker/deployments:/opt/jboss/wildfly/standalone/deployments/ 
 
   imixsadmin:
     image: imixs/imixs-admin
