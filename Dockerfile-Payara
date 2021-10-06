@@ -5,9 +5,9 @@ MAINTAINER ralph.soika@imixs.com
 
 # Setup configuration
 USER payara
-COPY ./src/docker/configuration/payara/postgresql-9.4.1212.jar /opt/payara/appserver/glassfish/domains/production/lib
-COPY ./src/docker/configuration/payara/domain.xml /opt/payara/appserver/glassfish/domains/production/config
-COPY ./src/docker/configuration/payara/keyfile /opt/payara/appserver/glassfish/domains/production/config 
+COPY ./docker/configuration/payara/postgresql-9.4.1212.jar /opt/payara/appserver/glassfish/domains/production/lib
+COPY ./docker/configuration/payara/domain.xml /opt/payara/appserver/glassfish/domains/production/config
+COPY ./docker/configuration/payara/keyfile /opt/payara/appserver/glassfish/domains/production/config 
 
 USER root
 RUN chown payara:payara /opt/payara/appserver/glassfish/domains/production/config/keyfile

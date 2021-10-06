@@ -8,13 +8,13 @@ FROM tomee:11-jre-8.0.0-M3-plume
 MAINTAINER ralph.soika@imixs.com
 
 # Copy postgres JDBC driver
-#COPY ./src/docker/configuration/tomee/eclipselink.jar /usr/local/tomee/lib
-COPY ./src/docker/configuration/tomee/postgresql-9.4.1212.jar /usr/local/tomee/lib
+#COPY ./docker/configuration/tomee/eclipselink.jar /usr/local/tomee/lib
+COPY ./docker/configuration/tomee/postgresql-9.4.1212.jar /usr/local/tomee/lib
 
 # Add config
-COPY ./src/docker/configuration/tomee/server.xml /usr/local/tomee/conf
-COPY ./src/docker/configuration/tomee/tomee.xml /usr/local/tomee/conf
-COPY ./src/docker/configuration/tomee/tomcat-users.xml /usr/local/tomee/conf
+COPY ./docker/configuration/tomee/server.xml /usr/local/tomee/conf
+COPY ./docker/configuration/tomee/tomee.xml /usr/local/tomee/conf
+COPY ./docker/configuration/tomee/tomcat-users.xml /usr/local/tomee/conf
 
 
 # Copy sample application
