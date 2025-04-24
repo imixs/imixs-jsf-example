@@ -30,13 +30,13 @@ package org.imixs.application.plugin;
 import java.util.List;
 import java.util.logging.Logger;
 
-import javax.ejb.EJB;
-
 import org.imixs.workflow.ItemCollection;
 import org.imixs.workflow.WorkflowContext;
 import org.imixs.workflow.engine.ModelService;
 import org.imixs.workflow.engine.plugins.AbstractPlugin;
 import org.imixs.workflow.exceptions.PluginException;
+
+import jakarta.ejb.EJB;
 
 /**
  * This Plugin demonstrates the CDI behavior of an imixs workflow pugin.

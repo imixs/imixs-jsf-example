@@ -3,11 +3,11 @@ package org.imixs.application.ui;
 import java.io.Serializable;
 import java.util.logging.Logger;
 
-import javax.annotation.PostConstruct;
-import javax.enterprise.context.SessionScoped;
-import javax.inject.Named;
-
 import org.imixs.workflow.faces.data.ViewController;
+
+import jakarta.annotation.PostConstruct;
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.inject.Named;
 
 /**
  * Simple example for a search controller searching the Imixs Fulltext Index
@@ -20,8 +20,7 @@ public class SearchController extends ViewController implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private String input;
-	
-	
+
 	private static Logger logger = Logger.getLogger(SearchController.class.getName());
 
 	@Override
@@ -42,11 +41,10 @@ public class SearchController extends ViewController implements Serializable {
 		this.input = input;
 	}
 
-	
 	public void search() {
-		this.setQuery("(type:\"workitem\" OR type:\"workitemarchive\") AND ("+input+"*)");
-		
+		this.setQuery("(type:\"workitem\" OR type:\"workitemarchive\") AND (" + input + "*)");
+
 		logger.info("serach query=" + this.getQuery());
 	}
-	
+
 }

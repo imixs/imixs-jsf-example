@@ -30,12 +30,12 @@ package org.imixs.application.plugin;
 import java.util.List;
 import java.util.logging.Logger;
 
-import javax.ejb.EJB;
-
 import org.imixs.workflow.ItemCollection;
 import org.imixs.workflow.engine.DocumentService;
 import org.imixs.workflow.engine.plugins.AbstractPlugin;
 import org.imixs.workflow.exceptions.PluginException;
+
+import jakarta.ejb.EJB;
 
 /**
  * The TeamPlugin copies the team members from the selected team into the item

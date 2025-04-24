@@ -27,12 +27,12 @@
 
 package org.imixs.application.ui;
 
-import javax.ws.rs.ApplicationPath;
-import javax.ws.rs.core.Application;
+import jakarta.ws.rs.ApplicationPath;
+import jakarta.ws.rs.core.Application;
 
 /**
  * The Imixs JSF-Sample REST API application setup.
- * Rest API is loaded from the imixs-jax-rs.jar 
+ * Rest API is loaded from the imixs-jax-rs.jar
  * 
  * @author rsoika
  * 

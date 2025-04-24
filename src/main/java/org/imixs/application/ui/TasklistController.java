@@ -3,11 +3,11 @@ package org.imixs.application.ui;
 import java.io.Serializable;
 import java.util.logging.Logger;
 
-import javax.annotation.PostConstruct;
-import javax.faces.view.ViewScoped;
-import javax.inject.Named;
-
 import org.imixs.workflow.faces.data.ViewController;
+
+import jakarta.annotation.PostConstruct;
+import jakarta.faces.view.ViewScoped;
+import jakarta.inject.Named;
 
 /**
  * Select the current list of tasks sorted by modification timestamp

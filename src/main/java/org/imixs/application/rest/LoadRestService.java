@@ -30,14 +30,6 @@ package org.imixs.application.rest;
 import java.io.InputStream;
 import java.util.logging.Logger;
 
-import javax.ejb.EJB;
-import javax.ejb.Stateless;
-import javax.servlet.http.HttpServletRequest;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
-
 import org.imixs.workflow.ItemCollection;
 import org.imixs.workflow.WorkflowKernel;
 import org.imixs.workflow.engine.WorkflowService;
@@ -45,6 +37,14 @@ import org.imixs.workflow.exceptions.AccessDeniedException;
 import org.imixs.workflow.exceptions.ModelException;
 import org.imixs.workflow.exceptions.PluginException;
 import org.imixs.workflow.exceptions.ProcessingErrorException;
+
+import jakarta.ejb.EJB;
+import jakarta.ejb.Stateless;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.QueryParam;
 
 /**
  * The WorkflowService Handler supports methods to process different kind of
@@ -64,7 +64,7 @@ import org.imixs.workflow.exceptions.ProcessingErrorException;
 @Stateless
 public class LoadRestService {
 
-	@javax.ws.rs.core.Context
+	@jakarta.ws.rs.core.Context
 	private HttpServletRequest servletRequest;
 
 	private static Logger logger = Logger.getLogger(LoadRestService.class.getName());
@@ -89,8 +89,8 @@ public class LoadRestService {
 
 			// create example workitem
 			ItemCollection workitem = new ItemCollection();
-			
-			workitem.model( modelversion).task( processid).event( activityid);
+
+			workitem.model(modelversion).task(processid).event(activityid);
 			workitem.replaceItemValue(WorkflowKernel.TYPE, "workitem");
 			workitem.replaceItemValue("subject", "Loadtest-" + System.currentTimeMillis());
 			try {

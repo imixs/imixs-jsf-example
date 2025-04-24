@@ -6,7 +6,7 @@
 	<artifactId>imixs-jsf-example</artifactId>
 	<packaging>war</packaging>
 	<name>Imixs Workflow JSF Sample Application</name>
-	<version>5.2.2</version>
+	<version>6.0.0</version>
 	<description>Imixs Workflow JSF Sample Application </description>
 	<url>https://github.com/imixs/imixs-jsf-example</url>
 	<organization>
@@ -56,10 +56,16 @@
 	</issueManagement>
 
 	<properties>
+
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<org.imixs.workflow.version>5.2.12</org.imixs.workflow.version>
+		<org.imixs.workflow.version>6.2.0</org.imixs.workflow.version>
+		<microprofile.version>6.0</microprofile.version>
+		<junit.jupiter.version>5.9.2</junit.jupiter.version>
+		<mockito.version>5.8.0</mockito.version>
+		<org.imixs.melman.version>2.1.0</org.imixs.melman.version>
 		<custom.webResources>src/main/webapp</custom.webResources>
 		<custom.unpackTypes>war</custom.unpackTypes>
+
 	</properties>
 
 
@@ -71,7 +77,6 @@
 			<url>http://oss.sonatype.org/content/repositories/snapshots</url>
 		</repository>
 	</repositories>
-
 
 
 	<profiles>
@@ -145,8 +150,8 @@
 				</plugins>
 			</build>
 		</profile>
-		
-		
+
+
 		<profile>
 			<id>docker-hub-latest</id>
 			<build>
@@ -181,9 +186,9 @@
 
 				</plugins>
 			</build>
-		</profile>	
-		
-		<profile>			
+		</profile>
+
+		<profile>
 			<id>docker-build-payara</id>
 			<build>
 				<plugins>
@@ -217,7 +222,6 @@
 				</plugins>
 			</build>
 		</profile>
-
 
 
 		<profile>
@@ -254,7 +258,6 @@
 				</plugins>
 			</build>
 		</profile>
-
 
 
 		<profile>
@@ -304,19 +307,21 @@
 			</resource>
 		</resources>
 		<plugins>
+			<!-- use JDK settings for compiling -->
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.3.2</version>
+				<version>3.11.0</version>
 				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
+					<source>11</source>
+					<target>11</target>
 				</configuration>
 			</plugin>
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
-				<version>2.4</version>
+				<version>3.4.0</version>
 				<configuration>
 					<webResources>
 						<resource>
@@ -337,54 +342,95 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
-				<version>2.6</version>
+				<version>3.3.1</version>
 				<configuration>
 					<encoding>${project.build.sourceEncoding}</encoding>
 				</configuration>
 			</plugin>
 
 
+			<plugin>
+				<groupId>org.imixs.maven</groupId>
+				<artifactId>manik-hotdeploy-maven-plugin</artifactId>
+				<version>2.0.1</version>
+				<executions>
+					<execution>
+						<phase>install</phase>
+						<goals>
+							<goal>deploy</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<!--
+ 						List Source and Target folders for Autodeploy and Hotdeploy 
+					-->
+					<autodeployments>
+						<deployment>
+							<!-- wildcard deployment -->
+							<source>target/imixs-jsf-example.war</source>
+							<target>./docker/deployments/</target>
+							<unpack>true</unpack>
+						</deployment>
+					</autodeployments>
+					<hotdeployments>
+						<deployment>
+							<source>src/main/webapp</source>
+							<target>./docker/deployments/imixs-jsf-example.war</target>
+						</deployment>
+					</hotdeployments>
+				</configuration>
+			</plugin>
+
 			<!-- relase management -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-release-plugin</artifactId>
 			</plugin>
-
+			<!-- Testing JUnit 5 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.1.2</version>
+			</plugin>
 		</plugins>
-		
 		<finalName>imixs-jsf-example</finalName>
 	</build>
 
 	<dependencies>
 		<!-- JEE Dependencies -->
 		<dependency>
-			<groupId>javax</groupId>
-			<artifactId>javaee-api</artifactId>
-			<version>8.0</version>
+			<groupId>jakarta.platform</groupId>
+			<artifactId>jakarta.jakartaee-api</artifactId>
+			<version>10.0.0</version>
 			<scope>provided</scope>
 		</dependency>
 
+		<!-- Microprofile -->
 		<dependency>
-			<groupId>javax.faces</groupId>
-			<artifactId>jsf-api</artifactId>
-			<version>2.0</version>
+			<groupId>org.eclipse.microprofile</groupId>
+			<artifactId>microprofile</artifactId>
+			<version>${microprofile.version}</version>
+			<type>pom</type>
 			<scope>provided</scope>
 		</dependency>
 
 		<!-- Imixs Workflow -->
-
+		<dependency>
+			<groupId>org.imixs.workflow</groupId>
+			<artifactId>imixs-workflow-core</artifactId>
+			<version>${org.imixs.workflow.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>org.imixs.workflow</groupId>
 			<artifactId>imixs-workflow-engine</artifactId>
 			<version>${org.imixs.workflow.version}</version>
 		</dependency>
-
 		<dependency>
 			<groupId>org.imixs.workflow</groupId>
 			<artifactId>imixs-workflow-jax-rs</artifactId>
 			<version>${org.imixs.workflow.version}</version>
 		</dependency>
-
 		<dependency>
 			<groupId>org.imixs.workflow</groupId>
 			<artifactId>imixs-workflow-faces</artifactId>
@@ -397,8 +443,7 @@
 			<artifactId>imixs-workflow-index-lucene</artifactId>
 			<version>${org.imixs.workflow.version}</version>
 		</dependency>
-		
-		
+
 		<!-- Apache Lucene Solr 
 		<dependency>
 			<groupId>org.imixs.workflow</groupId>
@@ -406,6 +451,72 @@
 			<version>${org.imixs.workflow.version}</version>
 		</dependency>
 		-->
+
+
+		<!-- Testing -->
+		<dependency>
+			<groupId>org.imixs.workflow</groupId>
+			<artifactId>imixs-melman</artifactId>
+			<version>${org.imixs.melman.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- JUnit 5 Dependencies -->
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>${junit.jupiter.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<version>${junit.jupiter.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- Mockito Dependencies -->
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>${mockito.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-junit-jupiter</artifactId>
+			<version>${mockito.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- Test dependencies -->
+		<dependency>
+			<groupId>jakarta.xml.bind</groupId>
+			<artifactId>jakarta.xml.bind-api</artifactId>
+			<version>3.0.0</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.parsson</groupId>
+			<artifactId>jakarta.json</artifactId>
+			<version>1.1.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.jaxb</groupId>
+			<artifactId>jaxb-runtime</artifactId>
+			<version>3.0.0</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.jersey.media</groupId>
+			<artifactId>jersey-media-jaxb</artifactId>
+			<version>3.1.5</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.glassfish.jersey.core</groupId>
+			<artifactId>jersey-client</artifactId>
+			<version>3.1.5</version>
+		</dependency>
 
 	</dependencies>
 </project>
